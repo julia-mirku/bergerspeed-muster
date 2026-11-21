@@ -53,7 +53,13 @@ section{padding:clamp(72px,9vw,120px) 0}
   .ready .btn-d:hover{border-color:var(--orange);box-shadow:0 0 0 4px rgba(234,93,46,.12)}
 }
 .btn:active{transform:scale(.97)}
-:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+:focus-visible{outline:2px solid #EA5D2E;outline-offset:3px;border-radius:6px}
+:focus:not(:focus-visible){outline:none}
+html{-webkit-tap-highlight-color:transparent}
+::selection{background:rgba(234,93,46,.35);color:inherit}
+button,.btn,.instrument,.modus,.gaenge,.dia-nav,.tage,.tag-k,.auto,.pfeil,.band figure,.tor-leiste,.anh,.note,.punkt,.dienst,.mensch{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+#tacho,#tacho *{outline:none}
+#tacho:focus-visible{outline:2px solid #EA5D2E;outline-offset:4px;border-radius:50%}
 
 /* ---------- Kopf ---------- */
 .kopf{position:sticky;top:0;z-index:50;background:#000;border-bottom:1px solid #222}
@@ -229,7 +235,7 @@ html{scroll-padding-top:76px}
 @media (hover:hover){.ready .gas:hover{background:rgba(234,93,46,.14);box-shadow:0 0 0 4px rgba(234,93,46,.15)}}
 .gas:active{transform:scale(.98)}
 #tacho .nabe{cursor:pointer}
-#tacho:focus-visible{outline:3px solid #EA5D2E;outline-offset:4px;border-radius:50%}
+
 #tacho .wert-k.modell{font-size:15px;letter-spacing:.06em;fill:#fff}
 .auto.blitz{animation:blitz .9s ease}
 @keyframes blitz{0%,100%{box-shadow:none}35%{box-shadow:0 0 0 4px rgba(234,93,46,.55),0 0 40px rgba(234,93,46,.55)}}
@@ -925,14 +931,14 @@ function sweep(ziel){
 }
 function gangAus(){ gang=null; D.querySelectorAll('.gaenge button').forEach(function(b){b.setAttribute('aria-pressed','false')}); }
 function wechsle(m){
-  if(busy||m===modus) return; modus=m; gangAus();
+  if(m===modus) return; animId++; sperre(false); modus=m; gangAus();
   D.querySelectorAll('.modus button').forEach(function(b){b.setAttribute('aria-pressed', b.dataset.modus===m?'true':'false')});
   var M=MODI[m], vonAnteil=anzeigeWert/MODI[m==='ps'?'chf':'ps'].max;
   zeichneSkala(); anzeigeWert=vonAnteil*M.max; zeige(anzeigeWert);
   sweep(M.start);
 }
 D.querySelectorAll('.modus button').forEach(function(b){ b.addEventListener('click',function(){wechsle(b.dataset.modus)}); });
-D.getElementById('reset').addEventListener('click',function(){ if(busy) return; gangAus(); fahre(MODI[modus].start,500,false,function(){ setze(MODI[modus].start); }); });
+D.getElementById('reset').addEventListener('click',function(){ animId++; sperre(false); gangAus(); fahre(MODI[modus].start,500,false,function(){ setze(MODI[modus].start); }); });
 schieber.addEventListener('input',function(){ if(!busy){ gangAus(); animId++; setze(+schieber.value);} });
 miniS.addEventListener('input',function(){ if(!busy){ gangAus(); animId++; setze(+miniS.value);} });
 svg.addEventListener('keydown',function(e){
@@ -942,7 +948,7 @@ svg.addEventListener('keydown',function(e){
 });
 /* Gänge */
 D.querySelectorAll('.gaenge button').forEach(function(b){ b.addEventListener('click',function(){
-  if(busy) return; var g=b.dataset.gang;
+  animId++; sperre(false); var g=b.dataset.gang;
   if(gang===g){ gangAus(); fahre(MODI[modus].start,500,false,function(){ setze(MODI[modus].start); }); return; }
   gang=g; D.querySelectorAll('.gaenge button').forEach(function(x){x.setAttribute('aria-pressed', x===b?'true':'false')});
   var werte=karten.filter(function(k){return GAENGE[g].ids.indexOf(+k.id.replace('auto-',''))>=0}).map(wertVon).filter(Boolean).sort(function(a,b){return a-b});
