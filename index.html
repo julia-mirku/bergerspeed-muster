@@ -203,7 +203,8 @@ html{scroll-padding-top:76px}
 .auto h3 a{color:inherit;text-decoration:none}
 .auto .ganz::after{content:"";position:absolute;inset:0;z-index:1}
 .auto .aktion{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid #34373c;font-size:14px;font-weight:700}
-.auto .anruf{color:#fff;text-decoration:none;padding:7px 12px;border-radius:999px;border:1.5px solid #4a4d53;transition:border-color .2s, box-shadow .2s}
+.auto .anruf svg{width:15px;height:15px;color:var(--orange)}
+.auto .anruf{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;color:#fff;text-decoration:none;padding:7px 12px;border-radius:999px;border:1.5px solid #4a4d53;transition:border-color .2s, box-shadow .2s}
 .auto .inserat{color:#AEB1B7}
 @media (hover:hover){.ready .auto.live .anruf:hover{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,64,1,.18)}}
 @media (min-width:1200px){.auto.gross{grid-column:span 2}.auto.gross .foto{aspect-ratio:16/9}.auto.gross h3{font-size:24px}.auto.gross .preis b{font-size:36px}}
@@ -665,7 +666,7 @@ box.innerHTML=AUTOS.map(function(a){
     (badges?'<div class="marken">'+badges+'</div>':'')+
     '<div class="info"><div class="marke">'+a.m+'</div><h3><a class="ganz" href="https://www.autoscout24.ch/de/d/'+a.s+'-'+a.id+'" target="_blank" rel="noopener">'+a.t+'</a></h3><div class="daten">'+daten+'</div>'+
     '<div class="preis"><b>CHF '+chf(a.p)+'.–</b>'+(a.alt?'<s>CHF '+chf(a.alt)+'.–</s>':'')+(a.ps?'<span class="ps">'+a.ps+' PS</span>':'')+'</div>'+
-    '<div class="aktion"><a class="anruf" href="tel:+41717500505">Anrufen · Probefahrt</a><span class="inserat">Inserat →</span></div></div></article>';
+    '<div class="aktion"><a class="anruf" href="tel:+41717500505" aria-label="Anrufen für eine Probefahrt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>Probefahrt</a><span class="inserat">Inserat&nbsp;→</span></div></div></article>';
 }).join('');
 
 /* ---------- Erscheinen (einmal), danach "live" für Hover ---------- */
