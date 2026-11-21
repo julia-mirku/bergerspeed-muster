@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero_m4_quer.jpg" media="(min-width: 861px)">
-<link rel="preload" as="image" href="img/hero_m4_quer_m.jpg" media="(max-width: 860px)">
+<link rel="preload" as="image" href="img/hero_lancia.jpg" media="(min-width: 861px)">
+<link rel="preload" as="image" href="img/hero_lancia_m.jpg" media="(max-width: 860px)">
 <style>
 :root{
   --nacht:#0F1012; --anthrazit:#1C1E21; --stahl:#2A2D31; --stahl2:#3A3D42;
@@ -82,7 +82,20 @@ html{scroll-padding-top:76px}
 .hero{padding:0;position:relative;height:calc(100svh - 70px);min-height:600px;max-height:1100px;background:var(--nacht);color:var(--text-hell);overflow:hidden}
 .tor-rahmen{position:absolute;inset:0;padding:10px 10px 0;background:var(--orange)}
 .tor{position:relative;overflow:hidden;width:100%;height:100%;background:#16171a}
-.tor picture img{width:100%;height:100%;object-fit:cover;object-position:50% 100%;transform:scale(1.06);filter:brightness(.45) saturate(.8)}
+.tor .dias{position:absolute;inset:0;transform:scale(1.06);filter:brightness(.45) saturate(.8)}
+.tor .dia{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--op,50% 100%);opacity:0;transition:opacity 1.2s ease}
+.tor .dia.an{opacity:1}
+.dia-nav{position:absolute;left:22px;top:22px;z-index:5;display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:rgba(15,16,18,.72);backdrop-filter:blur(6px);opacity:0;transition:opacity .5s}
+.ready .dia-nav{opacity:1}
+.dia-nav button{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#fff;transition:box-shadow .2s, background-color .2s}
+.dia-nav button svg{width:16px;height:16px}
+.dia-nav .punkte{display:flex;gap:2px}
+.dia-nav .punkte button{width:22px}
+.dia-nav .punkte button i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);transition:background-color .3s, transform .3s}
+.dia-nav .punkte button[aria-current="true"] i{background:#EA5D2E;transform:scale(1.25)}
+@media (hover:hover){.ready .dia-nav button:hover{background:rgba(234,93,46,.18);box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.7)}}
+.tor .schild small,.tor .schild span{transition:opacity .35s}
+.tor .schild.wechsel small,.tor .schild.wechsel span{opacity:0}
 .tor::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(10,11,12,.95) 0%,rgba(10,11,12,.78) 22%,rgba(10,11,12,.25) 36%,transparent 46%)}
 .tor .lamelle{position:absolute;inset:0;z-index:2;
   background:
@@ -92,9 +105,9 @@ html{scroll-padding-top:76px}
 .tor .lamelle::after{content:"";position:absolute;left:0;right:0;bottom:0;height:40px;background:linear-gradient(#2a2c30,#1b1c1f);border-top:2px solid #5a5e64}
 .tor .lamelle b{position:absolute;bottom:13px;left:50%;width:120px;height:12px;margin-left:-60px;border-radius:6px;background:#8b9097;box-shadow:inset 0 -2px 0 rgba(0,0,0,.35);z-index:1}
 .js .tor.auf .lamelle{animation:hoch 2.1s cubic-bezier(.55,.05,.35,1) forwards}
-.js .tor.auf picture img{animation:licht 2.4s .2s ease-out forwards}
+.js .tor.auf .dias{animation:licht 2.4s .2s ease-out forwards}
 .no-js .tor .lamelle{display:none}
-.no-js .tor picture img{transform:none;filter:none}
+.no-js .tor .dias{transform:none;filter:none}
 @keyframes hoch{0%{transform:translateY(0)}9%{transform:translateY(-3%)}13%{transform:translateY(-2.3%)}100%{transform:translateY(-102%)}}
 @keyframes licht{to{transform:scale(1);filter:brightness(1) saturate(1)}}
 .tor .schild{position:absolute;right:22px;top:22px;z-index:5;display:flex;flex-direction:column;gap:2px;padding:10px 14px;background:rgba(15,16,18,.82);backdrop-filter:blur(6px);border-radius:10px;color:#fff;text-decoration:none;opacity:0;transform:translateY(-8px);transition:opacity .5s, transform .5s, box-shadow .2s}
@@ -133,18 +146,19 @@ html{scroll-padding-top:76px}
   .hero{min-height:640px}
   .tor-rahmen{padding:6px 6px 0}
   .tor::after{background:linear-gradient(0deg,rgba(10,11,12,.96) 0%,rgba(10,11,12,.85) 42%,rgba(10,11,12,.2) 64%,transparent 76%)}
-  .tor picture img{object-position:50% 30%}
   .hero .text .wrap{grid-template-columns:minmax(0,1fr);gap:14px}
   .hero h1{font-size:clamp(48px,13vw,76px)}
   .hero .lead{display:none}
   .tor .schild{right:12px;top:12px;padding:7px 10px}
+  .dia-nav{left:12px;top:auto;bottom:12px;padding:3px}
+  .dia-nav button{width:30px;height:30px}
   .tor .schild span{font-size:17px}
 }
 @media (max-width:420px){.btn{padding:0 16px;font-size:17px;min-height:48px}.fakten{font-size:15px}}
 @media (max-width:860px) and (orientation:portrait){
   .hero{height:auto;min-height:0;max-height:none}
   .tor-rahmen{position:relative;height:min(50svh,86vw,620px)}
-  .tor picture img{object-position:50% 82%}
+  .tor .dia{object-position:var(--opm,50% 82%)}
   .tor::after{background:linear-gradient(0deg,rgba(15,16,18,.85) 0%,transparent 28%)}
   .hero .text{position:relative;padding:18px 0 30px;margin-top:-34px}
 }
@@ -152,7 +166,7 @@ html{scroll-padding-top:76px}
 @media (orientation:landscape) and (max-height:560px){
   .hero{height:auto;min-height:0}
   .tor-rahmen{position:relative;height:78vh}
-  .tor picture img{object-position:50% 70%}
+  .tor .dia{object-position:50% 70%}
   .hero .text{position:relative;background:var(--nacht);padding:22px 0 30px}
   .tor::after{display:none}
   .hero h1{font-size:52px}
@@ -394,12 +408,16 @@ html{scroll-padding-top:76px}
 <section class="hero" aria-label="Bergerspeed">
   <div class="tor-rahmen">
     <div class="tor" id="tor">
-      <picture>
-        <source media="(max-width:860px)" srcset="img/hero_m4_quer_m.jpg">
-        <img id="hero-img" src="img/hero_m4_quer.jpg" alt="Schwarzer BMW M4 vor dem orangen Eingang und dem Schriftzug der Garage Bergerspeed" width="2200" height="1650">
-      </picture>
+      <div class="dias">
+        <img class="dia an" id="hero-img" src="img/hero_lancia.jpg" srcset="img/hero_lancia_m.jpg 1100w, img/hero_lancia.jpg 2200w" sizes="100vw" alt="Schwarze Lancia Integrale HF Turbo vor dem orangen Eingang der Garage Bergerspeed" width="2200" height="1650" style="--op:50% 100%;--opm:50% 80%">
+      </div>
       <div class="lamelle" aria-hidden="true"><b></b></div>
-      <a class="schild" href="#occasionen"><small>Vor unserem Tor</small><span>BMW M4 · Tiefenackerstrasse 54</span></a>
+      <a class="schild" id="schild" href="#auto-20891721"><small>Jetzt bei uns</small><span>Lancia Integrale HF Turbo · 1989 · CHF 39’990.–</span></a>
+      <div class="dia-nav" id="dia-nav" role="group" aria-label="Fotos wechseln">
+        <button type="button" data-schritt="-1" aria-label="Vorheriges Auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <span class="punkte" id="punkte"></span>
+        <button type="button" data-schritt="1" aria-label="Nächstes Auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
     </div>
   </div>
   <div class="text">
@@ -699,13 +717,62 @@ window.addEventListener('scroll',function(){ D.querySelectorAll('.anh:not(.schwi
 
 /* ---------- Tor auf ---------- */
 var tor=D.getElementById('tor'), himg=D.getElementById('hero-img');
-function fertig(){ body.classList.add('ready'); }
+function fertig(){ body.classList.add('ready'); setTimeout(diaStart,0); }
 function torAuf(){
   if(reduce){ tor.classList.add('auf'); fertig(); return; }
   requestAnimationFrame(function(){ setTimeout(function(){ tor.classList.add('auf'); setTimeout(fertig,2150); },250); });
 }
 if(himg.complete && himg.naturalWidth) torAuf();
 else { himg.addEventListener('load',torAuf,{once:true}); himg.addEventListener('error',torAuf,{once:true}); setTimeout(function(){ if(!tor.classList.contains('auf')) torAuf(); },4000); }
+
+
+/* ---------- Wechselnde Autos im Tor ---------- */
+var DIAS=[
+ {f:'hero_lancia',k:'Jetzt bei uns',t:'Lancia Integrale HF Turbo · 1989 · CHF 39’990.–',h:'#auto-20891721',a:'Schwarze Lancia Integrale HF Turbo vor dem orangen Eingang der Garage Bergerspeed',op:'50% 100%',opm:'50% 80%'},
+ {f:'hero_m4_quer',fm:'hero_m4_quer_m',k:'Vor unserem Tor',t:'BMW M4 · Tiefenackerstrasse 54',h:'#occasionen',a:'Schwarzer BMW M4 vor dem orangen Eingang und dem Schriftzug der Garage Bergerspeed',op:'50% 100%',opm:'50% 82%'},
+ {f:'hero_m5',k:'Jetzt bei uns',t:'BMW M5 Touring · 2007 · CHF 54’500.–',h:'#auto-20978179',a:'Schwarzer BMW M5 Touring vor dem orangen Eingang der Garage Bergerspeed',op:'50% 100%',opm:'50% 80%'},
+ {f:'hero_m3',k:'Vor unserem Tor',t:'BMW M3 · Tiefenackerstrasse 54',h:'#occasionen',a:'Weisser BMW M3 vor dem orangen Eingang der Garage Bergerspeed',op:'50% 100%',opm:'50% 80%'}
+];
+var diasEl=tor.querySelector('.dias'), schild=D.getElementById('schild'), punkte=D.getElementById('punkte'), diaNav=D.getElementById('dia-nav');
+var diaImgs=[himg], diaI=0, diaT=null, diaPause=false, diaGestartet=false;
+punkte.innerHTML=DIAS.map(function(d,i){return '<button type="button" aria-label="Auto '+(i+1)+' von '+DIAS.length+'"'+(i===0?' aria-current="true"':'')+'><i></i></button>'}).join('');
+function diaBild(i){
+  if(diaImgs[i]) return diaImgs[i];
+  var d=DIAS[i], im=D.createElement('img'), fm=d.fm||(d.f+'_m');
+  im.className='dia'; im.alt=d.a; im.decoding='async';
+  im.setAttribute('sizes','100vw'); im.setAttribute('srcset','img/'+fm+'.jpg 1100w, img/'+d.f+'.jpg 2200w'); im.src='img/'+d.f+'.jpg';
+  im.style.setProperty('--op',d.op); im.style.setProperty('--opm',d.opm);
+  diasEl.appendChild(im); diaImgs[i]=im; return im;
+}
+function diaZeig(i){
+  i=(i+DIAS.length)%DIAS.length; if(i===diaI) return;
+  var neu=diaBild(i), alt=diaImgs[diaI];
+  function los(){
+    neu.classList.add('an'); alt.classList.remove('an');
+    schild.classList.add('wechsel');
+    setTimeout(function(){ var d=DIAS[i]; schild.firstElementChild.textContent=d.k; schild.lastElementChild.textContent=d.t; schild.href=d.h; schild.classList.remove('wechsel'); },380);
+    [].forEach.call(punkte.children,function(b,j){ b.setAttribute('aria-current', j===i?'true':'false'); });
+    diaI=i;
+  }
+  if(neu.complete && neu.naturalWidth) los(); else neu.addEventListener('load',los,{once:true});
+}
+function diaPlan(){ clearTimeout(diaT); if(reduce||diaPause||D.hidden) return; diaT=setTimeout(function(){ diaZeig(diaI+1); diaPlan(); },6000); }
+function diaStart(){
+  if(diaGestartet) return; diaGestartet=true;
+  for(var i=1;i<DIAS.length;i++) diaBild(i);   /* vorladen */
+  diaPlan();
+}
+diaNav.addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(!b) return;
+  if(b.dataset.schritt) diaZeig(diaI+(+b.dataset.schritt)); else diaZeig([].indexOf.call(punkte.children,b));
+  diaPlan();
+});
+if(window.matchMedia('(hover:hover)').matches){
+  var heroEl=D.querySelector('.hero');
+  heroEl.addEventListener('mouseenter',function(){ diaPause=true; clearTimeout(diaT); });
+  heroEl.addEventListener('mouseleave',function(){ diaPause=false; diaPlan(); });
+}
+D.addEventListener('visibilitychange',function(){ if(D.hidden) clearTimeout(diaT); else diaPlan(); });
 
 /* ---------- Drehzahlmesser ---------- */
 var svg=D.getElementById('tacho'), nadel=D.getElementById('nadel'), skala=D.getElementById('skala');
