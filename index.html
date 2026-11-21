@@ -170,16 +170,23 @@ html{scroll-padding-top:76px}
 /* ---- Hero gross, sanfter Zuschnitt (max ~12 %) ---- */
 .tor .dia{object-position:var(--op,50% 58%)}
 @media (min-width:861px) and (min-height:561px){
-  .hero{display:block;height:calc(100svh - 70px);min-height:560px;max-height:1000px;padding:0}
-  .tor-rahmen{position:absolute;top:0;right:0;bottom:0;width:min(100%,calc((100svh - 70px) * 1.52));padding:8px 8px 8px 0;border-radius:0}
+  .hero{display:block;height:calc(100svh - 70px);min-height:560px;max-height:1050px;padding:0}
+  .buehne{position:absolute;inset:0}
+  .tor-rahmen{position:absolute;inset:0;width:auto;padding:10px;border-radius:0}
   .tor{height:100%;aspect-ratio:auto}
-  .tor::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--nacht) 0%,rgba(15,16,18,.55) 12%,transparent 30%),linear-gradient(0deg,rgba(10,11,12,.94) 0%,rgba(10,11,12,.62) 24%,transparent 46%)}
-  .tor-leiste{inset:8px 8px 8px 0}
+  .tor::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(10,11,12,.94) 0%,rgba(10,11,12,.62) 24%,transparent 46%)}
+  .tor-leiste{inset:10px}
   .dia-nav{left:auto;right:12px;top:auto;bottom:12px}
   .hero .text{position:absolute;left:0;right:0;bottom:0;padding:0 0 clamp(26px,4vh,48px)}
   .hero .text .wrap{width:min(1240px,100% - 40px);margin:0 auto;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px 48px;align-items:end}
   .hero h1{font-size:clamp(48px,min(7vw,11vh),120px);text-shadow:0 4px 30px rgba(0,0,0,.45)}
 }
+/* beim Scrollen: Bühne wird sanft kleiner, Ecken runden sich */
+.buehne{--p:0;transform-origin:50% 0;transform:scale(calc(1 - .12 * var(--p)));will-change:transform}
+.buehne .tor-rahmen{border-radius:calc(22px * var(--p));box-shadow:0 calc(30px * var(--p)) calc(70px * var(--p)) rgba(0,0,0,calc(.55 * var(--p)))}
+.buehne .tor{border-radius:calc(14px * var(--p))}
+@media (max-width:860px){.buehne{transform-origin:50% 0}}
+@media (prefers-reduced-motion:reduce){.buehne{transform:none!important}}
 @media (max-width:860px){.tor{aspect-ratio:1.48}.tor .dia{object-position:var(--opm,50% 58%)}}
 @media (orientation:landscape) and (max-height:560px){.tor{aspect-ratio:1.48}}
 
@@ -433,17 +440,19 @@ html{scroll-padding-top:76px}
     <nav class="nav" aria-label="Hauptnavigation">
       <a class="n" href="#occasionen">Occasionen</a>
       <a class="n" href="#werkstatt">Werkstatt</a>
-      <a class="n" href="#team">Team</a>
-      <a class="n" href="#zeiten">Öffnungszeiten</a>
+      <a class="n" href="#team">Über uns</a>
+      <a class="n" href="#bewertungen">Bewertungen</a>
+      <a class="n" href="#zeiten">Anfahrt</a>
       <a class="btn btn-o tel" href="tel:+41717500505" aria-label="Anrufen: 071 750 05 05"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg><span>071 750 05 05</span></a>
     </nav>
   </div>
-  <nav class="unternav" aria-label="Bereiche"><a href="#occasionen">Occasionen</a><a href="#werkstatt">Werkstatt</a><a href="#team">Team</a><a href="#bewertungen">Bewertungen</a><a href="#zeiten">Öffnungszeiten</a></nav>
+  <nav class="unternav" aria-label="Bereiche"><a href="#occasionen">Occasionen</a><a href="#werkstatt">Werkstatt</a><a href="#team">Über uns</a><a href="#bewertungen">Bewertungen</a><a href="#zeiten">Anfahrt</a></nav>
 </header>
 
 <main id="top">
 <!-- ============ HERO ============ -->
 <section class="hero" aria-label="Bergerspeed">
+ <div class="buehne" id="buehne">
   <div class="tor-rahmen">
     <div class="tor" id="tor">
       <div class="dias">
@@ -465,7 +474,6 @@ html{scroll-padding-top:76px}
       <div class="links">
         <div class="kicker">Garage · Autohandel · Altstätten SG · seit 2002</div>
         <h1>Autos mit <em>Herzblut.</em></h1>
-        <p class="lead">Markus Berger führt die Bergerspeed GmbH seit 2002: markenunabhängige Werkstatt und Occasionen, die alle durch unsere eigene Werkstatt geprüft sind.</p>
       </div>
       <div class="rechts">
         <div class="knoepfe">
@@ -480,6 +488,7 @@ html{scroll-padding-top:76px}
       </div>
     </div>
   </div>
+ </div>
 </section>
 
 <!-- ============ OCCASIONEN ============ -->
@@ -487,7 +496,7 @@ html{scroll-padding-top:76px}
   <div class="wrap">
     <div class="kopfzeile rise">
       <div>
-        <div class="kicker">Occasionen · Stand 21.11.2026</div>
+        <div class="kicker">Occasionen</div>
         <h2>Drehen Sie auf.</h2>
       </div>
       <p>Ziehen Sie die Nadel: Im PS-Modus leuchten alle Autos ab dieser Leistung, im CHF-Modus alle bis zu Ihrem Budget. Ein Klick aufs Auto öffnet das ganze Inserat.</p>
@@ -556,10 +565,10 @@ html{scroll-padding-top:76px}
       <h2>Darauf zählen Sie.</h2>
     </div>
     <div class="vier">
-      <div class="punkt rise"><div class="zahl-gross">2002</div><h3>Seit 2002</h3><p>Markus Berger führt Bergerspeed seit 2002. Unsere Autos werden alle durch die eigene Werkstatt geprüft.</p></div>
+      <div class="punkt rise"><div class="zahl-gross">2002</div><h3>Geprüft in der eigenen Werkstatt</h3><p>Jede Occasion geht vor dem Verkauf durch unsere Werkstatt.</p></div>
       <div class="punkt rise"><div class="zahl-gross">1<small> Jahr</small></div><h3>Quality1-Garantie</h3><p>Gegen Aufpreis bis zu 1 Jahr Garantie auf Ihr gebrauchtes Wunschfahrzeug.</p></div>
-      <div class="punkt rise"><div class="zahl-gross">19</div><h3>Occasionen</h3><p>Vom VW Caddy bis zum Porsche 911 GT3. Leasing und Finanzierung mit ALPHERA Financial Services.</p></div>
-      <div class="punkt rise"><div class="zahl-gross">4,7<small>★</small></div><h3>81 Bewertungen</h3><p>Auf Google. Besichtigung und Probefahrt nach telefonischer Vereinbarung.</p></div>
+      <div class="punkt rise"><div class="zahl-gross">%</div><h3>Leasing & Finanzierung</h3><p>Wir finanzieren Ihr Auto, mit ALPHERA Financial Services. Fragen Sie uns an.</p></div>
+      <div class="punkt rise"><div class="zahl-gross"><svg viewBox="0 0 48 48" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="4"><circle cx="24" cy="24" r="19"/><circle cx="24" cy="24" r="4"/><path d="M6 21c6-2 12-3 18-3s12 1 18 3M24 28v15M20 27l-12 9M28 27l12 9"/></svg></div><h3>Probefahrt</h3><p>Besichtigung und Probefahrt nach telefonischer Vereinbarung.</p></div>
     </div>
   </div>
 </section>
@@ -583,7 +592,7 @@ html{scroll-padding-top:76px}
       <div class="rise">
         <div class="kicker">Werkstatt</div>
         <h2>Ihre marken&shy;unabhängige Garage.</h2>
-        <p class="lead" style="margin-top:18px">Reparaturen, Service und die Vorbereitung auf die Motorfahrzeugkontrolle für alle Marken. Mit modernen Analysegeräten und langjähriger Erfahrung lösen wir (fast) jedes Problem. Bei Reparaturen wählen Sie zwischen Neu- und Occasionsteilen.</p>
+        <p class="lead" style="margin-top:18px">Reparaturen, Service und die Vorbereitung auf die Motorfahrzeugkontrolle für alle Marken. Mit modernen Analysegeräten und langjähriger Erfahrung lösen wir (fast) jedes Problem.</p>
         <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-o" href="tel:+41717500505">Termin vereinbaren</a><a class="btn btn-d" href="mailto:info@bergerspeed.ch">info@bergerspeed.ch</a></div>
       </div>
       <div class="foto rise"><img src="img/halle_werkstatt.jpg" alt="Werkstatt der Garage Bergerspeed mit Hebebühnen" loading="lazy" width="1400" height="933"></div>
@@ -591,7 +600,7 @@ html{scroll-padding-top:76px}
     <div class="dienste">
       <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 5a7 7 0 0 0-8.6 9L5 21.4a2.8 2.8 0 0 0 4 4L16.6 18a7 7 0 0 0 9-8.6l-4 4-3.5-1-1-3.5z"/></svg><h3>Service</h3><p>Füllstände, Pneus, Zündkerzen, Batterie, Wischer, Auspuff, Bremsen und Stossdämpfer.</p></div>
       <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="6" y="4" width="22" height="26" rx="3"/><path class="o" d="M11 17l4 4 8-9"/></svg><h3>MFK-Vorbereitung</h3><p>Wir bereiten Ihr Auto zum fairen Preis auf die Motorfahrzeugkontrolle vor.</p></div>
-      <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 22l4-8h18l4 8v5H4z"/><circle cx="10" cy="27" r="3"/><circle cx="24" cy="27" r="3"/><path class="o" d="M14 9l3-4 3 4"/></svg><h3>Reparaturen</h3><p>Reparaturen aller Marken, wahlweise mit Neu- oder Occasionsteilen.</p></div>
+      <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 22l4-8h18l4 8v5H4z"/><circle cx="10" cy="27" r="3"/><circle cx="24" cy="27" r="3"/><path class="o" d="M14 9l3-4 3 4"/></svg><h3>Reparaturen</h3><p>Für alle Marken, wahlweise mit Neu- oder Occasionsteilen.</p></div>
       <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 26c4-2 6-8 12-8s7 4 10 4"/><path class="o" d="M20 6l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></svg><h3>Lack, Dellen, Rost</h3><p>Kratzer und kleine Dellen ausbessern, Rost entfernen und die Stelle nachlackieren.</p></div>
       <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 25L9 9h16l4 16z"/><path class="o" d="M15 14l2 3-3 2 2 3"/></svg><h3>Scheiben</h3><p>Steinschlag in der Frontscheibe? Bei grösseren Schäden ersetzen wir die Scheibe. Lieber früh einen Termin vereinbaren.</p></div>
       <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="17" cy="17" r="12"/><circle class="o" cx="17" cy="17" r="5"/><path d="M17 5v7M17 22v7M5 17h7M22 17h7"/></svg><h3>Pneus & Einlagerung</h3><p>Sommer- und Winterräder, Beratung zu Felgen, Radwechsel und Rädereinlagerung bei uns.</p></div>
@@ -617,10 +626,10 @@ html{scroll-padding-top:76px}
     <div class="band" id="band">
       <figure class="rise"><img src="img/leg_countach.jpg" alt="Roter Lamborghini Countach vor der Garage Bergerspeed" loading="lazy" width="1200" height="900"><figcaption>Lamborghini Countach</figcaption></figure>
       <figure class="rise"><img src="img/leg_gt3rs_gelb.jpg" alt="Gelber Porsche 911 GT3 RS vor dem orangen Eingang" loading="lazy" width="1200" height="900"><figcaption>Porsche 911 GT3 RS</figcaption></figure>
-      <figure class="rise"><img src="img/leg_f308.jpg" alt="Roter Ferrari vor dem orangen Eingang" loading="lazy" width="1200" height="900"><figcaption>Ferrari</figcaption></figure>
+      <figure class="rise"><img src="img/leg_f308.jpg" alt="Roter Ferrari 308 vor dem orangen Eingang" loading="lazy" width="1200" height="900"><figcaption>Ferrari 308</figcaption></figure>
       <figure class="rise"><img src="img/leg_e30m3.jpg" alt="Schwarzer BMW der Baureihe E30" loading="lazy" width="1200" height="900"><figcaption>BMW E30</figcaption></figure>
       <figure class="rise"><img src="img/leg_charger.jpg" alt="Oranger Dodge Charger im Abendlicht" loading="lazy" width="1000" height="750"><figcaption>Dodge Charger</figcaption></figure>
-      <figure class="rise"><img src="img/leg_f458.jpg" alt="Roter Ferrari vor der Garage" loading="lazy" width="1200" height="900"><figcaption>Ferrari</figcaption></figure>
+      <figure class="rise"><img src="img/leg_f458.jpg" alt="Roter Ferrari 458 vor der Garage" loading="lazy" width="1200" height="900"><figcaption>Ferrari 458</figcaption></figure>
       <figure class="rise"><img src="img/leg_m3_weiss.jpg" alt="Weisser BMW M3 vor dem orangen Eingang" loading="lazy" width="1200" height="900"><figcaption>BMW M3</figcaption></figure>
       <figure class="rise"><img src="img/empfang.jpg" alt="Empfang und Verkaufsraum der Garage Bergerspeed" loading="lazy" width="1400" height="935"><figcaption>Unser Empfang</figcaption></figure>
       <figure class="rise"><img src="img/halle_werkstatt2.jpg" alt="Blick in die Werkstatthalle von Bergerspeed" loading="lazy" width="1400" height="935"><figcaption>In der Halle</figcaption></figure>
@@ -637,7 +646,7 @@ html{scroll-padding-top:76px}
         <div class="kicker">Über uns</div>
         <h2>Wir sind für Sie da.</h2>
       </div>
-      <p class="zitat rise">«Seit dem Jahr 2002 führt Markus Berger die Firma Bergerspeed mit <em>Herzblut und Leidenschaft.</em> Rufen Sie mich für eine unverbindliche Beratung an.»</p>
+      <p class="zitat rise">«Rufen Sie mich für eine <em>unverbindliche Beratung</em> an.»<small style="display:block;font-family:var(--body);font-size:15px;font-weight:600;color:#5c6068;margin-top:10px">Markus Berger, Inhaber</small></p>
     </div>
     <div class="leute">
       <div class="mensch rise"><img src="img/team_markus.jpg" alt="Markus Berger" loading="lazy" width="750" height="1000"><div><h3>Markus Berger</h3><p>Inhaber</p></div></div>
@@ -680,7 +689,7 @@ html{scroll-padding-top:76px}
         <span class="status" id="status-tafel"><i></i><span>Öffnungszeiten</span></span>
         <div class="tage" role="tablist" aria-label="Wochentag wählen" id="tage"></div>
         <div class="zeit-anzeige" aria-live="polite"><span class="tn" id="tn">Montag</span><span class="zz" id="zz">07:30–11:30 · 13:00–17:00</span></div>
-        <p class="termin">Garage und Verkauf · Termin nach Vereinbarung, am besten telefonisch: <a href="tel:+41717500505" style="color:#fff;font-weight:700">071 750 05 05</a></p>
+        <p class="termin">Garage und Verkauf · Termin nach Vereinbarung, am besten telefonisch.</p>
       </div>
       <div class="karte rise">
         <iframe title="Karte: Bergerspeed GmbH, Tiefenackerstrasse 54, Altstätten" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=9.5575%2C47.3783%2C9.5667%2C47.3820&amp;layer=mapnik&amp;marker=47.38017%2C9.56211"></iframe>
@@ -774,6 +783,16 @@ function torAuf(){
 if(himg.complete && himg.naturalWidth) torAuf();
 else { himg.addEventListener('load',torAuf,{once:true}); himg.addEventListener('error',torAuf,{once:true}); setTimeout(function(){ if(!tor.classList.contains('auf')) torAuf(); },4000); }
 
+
+/* ---------- Bühne verkleinern beim Scrollen ---------- */
+(function(){
+  if(reduce) return;
+  var b=D.getElementById('buehne'), hero=D.querySelector('.hero'), tick=false;
+  function upd(){ tick=false; var h=hero.offsetHeight||1, p=Math.max(0,Math.min(1,window.scrollY/(h*0.7)));
+    p=p*p*(3-2*p); b.style.setProperty('--p',p.toFixed(3)); }
+  window.addEventListener('scroll',function(){ if(!tick){ tick=true; requestAnimationFrame(upd); } },{passive:true});
+  window.addEventListener('resize',upd); upd();
+})();
 
 /* ---------- Wechselnde Autos im Tor ---------- */
 var DIAS=[
