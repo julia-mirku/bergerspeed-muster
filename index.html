@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero_lancia.jpg" media="(min-width: 861px)">
-<link rel="preload" as="image" href="img/hero_lancia_m.jpg" media="(max-width: 860px)">
+<link rel="preload" as="image" href="img/hero_gt3rs.jpg" media="(min-width: 861px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero_gt3rs_m.jpg" media="(max-width: 860px)" fetchpriority="high">
 <style>
 :root{
   --nacht:#0F1012; --anthrazit:#1C1E21; --stahl:#2A2D31; --stahl2:#3A3D42;
@@ -167,6 +167,22 @@ html{scroll-padding-top:76px}
   .hero .kicker{display:none}
 }
 
+/* ---- Hero gross, sanfter Zuschnitt (max ~12 %) ---- */
+.tor .dia{object-position:var(--op,50% 58%)}
+@media (min-width:861px) and (min-height:561px){
+  .hero{display:block;height:calc(100svh - 70px);min-height:560px;max-height:1000px;padding:0}
+  .tor-rahmen{position:absolute;top:0;right:0;bottom:0;width:min(100%,calc((100svh - 70px) * 1.52));padding:8px 8px 8px 0;border-radius:0}
+  .tor{height:100%;aspect-ratio:auto}
+  .tor::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--nacht) 0%,rgba(15,16,18,.55) 12%,transparent 30%),linear-gradient(0deg,rgba(10,11,12,.94) 0%,rgba(10,11,12,.62) 24%,transparent 46%)}
+  .tor-leiste{inset:8px 8px 8px 0}
+  .dia-nav{left:auto;right:12px;top:auto;bottom:12px}
+  .hero .text{position:absolute;left:0;right:0;bottom:0;padding:0 0 clamp(26px,4vh,48px)}
+  .hero .text .wrap{width:min(1240px,100% - 40px);margin:0 auto;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px 48px;align-items:end}
+  .hero h1{font-size:clamp(48px,min(7vw,11vh),120px);text-shadow:0 4px 30px rgba(0,0,0,.45)}
+}
+@media (max-width:860px){.tor{aspect-ratio:1.48}.tor .dia{object-position:var(--opm,50% 58%)}}
+@media (orientation:landscape) and (max-height:560px){.tor{aspect-ratio:1.48}}
+
 /* ---------- Occasionen / Drehzahlmesser ---------- */
 .occ{background:var(--anthrazit);color:var(--text-hell)}
 .occ .kopfzeile{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
@@ -177,7 +193,11 @@ html{scroll-padding-top:76px}
 .modus button{min-height:42px;border-radius:999px;font-family:var(--kopf);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:16px;color:#9a9ea5;transition:background-color .2s, color .2s, box-shadow .2s}
 .modus button[aria-pressed="true"]{background:var(--stahl2);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.65)}
 @media (hover:hover){.ready .modus button:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.45)}}
-#tacho{width:100%;height:auto;display:block;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+#tacho{width:100%;height:auto;max-height:calc(100svh - 430px);min-height:200px;margin:0 auto;display:block;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+@media (max-width:1020px){#tacho{max-height:none}}
+.instrument{max-height:calc(100svh - 110px)}
+.instrument .hinweis{margin-top:8px}
+@media (max-height:760px) and (min-width:1021px){.instrument .hinweis{display:none}.instrument{padding:16px 18px}.gaenge{margin-top:10px}}
 #tacho.zieht{cursor:grabbing}
 #tacho .tick{stroke:#cfd2d6}
 #tacho .tick.rot{stroke:var(--orange)}
@@ -198,6 +218,21 @@ html{scroll-padding-top:76px}
 .reset{font-size:14px;font-weight:600;color:#cfd2d6;padding:8px 12px;border-radius:999px;border:1.5px solid #3c3f45;transition:box-shadow .2s, border-color .2s, color .2s}
 @media (hover:hover){.ready .reset:hover{border-color:var(--orange);color:#fff;box-shadow:0 0 0 3px rgba(234,93,46,.15)}}
 
+.gaenge{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:14px}
+.gaenge button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px;border-radius:10px;background:#0d0e10;border:1.5px solid #2e3136;color:#cfd2d6;font-size:11px;font-weight:600;letter-spacing:.02em;transition:border-color .2s, box-shadow .2s, background-color .2s, color .2s}
+.gaenge button b{font-family:var(--kopf);font-size:22px;line-height:1;color:#fff}
+.gaenge button[aria-pressed="true"]{border-color:#EA5D2E;background:#2a1a12;color:#fff;box-shadow:0 0 0 3px rgba(234,93,46,.18)}
+.gaenge button[aria-pressed="true"] b{color:#EA5D2E}
+@media (hover:hover){.ready .gaenge button:hover{border-color:rgba(238,133,88,.8);color:#fff}}
+.gas{width:100%;margin-top:10px;min-height:44px;border-radius:999px;border:1.5px solid rgba(234,93,46,.7);color:#fff;font-family:var(--kopf);font-weight:700;font-size:17px;letter-spacing:.12em;text-transform:uppercase;transition:box-shadow .2s, background-color .2s}
+@media (hover:hover){.ready .gas:hover{background:rgba(234,93,46,.14);box-shadow:0 0 0 4px rgba(234,93,46,.15)}}
+.gas:active{transform:scale(.98)}
+#tacho .nabe{cursor:pointer}
+#tacho:focus-visible{outline:3px solid #EA5D2E;outline-offset:4px;border-radius:50%}
+#tacho .wert-k.modell{font-size:15px;letter-spacing:.06em;fill:#fff}
+.auto.blitz{animation:blitz .9s ease}
+@keyframes blitz{0%,100%{box-shadow:none}35%{box-shadow:0 0 0 4px rgba(234,93,46,.55),0 0 40px rgba(234,93,46,.55)}}
+.auto.zeigt{border-color:rgba(234,93,46,.8)}
 .mini{display:none}
 .autos{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
 .auto{position:relative;display:flex;flex-direction:column;background:#24262A;border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--text-hell);border:1px solid #33363b;
@@ -309,7 +344,7 @@ html{scroll-padding-top:76px}
 .zitat em{font-style:normal;color:var(--orange)}
 .leute{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .mensch{background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--beton2);transition:box-shadow .2s, transform .2s, border-color .2s}
-.mensch img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;filter:grayscale(.15)}
+.mensch img{width:100%;aspect-ratio:3/4;object-fit:cover}
 .mensch div{padding:16px 18px 18px}
 .mensch h3{font-size:28px;font-weight:700;text-transform:uppercase}
 .mensch p{color:#5c6068;font-size:15px}
@@ -322,10 +357,12 @@ html{scroll-padding-top:76px}
 .brett::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.45) 2.2px,transparent 2.6px);background-size:28px 28px;opacity:.55;pointer-events:none}
 .brett .wrap{position:relative}
 .brett .kopfzeile{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:20px;margin-bottom:46px}
-.note{display:flex;align-items:center;gap:16px;padding:12px 18px;border-radius:14px;background:#1f2124;text-decoration:none;transition:box-shadow .2s}
+.note{display:flex;align-items:center;gap:16px;padding:12px 20px;border-radius:14px;background:#EA5D2E;color:#fff;text-decoration:none;transition:box-shadow .2s, background-color .2s}
+.note .sterne{color:#fff}
+.note small{color:rgba(255,255,255,.9)!important}
 .note b{font-family:var(--kopf);font-size:48px;font-weight:800;line-height:1}
 .note small{display:block;color:#AEB1B7;font-size:14px}
-@media (hover:hover){.ready .note:hover{box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.6),0 0 0 4px rgba(234,93,46,.12)}}
+@media (hover:hover){.ready .note:hover{background:#EE8558;box-shadow:0 0 0 5px rgba(234,93,46,.25),0 12px 30px rgba(234,93,46,.3)}}
 .haken{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 26px}
 .anh{position:relative;padding-top:34px;transform-origin:50% 0}
 .anh::before{content:"";position:absolute;top:0;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:#9aa0a7;box-shadow:inset 0 -2px 2px rgba(0,0,0,.4),0 2px 3px rgba(0,0,0,.4)}
@@ -372,10 +409,11 @@ html{scroll-padding-top:76px}
 @media (max-width:420px){.tage{gap:4px}.tag-k{font-size:15px;min-height:56px}.tag-k small{display:none}.tag-k.heute small{display:block;font-size:9px}.tafel{padding:18px}}
 
 /* ---------- Fuss ---------- */
-.fuss{background:#000;color:#9a9ea5;font-size:14px;padding:36px 0}
+.fuss{background:#000;color:#9a9ea5;font-size:14px;padding:18px 0 20px}
 .fuss .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .fuss a{color:#d6d8db;text-decoration:none}
-.fuss small{display:block;margin-top:4px}
+.fuss small{display:block;margin-top:2px}
+.kontakt{padding-bottom:clamp(40px,5vw,64px)}
 
 /* ---------- Erscheinen ---------- */
 .js .rise:not(.shown){opacity:0;transform:translateY(18px)}
@@ -409,12 +447,12 @@ html{scroll-padding-top:76px}
   <div class="tor-rahmen">
     <div class="tor" id="tor">
       <div class="dias">
-        <img class="dia an" id="hero-img" src="img/hero_lancia.jpg" srcset="img/hero_lancia_m.jpg 1100w, img/hero_lancia.jpg 2200w" sizes="100vw" alt="Schwarze Lancia Integrale HF Turbo vor dem orangen Eingang der Garage Bergerspeed" width="2200" height="1650" style="--op:50% 100%;--opm:50% 80%">
+        <img class="dia an" id="hero-img" src="img/hero_gt3rs.jpg" srcset="img/hero_gt3rs_m.jpg 1200w, img/hero_gt3rs.jpg 2400w" sizes="(min-width:861px) 90vw, 100vw" fetchpriority="high" decoding="async" alt="Gelber Porsche 911 GT3 RS vor dem orangen Eingang der Garage Bergerspeed" width="2400" height="1800" style="--op:50% 58%;--opm:50% 58%">
       </div>
       <div class="lamelle" aria-hidden="true"><b></b></div>
     </div>
     <div class="tor-leiste">
-      <a class="schild" id="schild" href="#auto-20891721"><small>Jetzt bei uns</small><span>Lancia Integrale HF Turbo · 1989 · CHF 39’990.–</span></a>
+      <a class="schild" id="schild" href="#occasionen"><small>Vor unserem Tor</small><span>Porsche 911 GT3 RS · Tiefenackerstrasse 54</span></a>
       <div class="dia-nav" id="dia-nav" role="group" aria-label="Fotos wechseln">
         <button type="button" data-schritt="-1" aria-label="Vorheriges Auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M15 5l-7 7 7 7"/></svg></button>
         <span class="punkte" id="punkte"></span>
@@ -460,7 +498,7 @@ html{scroll-padding-top:76px}
           <button type="button" data-modus="ps" aria-pressed="true">Leistung · PS</button>
           <button type="button" data-modus="chf" aria-pressed="false">Budget · CHF</button>
         </div>
-        <svg id="tacho" viewBox="0 0 400 400" role="img" aria-label="Drehzahlmesser als Filter für die Occasionen">
+        <svg id="tacho" viewBox="0 0 400 400" role="slider" tabindex="0" aria-label="Drehzahlmesser als Filter für die Occasionen" aria-valuemin="0" aria-valuemax="600" aria-valuenow="0">
           <defs>
             <radialGradient id="glas" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#2b2e33"/><stop offset="1" stop-color="#101113"/></radialGradient>
             <filter id="nglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
@@ -480,11 +518,19 @@ html{scroll-padding-top:76px}
           <circle class="nabe" cx="200" cy="200" r="20" fill="#1a1b1e" stroke="#4a4e54" stroke-width="3"/>
         </svg>
         <input class="schieber" id="schieber" type="range" min="0" max="600" step="10" value="0" aria-label="Wert des Drehzahlmessers">
+        <div class="gaenge" role="group" aria-label="Schnellwahl wie eine Gangschaltung">
+          <button type="button" data-gang="alltag"><b>1</b>Alltag</button>
+          <button type="button" data-gang="familie"><b>2</b>Familie</button>
+          <button type="button" data-gang="sport"><b>3</b>Sport</button>
+          <button type="button" data-gang="nutz"><b>4</b>Nutzfahrzeug</button>
+          <button type="button" data-gang="klassik"><b>R</b>Klassiker</button>
+        </div>
+        <button type="button" class="gas" id="gas">Gas geben</button>
         <div class="anzeige">
           <div class="treffer" id="treffer"><b>19</b> von 19 Autos</div>
           <button type="button" class="reset" id="reset">Alle zeigen</button>
         </div>
-        <p class="hinweis">Nadel ziehen, tippen oder Regler schieben.</p>
+        <p class="hinweis">Nadel ziehen, tippen, Regler oder Pfeiltasten. Zeigen Sie auf ein Auto: Die Nadel zeigt seinen Wert.</p>
       </div>
 
       <div>
@@ -594,9 +640,9 @@ html{scroll-padding-top:76px}
       <p class="zitat rise">«Seit dem Jahr 2002 führt Markus Berger die Firma Bergerspeed mit <em>Herzblut und Leidenschaft.</em> Rufen Sie mich für eine unverbindliche Beratung an.»</p>
     </div>
     <div class="leute">
-      <div class="mensch rise"><img src="img/team_markus.jpg" alt="Markus Berger" loading="lazy" width="700" height="874"><div><h3>Markus Berger</h3><p>Inhaber</p></div></div>
-      <div class="mensch rise"><img src="img/team_marc.jpg" alt="Marc Gruber" loading="lazy" width="700" height="874"><div><h3>Marc Gruber</h3><p>Werkstatt</p></div></div>
-      <div class="mensch rise"><img src="img/team_monika.jpg" alt="Monika Berger" loading="lazy" width="700" height="874"><div><h3>Monika Berger</h3><p>Buchhaltung</p></div></div>
+      <div class="mensch rise"><img src="img/team_markus.jpg" alt="Markus Berger" loading="lazy" width="750" height="1000"><div><h3>Markus Berger</h3><p>Inhaber</p></div></div>
+      <div class="mensch rise"><img src="img/team_marc.jpg" alt="Marc Gruber" loading="lazy" width="750" height="1000"><div><h3>Marc Gruber</h3><p>Werkstatt</p></div></div>
+      <div class="mensch rise"><img src="img/team_monika.jpg" alt="Monika Berger" loading="lazy" width="750" height="1000"><div><h3>Monika Berger</h3><p>Buchhaltung</p></div></div>
     </div>
   </div>
 </section>
@@ -609,7 +655,7 @@ html{scroll-padding-top:76px}
         <div class="kicker">Am Schlüsselbrett</div>
         <h2>Was Kunden sagen.</h2>
       </div>
-      <a class="note" href="https://www.google.com/maps/search/?api=1&amp;query=Garage+Bergerspeed+GmbH+Altst%C3%A4tten" target="_blank" rel="noopener"><b>4,7</b><span><span class="sterne">★★★★★</span><small>81 Bewertungen auf Google</small></span></a>
+      <a class="note" href="https://www.google.com/maps/search/?api=1&amp;query=Garage+Bergerspeed+GmbH+Altst%C3%A4tten" target="_blank" rel="noopener"><b>4,7</b><span><span class="sterne">★★★★★</span><small>81 Bewertungen · auf Google ansehen →</small></span></a>
     </div>
     <div class="haken">
       <div class="anh" style="--rest:-1.5deg"><div class="tag t1"><div class="auto-n">Occasion</div><blockquote>«Top-Adresse für ehrliche und gepflegte Occasionen. Markus ist sehr freundlich und kein Aufwand ist ihm zu viel. […] Hier wird man ehrlich und direkt beraten.»</blockquote><div class="wer">Angelo Michielin <span>Google ★★★★★</span></div></div></div>
@@ -731,10 +777,11 @@ else { himg.addEventListener('load',torAuf,{once:true}); himg.addEventListener('
 
 /* ---------- Wechselnde Autos im Tor ---------- */
 var DIAS=[
- {f:'hero_lancia',k:'Jetzt bei uns',t:'Lancia Integrale HF Turbo · 1989 · CHF 39’990.–',h:'#auto-20891721',a:'Schwarze Lancia Integrale HF Turbo vor dem orangen Eingang der Garage Bergerspeed',op:'50% 100%',opm:'50% 80%'},
- {f:'hero_m4_quer',fm:'hero_m4_quer_m',k:'Vor unserem Tor',t:'BMW M4 · Tiefenackerstrasse 54',h:'#occasionen',a:'Schwarzer BMW M4 vor dem orangen Eingang und dem Schriftzug der Garage Bergerspeed',op:'50% 100%',opm:'50% 82%'},
- {f:'hero_m5',k:'Jetzt bei uns',t:'BMW M5 Touring · 2007 · CHF 54’500.–',h:'#auto-20978179',a:'Schwarzer BMW M5 Touring vor dem orangen Eingang der Garage Bergerspeed',op:'50% 100%',opm:'50% 80%'},
- {f:'hero_m3',k:'Vor unserem Tor',t:'BMW M3 · Tiefenackerstrasse 54',h:'#occasionen',a:'Weisser BMW M3 vor dem orangen Eingang der Garage Bergerspeed',op:'50% 100%',opm:'50% 80%'}
+ {f:'hero_gt3rs',fm:'hero_gt3rs_m',k:'Vor unserem Tor',t:'Porsche 911 GT3 RS · Tiefenackerstrasse 54',h:'#occasionen',a:'Gelber Porsche 911 GT3 RS vor dem orangen Eingang der Garage Bergerspeed',op:'50% 58%',opm:'50% 58%'},
+ {f:'hero_lancia',k:'Jetzt bei uns',t:'Lancia Integrale HF Turbo · 1989 · CHF 39’990.–',h:'#auto-20891721',a:'Schwarze Lancia Integrale HF Turbo vor dem orangen Eingang der Garage Bergerspeed',op:'50% 70%',opm:'50% 70%'},
+ {f:'hero_m4_quer',fm:'hero_m4_quer_m',k:'Vor unserem Tor',t:'BMW M4 · Tiefenackerstrasse 54',h:'#occasionen',a:'Schwarzer BMW M4 vor dem orangen Eingang und dem Schriftzug der Garage Bergerspeed',op:'50% 72%',opm:'50% 72%'},
+ {f:'hero_m5',k:'Jetzt bei uns',t:'BMW M5 Touring · 2007 · CHF 54’500.–',h:'#auto-20978179',a:'Schwarzer BMW M5 Touring vor dem orangen Eingang der Garage Bergerspeed',op:'50% 62%',opm:'50% 62%'},
+ {f:'hero_m3',k:'Vor unserem Tor',t:'BMW M3 · Tiefenackerstrasse 54',h:'#occasionen',a:'Weisser BMW M3 vor dem orangen Eingang der Garage Bergerspeed',op:'50% 62%',opm:'50% 62%'}
 ];
 var diasEl=tor.querySelector('.dias'), schild=D.getElementById('schild'), punkte=D.getElementById('punkte'), diaNav=D.getElementById('dia-nav');
 var diaImgs=[himg], diaI=0, diaT=null, diaPause=false, diaGestartet=false;
@@ -743,7 +790,7 @@ function diaBild(i){
   if(diaImgs[i]) return diaImgs[i];
   var d=DIAS[i], im=D.createElement('img'), fm=d.fm||(d.f+'_m');
   im.className='dia'; im.alt=d.a; im.decoding='async';
-  im.setAttribute('sizes','100vw'); im.setAttribute('srcset','img/'+fm+'.jpg 1100w, img/'+d.f+'.jpg 2200w'); im.src='img/'+d.f+'.jpg';
+  im.setAttribute('sizes','(min-width:861px) 90vw, 100vw'); im.setAttribute('srcset','img/'+fm+'.jpg 1100w, img/'+d.f+'.jpg 2200w'); im.src='img/'+d.f+'.jpg';
   im.style.setProperty('--op',d.op); im.style.setProperty('--opm',d.opm);
   diasEl.appendChild(im); diaImgs[i]=im; return im;
 }
@@ -783,17 +830,26 @@ var wertT=D.getElementById('wert'), wertK=D.getElementById('wert-k'), einheit=D.
 var schieber=D.getElementById('schieber'), miniS=D.getElementById('mini-s'), miniW=D.getElementById('mini-w');
 var treffer=D.getElementById('treffer'), autosEl=D.getElementById('autos');
 var karten=[].slice.call(autosEl.querySelectorAll('.auto'));
-var MODI={ ps:{max:600,step:10,rot:500,labels:7,teiler:100,k:'AB',start:0},
-           chf:{max:200000,step:1000,rot:999999,labels:11,teiler:20000,k:'BIS',start:200000} };
-var modus='ps', wert=0, busy=false;
+var MODI={ ps:{max:600,step:10,rot:500,labels:7,k:'AB',start:0},
+           chf:{max:200000,step:1000,rot:150000,labels:11,k:'BIS',start:200000} };
+/* Gänge: Gruppen aus dem echten Lager (IDs der Inserate) */
+var GAENGE={
+ alltag:{n:'Alltag',ids:[20978040,20873974,20978077,20933594,20914304,20971826,20865804,20961827]},
+ familie:{n:'Familie',ids:[20961827,20865804,20978165,20971826,20988128,20834766]},
+ sport:{n:'Sport',ids:[20732392,20978179,20933584,20596405,20914304]},
+ nutz:{n:'Nutzfahrzeug',ids:[20589342,20988128,20834819]},
+ klassik:{n:'Klassiker',ids:[20891721,20933603,20834819,20596405]}
+};
+var gangWert=0, modus='ps', filterWert=0, gang=null, anzeigeWert=0, busy=false, animId=0, zaehlerAlt=19;
 var CX=200, CY=200, R=160, A0=135, SW=270;
 function pol(a,r){var t=a*Math.PI/180;return [CX+r*Math.cos(t),CY+r*Math.sin(t)]}
 function bogen(a1,a2,r){var p1=pol(a1,r),p2=pol(a2,r),gross=(a2-a1)>180?1:0;return 'M'+p1[0].toFixed(1)+' '+p1[1].toFixed(1)+' A'+r+' '+r+' 0 '+gross+' 1 '+p2[0].toFixed(1)+' '+p2[1].toFixed(1)}
-function winkel(v){return A0+SW*v/MODI[modus].max}
+function winkel(v){return A0+SW*Math.max(0,Math.min(1,v/MODI[modus].max))}
+function wertVon(k){ return modus==='ps' ? (+k.dataset.ps||0) : +k.dataset.p; }
 function zeichneSkala(){
   var M=MODI[modus], h='';
   D.getElementById('bogen-grund').setAttribute('d',bogen(A0,A0+SW,R));
-  D.getElementById('bogen-rot').setAttribute('d', M.rot<=M.max? bogen(winkel(M.rot),A0+SW,R) : '');
+  D.getElementById('bogen-rot').setAttribute('d', bogen(winkel(M.rot),A0+SW,R));
   var n=(M.labels-1)*2;
   for(var i=0;i<=n;i++){
     var v=M.max*i/n, a=winkel(v), gross=i%2===0, rot=v>=M.rot;
@@ -804,67 +860,131 @@ function zeichneSkala(){
   }
   skala.innerHTML=h;
   einheit.textContent=modus==='ps'?'PS × 100':'CHF × 10’000';
-  wertK.textContent=M.k;
   [schieber,miniS].forEach(function(s){s.max=M.max;s.step=M.step;});
+  svg.setAttribute('aria-valuemax',M.max);
+}
+/* nur die Anzeige (Nadel, Bogen, Zahl) */
+function zeige(v,label){
+  var M=MODI[modus]; anzeigeWert=v;
+  nadel.setAttribute('transform','rotate('+(winkel(v)+90)+' '+CX+' '+CY+')');
+  D.getElementById('bogen-aktiv').setAttribute('d', v>0? bogen(A0,winkel(v),R) : '');
+  var r=Math.round(v/M.step)*M.step;
+  if(label){ wertK.textContent=label; wertK.classList.add('modell'); }
+  else if(gang && !busy){ wertK.textContent=GAENGE[gang].n.toUpperCase(); wertK.classList.add('modell'); }
+  else { wertK.textContent = r<=0 ? '' : M.k; wertK.classList.remove('modell'); }
+  if(!label && !gang && r<=0) { wertT.textContent='ALLE'; wertT.style.fontSize=''; }
+  else { wertT.textContent = modus==='ps'? String(r) : chf(r); wertT.style.fontSize = modus==='chf' ? (r>=100000?'40px':'44px') : ''; }
 }
 function passt(k,v){
+  if(gang) return GAENGE[gang].ids.indexOf(+k.id.replace('auto-',''))>=0;
   if(modus==='ps'){ var ps=+k.dataset.ps||0; return v<=0 || (ps>0 && ps>=v); }
   return +k.dataset.p<=v;
 }
-function setze(v,ohneFilter){
-  var M=MODI[modus]; v=Math.max(0,Math.min(M.max,Math.round(v/M.step)*M.step)); wert=v;
-  nadel.setAttribute('transform','rotate('+(winkel(v)+90)+' '+CX+' '+CY+')');
-  D.getElementById('bogen-aktiv').setAttribute('d', v>0? bogen(A0,winkel(v),R) : '');
-  var txt = modus==='ps'? String(v) : chf(v);
-  wertT.textContent=txt; wertT.style.fontSize = (modus==='chf' && v>=100000)?'40px':(modus==='chf'?'44px':'');
-  schieber.value=v; miniS.value=v;
-  wertK.textContent = v<=0 ? '' : M.k; if(v<=0) wertT.textContent='ALLE';
-  autosEl.classList.toggle('rot', !ohneFilter && modus==='ps' && v>=M.rot);
-  if(ohneFilter) return;
-  var z=0; karten.forEach(function(k){ var ok=passt(k,v); k.classList.toggle('aus',!ok); k.setAttribute('aria-hidden', ok?'false':'true'); if(ok) z++; });
-  treffer.innerHTML='<b>'+z+'</b> von '+karten.length+' Autos';
-  miniW.innerHTML=(modus==='ps'?'ab '+v+' PS':'bis CHF '+chf(v))+'<small>'+z+' von '+karten.length+'</small>';
+function zaehle(z){
+  var von=zaehlerAlt, t0=null; zaehlerAlt=z;
+  function f(t){ if(!t0)t0=t; var p=Math.min(1,(t-t0)/350), n=Math.round(von+(z-von)*p);
+    treffer.innerHTML='<b>'+n+'</b> von '+karten.length+' Autos'; if(p<1) requestAnimationFrame(f); }
+  if(reduce) treffer.innerHTML='<b>'+z+'</b> von '+karten.length+' Autos'; else requestAnimationFrame(f);
 }
+/* Filter anwenden */
+function filtere(v){
+  var M=MODI[modus], z=0;
+  karten.forEach(function(k){ var ok=passt(k,v); k.classList.toggle('aus',!ok); k.setAttribute('aria-hidden', ok?'false':'true'); if(ok) z++; });
+  autosEl.classList.toggle('rot', !gang && v>=M.rot && (modus==='ps' || v<M.max));
+  return z;
+}
+function setze(v,ohneZaehler){
+  var M=MODI[modus]; v=Math.max(0,Math.min(M.max,Math.round(v/M.step)*M.step)); filterWert=v;
+  zeige(v); schieber.value=v; miniS.value=v; svg.setAttribute('aria-valuenow',v);
+  var z=filtere(v);
+  if(!ohneZaehler) zaehle(z);
+  miniW.innerHTML=(gang?GAENGE[gang].n:(modus==='ps'?'ab '+v+' PS':'bis CHF '+chf(v)))+'<small>'+z+' von '+karten.length+'</small>';
+  return z;
+}
+/* weiche Nadelbewegung (nur Anzeige, optional mit Filter unterwegs) */
+function fahre(ziel,dauer,mitFilter,fertig){
+  var id=++animId, von=anzeigeWert, t0=null;
+  if(reduce||dauer<=0){ if(mitFilter) setze(ziel); else zeige(ziel); if(fertig) fertig(); return; }
+  function f(t){ if(id!==animId) return; if(!t0)t0=t; var p=Math.min(1,(t-t0)/dauer), e=easeInOut(p), v=von+(ziel-von)*e;
+    if(mitFilter){ zeige(v); filtere(v); } else zeige(v);
+    if(p<1) requestAnimationFrame(f); else { if(mitFilter) setze(ziel); if(fertig) fertig(); } }
+  requestAnimationFrame(f);
+}
+function sperre(an){ busy=an; svg.classList.toggle('busy',an); autosEl.classList.toggle('busy',an); }
+/* Zündung: einmal bis Anschlag und zurück, Karten folgen der Nadel */
+function sweep(ziel){
+  if(reduce){ setze(ziel); return; }
+  var M=MODI[modus]; sperre(true);
+  fahre(M.max,750,true,function(){
+    if(ziel>=M.max){ fahre(0,800,true,function(){ fahre(ziel,700,true,function(){ setze(ziel); sperre(false); }); }); }
+    else fahre(ziel,950,true,function(){ setze(ziel); sperre(false); });
+  });
+}
+function gangAus(){ gang=null; D.querySelectorAll('.gaenge button').forEach(function(b){b.setAttribute('aria-pressed','false')}); }
 function wechsle(m){
-  if(busy||m===modus) return; modus=m;
+  if(busy||m===modus) return; modus=m; gangAus();
   D.querySelectorAll('.modus button').forEach(function(b){b.setAttribute('aria-pressed', b.dataset.modus===m?'true':'false')});
-  zeichneSkala(); setze(MODI[m].start);
+  var M=MODI[m], vonAnteil=anzeigeWert/MODI[m==='ps'?'chf':'ps'].max;
+  zeichneSkala(); anzeigeWert=vonAnteil*M.max; zeige(anzeigeWert);
+  sweep(M.start);
 }
 D.querySelectorAll('.modus button').forEach(function(b){ b.addEventListener('click',function(){wechsle(b.dataset.modus)}); });
-D.getElementById('reset').addEventListener('click',function(){ if(!busy) setze(MODI[modus].start); });
-schieber.addEventListener('input',function(){ if(!busy) setze(+schieber.value); });
-miniS.addEventListener('input',function(){ if(!busy) setze(+miniS.value); });
-
+D.getElementById('reset').addEventListener('click',function(){ if(busy) return; gangAus(); fahre(MODI[modus].start,500,false,function(){ setze(MODI[modus].start); }); });
+schieber.addEventListener('input',function(){ if(!busy){ gangAus(); animId++; setze(+schieber.value);} });
+miniS.addEventListener('input',function(){ if(!busy){ gangAus(); animId++; setze(+miniS.value);} });
+svg.addEventListener('keydown',function(e){
+  if(busy) return; var M=MODI[modus], d={ArrowRight:1,ArrowUp:1,ArrowLeft:-1,ArrowDown:-1,PageUp:10,PageDown:-10}[e.key];
+  if(e.key==='Home'||e.key==='End'){ e.preventDefault(); gangAus(); animId++; setze(e.key==='Home'?0:M.max); return; }
+  if(d){ e.preventDefault(); gangAus(); animId++; setze(filterWert+d*M.step*(modus==='chf'?5:1)); }
+});
+/* Gänge */
+D.querySelectorAll('.gaenge button').forEach(function(b){ b.addEventListener('click',function(){
+  if(busy) return; var g=b.dataset.gang;
+  if(gang===g){ gangAus(); fahre(MODI[modus].start,500,false,function(){ setze(MODI[modus].start); }); return; }
+  gang=g; D.querySelectorAll('.gaenge button').forEach(function(x){x.setAttribute('aria-pressed', x===b?'true':'false')});
+  var werte=karten.filter(function(k){return GAENGE[g].ids.indexOf(+k.id.replace('auto-',''))>=0}).map(wertVon).filter(Boolean).sort(function(a,b){return a-b});
+  var mitte=werte.length? werte[Math.floor(werte.length/2)] : 0;
+  zaehle(filtere(0)); miniW.innerHTML=GAENGE[g].n+'<small>'+karten.filter(function(k){return !k.classList.contains('aus')}).length+' von '+karten.length+'</small>';
+  gangWert=mitte; fahre(mitte,700,false,function(){ zeige(mitte); });
+}); });
+/* Gas geben: einmal in den roten Bereich und zurück, Autos im roten Bereich blitzen */
+function gas(){
+  if(busy) return; var M=MODI[modus], zurueck=gang? gangWert : filterWert; sperre(true);
+  fahre(M.max*0.97,520,false,function(){
+    karten.forEach(function(k){ if(wertVon(k)>=M.rot && !k.classList.contains('aus')){ k.classList.remove('blitz'); void k.offsetWidth; k.classList.add('blitz'); } });
+    setTimeout(function(){ fahre(zurueck,800,false,function(){ zeige(zurueck); sperre(false); }); },160);
+  });
+}
+D.getElementById('gas').addEventListener('click',gas);
+/* Ziehen / Tippen */
 function ausZeiger(e){
   var r=svg.getBoundingClientRect(), x=(e.clientX-r.left)*400/r.width, y=(e.clientY-r.top)*400/r.height;
-  var a=Math.atan2(y-CY,x-CX)*180/Math.PI; if(a<0) a+=360;      // 0..360, 0 = rechts
-  var rel=a-A0; if(rel<0) rel+=360;                              // 0..360 ab Startpunkt
-  if(rel>SW){ rel = rel>SW+(360-SW)/2 ? 0 : SW; }                // toter Bereich unten
-  setze(MODI[modus].max*rel/SW);
+  if(Math.hypot(x-CX,y-CY)<26) return 'nabe';
+  var a=Math.atan2(y-CY,x-CX)*180/Math.PI; if(a<0) a+=360;
+  var rel=a-A0; if(rel<0) rel+=360;
+  if(rel>SW){ rel = rel>SW+(360-SW)/2 ? 0 : SW; }
+  gangAus(); animId++; setze(MODI[modus].max*rel/SW);
 }
 var zieht=false;
-svg.addEventListener('pointerdown',function(e){ if(busy) return; zieht=true; svg.classList.add('zieht'); try{svg.setPointerCapture(e.pointerId)}catch(_){} ausZeiger(e); });
+svg.addEventListener('pointerdown',function(e){ if(busy) return; if(ausZeiger(e)==='nabe'){ gas(); return; } zieht=true; svg.classList.add('zieht'); try{svg.setPointerCapture(e.pointerId)}catch(_){} });
 svg.addEventListener('pointermove',function(e){ if(zieht) ausZeiger(e); });
 ['pointerup','pointercancel','lostpointercapture'].forEach(function(t){ svg.addEventListener(t,function(){ zieht=false; svg.classList.remove('zieht'); }); });
-
-zeichneSkala(); setze(0);
-
-/* Zündung an: Nadel fegt einmal bis zum Anschlag und zurück, sobald das Instrument zu sehen ist */
-function sweep(){
-  if(reduce) return;
-  busy=true; svg.classList.add('busy'); autosEl.classList.add('busy');
-  var t0=null, dauer=1700, M=MODI.ps;
-  function f(t){ if(!t0) t0=t; var p=Math.min(1,(t-t0)/dauer);
-    var v = p<.45 ? M.max*easeOut(p/.45) : M.max*(1-easeInOut((p-.45)/.55));
-    setze(v,true);
-    if(p<1) requestAnimationFrame(f); else { setze(0); busy=false; svg.classList.remove('busy'); autosEl.classList.remove('busy'); }
-  }
-  requestAnimationFrame(f);
+/* Auto zeigen: Nadel zeigt den Wert des Autos unter der Maus */
+if(window.matchMedia('(hover:hover)').matches){
+  karten.forEach(function(k){
+    k.addEventListener('mouseenter',function(){ if(busy||zieht) return; var v=wertVon(k); if(!v) return;
+      k.classList.add('zeigt'); var name=(k.querySelector('h3').textContent||'').slice(0,22);
+      fahre(v,420,false,function(){ zeige(v,name.toUpperCase()); }); });
+    k.addEventListener('mouseleave',function(){ k.classList.remove('zeigt'); if(busy||zieht) return;
+      var z=gang? gangWert : filterWert; fahre(z,420,false,function(){ zeige(z); }); });
+  });
 }
 function easeOut(x){return 1-Math.pow(1-x,3)}
 function easeInOut(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}
+zeichneSkala(); setze(0,true);
+/* Zündung beim ersten Sichtkontakt (PS) */
 if('IntersectionObserver' in window){
-  var ioS=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ ioS.disconnect(); setTimeout(sweep,150);} }); },{threshold:.75});
+  var ioS=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ ioS.disconnect(); setTimeout(function(){ sweep(0); },150);} }); },{threshold:.75});
   ioS.observe(svg);
 }
 
