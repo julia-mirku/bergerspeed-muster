@@ -181,12 +181,6 @@ html{scroll-padding-top:76px}
   .hero .text .wrap{width:min(1240px,100% - 40px);margin:0 auto;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px 48px;align-items:end}
   .hero h1{font-size:clamp(48px,min(7vw,11vh),120px);text-shadow:0 4px 30px rgba(0,0,0,.45)}
 }
-/* beim Scrollen: Bühne wird sanft kleiner, Ecken runden sich */
-.buehne{--p:0;transform-origin:50% 0;transform:scale(calc(1 - .12 * var(--p)));will-change:transform}
-.buehne .tor-rahmen{border-radius:calc(22px * var(--p));box-shadow:0 calc(30px * var(--p)) calc(70px * var(--p)) rgba(0,0,0,calc(.55 * var(--p)))}
-.buehne .tor{border-radius:calc(14px * var(--p))}
-@media (max-width:860px){.buehne{transform-origin:50% 0}}
-@media (prefers-reduced-motion:reduce){.buehne{transform:none!important}}
 @media (max-width:860px){.tor{aspect-ratio:1.48}.tor .dia{object-position:var(--opm,50% 58%)}}
 @media (orientation:landscape) and (max-height:560px){.tor{aspect-ratio:1.48}}
 
@@ -783,16 +777,6 @@ function torAuf(){
 if(himg.complete && himg.naturalWidth) torAuf();
 else { himg.addEventListener('load',torAuf,{once:true}); himg.addEventListener('error',torAuf,{once:true}); setTimeout(function(){ if(!tor.classList.contains('auf')) torAuf(); },4000); }
 
-
-/* ---------- Bühne verkleinern beim Scrollen ---------- */
-(function(){
-  if(reduce) return;
-  var b=D.getElementById('buehne'), hero=D.querySelector('.hero'), tick=false;
-  function upd(){ tick=false; var h=hero.offsetHeight||1, p=Math.max(0,Math.min(1,window.scrollY/(h*0.7)));
-    p=p*p*(3-2*p); b.style.setProperty('--p',p.toFixed(3)); }
-  window.addEventListener('scroll',function(){ if(!tick){ tick=true; requestAnimationFrame(upd); } },{passive:true});
-  window.addEventListener('resize',upd); upd();
-})();
 
 /* ---------- Wechselnde Autos im Tor ---------- */
 var DIAS=[
