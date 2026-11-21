@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="de-CH" translate="no" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google" content="notranslate">
+<title>Bergerspeed GmbH · Garage & Autohandel Altstätten</title>
+<meta name="description" content="Bergerspeed GmbH, Altstätten SG: markenunabhängige Autogarage und Occasionen seit 2002. Service, MFK-Vorbereitung, Reparaturen, Pneus, Leasing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero_gt3_quer.jpg" media="(min-width: 861px)">
+<link rel="preload" as="image" href="img/hero_gt3_hoch.jpg" media="(max-width: 860px) and (orientation: portrait)">
+<style>
+:root{
+  --nacht:#0F1012; --anthrazit:#1C1E21; --stahl:#2A2D31; --stahl2:#3A3D42;
+  --beton:#ECEBE7; --beton2:#DFDDD7; --weiss:#FFFFFF;
+  --orange:#FF4001; --orange-hell:#FF6A33;
+  --glow:0 0 0 4px rgba(255,64,1,.18), 0 10px 30px rgba(255,64,1,.28);
+  --glow-hell:0 0 0 3px rgba(255,140,90,.35), 0 10px 26px rgba(255,64,1,.22);
+  --text:#16181B; --text-hell:#F2F1EE; --grau:#A7AAB0; --grau-d:#5C6068;
+  --gruen:#3FB97A;
+  --kopf:'Saira Condensed', 'Arial Narrow', sans-serif;
+  --body:'Hanken Grotesk', system-ui, sans-serif;
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--body);color:var(--text);background:var(--beton);line-height:1.55;font-size:17px;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(1240px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:var(--kopf);line-height:1;letter-spacing:.01em}
+h2{font-size:clamp(34px,5vw,64px);font-weight:800;text-transform:uppercase;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+.kicker{font-family:var(--kopf);font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:14px;color:var(--orange)}
+.lead{font-size:clamp(17px,1.6vw,20px);max-width:60ch;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+section{padding:clamp(72px,9vw,120px) 0}
+.dunkel{background:var(--anthrazit);color:var(--text-hell)}
+.nacht{background:var(--nacht);color:var(--text-hell)}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;
+  font-family:var(--kopf);font-weight:700;font-size:19px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+  transition:box-shadow .2s ease, background-color .2s ease, color .2s ease, transform .2s ease, border-color .2s ease;cursor:pointer;white-space:nowrap}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-o{background:var(--orange);color:#fff}
+.btn-r{border:2px solid rgba(255,255,255,.35);color:var(--text-hell)}
+.btn-d{border:2px solid var(--stahl);color:var(--text)}
+@media (hover:hover){
+  .ready .btn-o:hover{background:var(--orange-hell);box-shadow:var(--glow)}
+  .ready .btn-r:hover{border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,64,1,.14);color:#fff}
+  .ready .btn-d:hover{border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,64,1,.12)}
+}
+.btn:active{transform:scale(.97)}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+
+/* ---------- Kopf ---------- */
+.kopf{position:sticky;top:0;z-index:50;background:#000;border-bottom:1px solid #222}
+.kopf .wrap{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.logo img{height:44px;width:auto}
+.logo{border-radius:6px;transition:box-shadow .2s}
+.nav{display:flex;gap:6px;align-items:center}
+.nav a{font-family:var(--kopf);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:16px;color:#d9d9d9;text-decoration:none;padding:8px 12px;border-radius:8px;transition:box-shadow .2s, color .2s, background-color .2s}
+@media (hover:hover){
+  .ready .nav a:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,64,1,.7);background:rgba(255,64,1,.08)}
+  .ready .logo:hover{box-shadow:0 0 0 3px rgba(255,64,1,.25)}
+}
+.kopf .tel{min-height:44px;padding:0 18px;font-size:17px}
+.unternav{display:none}
+@media (max-width:1020px){.nav a.n{display:none}
+  .unternav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;border-top:1px solid #1d1d1d;padding:4px 14px;height:42px;align-items:center}
+  .unternav::-webkit-scrollbar{display:none}
+  .unternav a{flex:none;font-family:var(--kopf);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:14px;color:#d9d9d9;text-decoration:none;padding:6px 10px;border-radius:8px}
+  .unternav a:active{background:rgba(255,64,1,.15)}
+  html{scroll-padding-top:112px}
+}
+html{scroll-padding-top:76px}
+@media (max-width:560px){.logo img{height:34px}.kopf .tel span{display:none}.kopf .tel{padding:0 14px}}
+
+/* ---------- Hero: das ganze Tor ---------- */
+.hero{padding:0;position:relative;height:calc(100svh - 70px);min-height:600px;max-height:1100px;background:var(--nacht);color:var(--text-hell);overflow:hidden}
+.tor-rahmen{position:absolute;inset:0;padding:10px 10px 0;background:var(--orange)}
+.tor{position:relative;overflow:hidden;width:100%;height:100%;background:#16171a}
+.tor picture img{width:100%;height:100%;object-fit:cover;object-position:50% 62%;transform:scale(1.06);filter:brightness(.45) saturate(.8)}
+.tor::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(10,11,12,.95) 0%,rgba(10,11,12,.8) 34%,rgba(10,11,12,.35) 58%,transparent 76%)}
+.tor .lamelle{position:absolute;inset:0;z-index:2;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.35),transparent 6%,transparent 94%,rgba(0,0,0,.35)),
+    repeating-linear-gradient(180deg,#4a4e54 0 3px,#3a3d42 3px 30px,#2b2e32 30px 34px,#55595f 34px 35px);
+  will-change:transform}
+.tor .lamelle::after{content:"";position:absolute;left:0;right:0;bottom:0;height:40px;background:linear-gradient(#2a2c30,#1b1c1f);border-top:2px solid #5a5e64}
+.tor .lamelle b{position:absolute;bottom:13px;left:50%;width:120px;height:12px;margin-left:-60px;border-radius:6px;background:#8b9097;box-shadow:inset 0 -2px 0 rgba(0,0,0,.35);z-index:1}
+.js .tor.auf .lamelle{animation:hoch 2.1s cubic-bezier(.55,.05,.35,1) forwards}
+.js .tor.auf picture img{animation:licht 2.4s .2s ease-out forwards}
+.no-js .tor .lamelle{display:none}
+.no-js .tor picture img{transform:none;filter:none}
+@keyframes hoch{0%{transform:translateY(0)}9%{transform:translateY(-3%)}13%{transform:translateY(-2.3%)}100%{transform:translateY(-102%)}}
+@keyframes licht{to{transform:scale(1);filter:brightness(1) saturate(1)}}
+.tor .schild{position:absolute;right:22px;top:22px;z-index:5;display:flex;flex-direction:column;gap:2px;padding:10px 14px;background:rgba(15,16,18,.82);backdrop-filter:blur(6px);border-radius:10px;color:#fff;text-decoration:none;opacity:0;transform:translateY(-8px);transition:opacity .5s, transform .5s, box-shadow .2s}
+.tor .schild small{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:700}
+.tor .schild span{font-family:var(--kopf);font-size:22px;font-weight:700;letter-spacing:.03em}
+.ready .tor .schild{opacity:1;transform:none}
+@media (hover:hover){.ready .tor .schild:hover{box-shadow:var(--glow-hell)}}
+.hero .text{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:0 0 clamp(28px,4.5vh,56px)}
+.hero .text .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px 48px;align-items:end}
+.hero h1{font-size:clamp(48px,min(8.4vw,14.5vh),132px);font-weight:800;text-transform:uppercase;line-height:.88;margin:10px 0 0;text-shadow:0 4px 30px rgba(0,0,0,.4)}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero .lead{color:#D5D7DA;margin-top:16px;max-width:52ch}
+.hero .kicker{text-shadow:0 1px 12px rgba(0,0,0,.8)}
+@media (min-width:861px) and (max-height:820px){.hero .lead{display:none}.hero .fakten{font-size:15px}.fakt{padding:5px 12px}}
+.hero{min-height:520px}
+.hero .rechts{display:flex;flex-direction:column;gap:16px}
+.hero .knoepfe{display:flex;flex-wrap:wrap;gap:12px}
+.fakten{display:grid;gap:4px;font-size:16px;color:#D5D7DA}
+.fakten a{text-decoration:none}
+.fakt{display:flex;gap:12px;align-items:center;padding:7px 12px;margin-left:-12px;border-radius:10px;transition:box-shadow .2s, background-color .2s;width:fit-content;max-width:100%}
+.fakt svg{width:20px;height:20px;color:var(--orange);flex:none}
+@media (hover:hover){.ready a.fakt:hover{background:rgba(255,64,1,.1);box-shadow:inset 0 0 0 1.5px rgba(255,64,1,.5);color:#fff}}
+.status{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:#fff}
+.status i{width:10px;height:10px;border-radius:50%;background:var(--grau-d);box-shadow:0 0 0 4px rgba(255,255,255,.06)}
+.status.offen i{background:var(--gruen);box-shadow:0 0 0 4px rgba(63,185,122,.18)}
+.sterne{color:#FFB547;letter-spacing:2px}
+.js .hero .text .wrap > * > *{animation:auftritt .7s cubic-bezier(.2,.7,.2,1) both}
+.js .hero .text .rechts > *:nth-child(1){animation-delay:.12s}
+.js .hero .text .rechts > *:nth-child(2){animation-delay:.2s}
+.js .hero .text .links > *:nth-child(2){animation-delay:.06s}
+.js .hero .text .links > *:nth-child(3){animation-delay:.14s}
+@keyframes auftritt{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (max-width:1020px){.hero{height:calc(100svh - 112px)}}
+@media (max-width:860px){
+  .hero{min-height:640px}
+  .tor-rahmen{padding:6px 6px 0}
+  .tor::after{background:linear-gradient(0deg,rgba(10,11,12,.96) 0%,rgba(10,11,12,.85) 42%,rgba(10,11,12,.2) 64%,transparent 76%)}
+  .tor picture img{object-position:50% 30%}
+  .hero .text .wrap{grid-template-columns:minmax(0,1fr);gap:14px}
+  .hero h1{font-size:clamp(48px,13vw,76px)}
+  .hero .lead{display:none}
+  .tor .schild{right:12px;top:12px;padding:7px 10px}
+  .tor .schild span{font-size:17px}
+}
+@media (max-width:420px){.btn{padding:0 16px;font-size:17px;min-height:48px}.fakten{font-size:15px}}
+@media (orientation:landscape) and (max-height:560px){
+  .hero{height:auto;min-height:0}
+  .tor-rahmen{position:relative;height:78vh}
+  .hero .text{position:relative;background:var(--nacht);padding:22px 0 30px}
+  .tor::after{display:none}
+  .hero h1{font-size:52px}
+  .hero .text .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+
+/* ---------- Occasionen / Drehzahlmesser ---------- */
+.occ{background:var(--anthrazit);color:var(--text-hell)}
+.occ .kopfzeile{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.occ .kopfzeile p{color:#BDC0C5;max-width:52ch}
+.occ-grid{display:grid;grid-template-columns:380px minmax(0,1fr);gap:40px;align-items:start}
+.instrument{position:sticky;top:96px;background:radial-gradient(circle at 50% 38%,#26292d,#141517 70%);border:1px solid #33363b;border-radius:24px;padding:22px 22px 24px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 24px 60px rgba(0,0,0,.35)}
+.modus{display:grid;grid-template-columns:1fr 1fr;background:#0d0e10;border-radius:999px;padding:4px;margin-bottom:10px}
+.modus button{min-height:42px;border-radius:999px;font-family:var(--kopf);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:16px;color:#9a9ea5;transition:background-color .2s, color .2s, box-shadow .2s}
+.modus button[aria-pressed="true"]{background:var(--stahl2);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,64,1,.65)}
+@media (hover:hover){.ready .modus button:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,64,1,.45)}}
+#tacho{width:100%;height:auto;display:block;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+#tacho.zieht{cursor:grabbing}
+#tacho .tick{stroke:#cfd2d6}
+#tacho .tick.rot{stroke:var(--orange)}
+#tacho .zahl{font-family:var(--kopf);font-weight:700;font-size:24px;fill:#e9eaec}
+#tacho .zahl.rot{fill:var(--orange)}
+#tacho .einheit{font-family:var(--kopf);font-weight:600;font-size:13px;letter-spacing:.18em;fill:#8d9198;text-transform:uppercase}
+#tacho .wert{font-family:var(--kopf);font-weight:800;font-size:52px;fill:#fff}
+#tacho .wert-k{font-family:var(--kopf);font-weight:600;font-size:16px;letter-spacing:.16em;fill:var(--orange)}
+#tacho .bogen-aktiv{transition:stroke .2s}
+#nadel{transition:none}
+#tacho .nabe{transition:filter .2s}
+@media (hover:hover){.ready #tacho:not(.busy):hover .nabe{filter:drop-shadow(0 0 8px rgba(255,64,1,.8))}}
+.anzeige{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:6px}
+.anzeige .treffer{font-family:var(--kopf);font-size:22px;font-weight:700;letter-spacing:.04em}
+.anzeige .treffer b{color:var(--orange)}
+.schieber{width:100%;margin-top:14px;accent-color:var(--orange);height:28px;cursor:pointer}
+.hinweis{font-size:14px;color:#8d9198;margin-top:6px}
+.reset{font-size:14px;font-weight:600;color:#cfd2d6;padding:8px 12px;border-radius:999px;border:1.5px solid #3c3f45;transition:box-shadow .2s, border-color .2s, color .2s}
+@media (hover:hover){.ready .reset:hover{border-color:var(--orange);color:#fff;box-shadow:0 0 0 3px rgba(255,64,1,.15)}}
+
+.mini{display:none}
+.autos{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.auto{position:relative;display:flex;flex-direction:column;background:#24262A;border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--text-hell);border:1px solid #33363b;
+  transition:opacity .45s ease, filter .45s ease, transform .25s ease, box-shadow .25s ease, border-color .25s ease}
+.auto .foto{aspect-ratio:4/3;overflow:hidden;background:#16171a}
+.auto .foto img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.auto .info{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.auto .marke{font-family:var(--kopf);font-weight:700;letter-spacing:.16em;font-size:14px;color:var(--orange);text-transform:uppercase}
+.auto h3{font-family:var(--body);font-weight:700;font-size:18px;line-height:1.25}
+.auto .daten{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:14px;color:#AEB1B7}
+.auto .preis{margin-top:auto;padding-top:10px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 8px}
+.auto .preis b{white-space:nowrap}
+.auto .preis s{order:-1;flex-basis:100%;white-space:nowrap}
+.auto .preis b{font-family:var(--kopf);font-weight:800;font-size:28px;letter-spacing:.02em;transition:color .2s, text-shadow .2s}
+.auto .preis s{font-size:14px;color:#8d9198}
+.auto .ps{font-family:var(--kopf);font-weight:700;font-size:17px;color:#d6d8db;letter-spacing:.04em}
+.auto .marken{position:absolute;z-index:2;pointer-events:none;top:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap}
+.auto .marken span{font-size:12px;font-weight:700;letter-spacing:.06em;padding:5px 9px;border-radius:999px;background:rgba(15,16,18,.82);color:#fff}
+.auto .marken span.o{background:var(--orange)}
+.auto.aus{opacity:.22;filter:grayscale(1)}
+.auto h3 a{color:inherit;text-decoration:none}
+.auto .ganz::after{content:"";position:absolute;inset:0;z-index:1}
+.auto .aktion{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid #34373c;font-size:14px;font-weight:700}
+.auto .anruf{color:#fff;text-decoration:none;padding:7px 12px;border-radius:999px;border:1.5px solid #4a4d53;transition:border-color .2s, box-shadow .2s}
+.auto .inserat{color:#AEB1B7}
+@media (hover:hover){.ready .auto.live .anruf:hover{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,64,1,.18)}}
+@media (min-width:1200px){.auto.gross{grid-column:span 2}.auto.gross .foto{aspect-ratio:16/9}.auto.gross h3{font-size:24px}.auto.gross .preis b{font-size:36px}}
+.autos.rot .auto:not(.aus){border-color:rgba(255,64,1,.75);box-shadow:0 0 0 3px rgba(255,64,1,.18),0 0 34px rgba(255,64,1,.28)}
+.js .auto.aus.shown:not(.live){animation:none;opacity:.22}
+@media (hover:hover){
+  .ready .autos:not(.busy) .auto.live:hover{transform:translateY(-4px);border-color:rgba(255,64,1,.7);box-shadow:0 0 0 4px rgba(255,64,1,.14),0 18px 40px rgba(0,0,0,.4)}
+  .ready .autos:not(.busy) .auto.live:hover .foto img{transform:scale(1.04)}
+  .ready .autos:not(.busy) .auto.live:hover .preis b{color:#FFD2BF;text-shadow:0 0 18px rgba(255,64,1,.55)}
+  .ready .autos:not(.busy) .auto.aus.live:hover{opacity:.55}
+}
+.auto:active{transform:scale(.985)}
+.quelle{margin-top:26px;font-size:14px;color:#8d9198;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.quelle a{color:#d6d8db;font-weight:600;padding:6px 10px;margin-left:-10px;border-radius:8px;transition:box-shadow .2s,color .2s}
+@media (hover:hover){.ready .quelle a:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,64,1,.6)}}
+
+@media (max-width:1020px){
+  .occ-grid{grid-template-columns:minmax(0,1fr)}
+  .instrument{position:relative;top:0;max-width:440px;margin-inline:auto;width:100%}
+  .mini{display:flex;position:sticky;top:112px;z-index:20;align-items:center;gap:14px;background:rgba(18,19,21,.94);backdrop-filter:blur(8px);border:1px solid #33363b;border-radius:14px;padding:10px 14px;margin:0 0 16px;
+    opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .25s, transform .25s}
+  .mini.zeigen{opacity:1;transform:none;pointer-events:auto}
+  .mini .mw{font-family:var(--kopf);font-weight:800;font-size:20px;white-space:nowrap;min-width:118px}
+  .mini .mw small{display:block;font-size:13px;font-weight:600;color:var(--orange);letter-spacing:.08em}
+  .mini input{flex:1;accent-color:var(--orange);height:28px}
+}
+
+/* ---------- Versprechen ---------- */
+.vier{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
+.punkt{background:#fff;border-radius:var(--r);padding:24px 22px;border:1px solid var(--beton2);transition:box-shadow .2s, transform .2s, border-color .2s}
+.zahl-gross{font-family:var(--kopf);font-weight:800;font-size:clamp(64px,6vw,88px);line-height:.9;color:var(--orange);margin-bottom:12px;letter-spacing:-.01em}
+.zahl-gross small{font-size:.42em;font-weight:700;color:var(--text);margin-left:4px}
+.punkt h3{font-size:26px;font-weight:700;text-transform:uppercase;margin-bottom:8px}
+.punkt p{font-size:15.5px;color:#4a4e55}
+@media (hover:hover){.ready .punkt.live:hover{border-color:rgba(255,64,1,.5);box-shadow:0 0 0 4px rgba(255,64,1,.10),0 14px 34px rgba(0,0,0,.08);transform:translateY(-3px)}}
+@media (max-width:980px){.vier{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.vier{grid-template-columns:1fr}}
+
+/* ---------- Ankauf ---------- */
+.ankauf{background:linear-gradient(90deg,rgba(15,16,18,.94) 0%,rgba(15,16,18,.82) 50%,rgba(15,16,18,.55) 100%),url(img/gebaeude.jpg) center 60%/cover;color:#fff;padding:clamp(64px,8vw,110px) 0;border-top:6px solid var(--orange)}
+.ankauf h2 em{font-style:normal;color:var(--orange)}
+.ankauf .wrap{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.ankauf h2{font-size:clamp(34px,4.4vw,56px)}
+.ankauf p{max-width:58ch;margin-top:10px;font-size:17px}
+.btn-w{background:#fff;color:var(--text)}
+@media (hover:hover){.ready .btn-w:hover{box-shadow:0 0 0 5px rgba(255,255,255,.35),0 12px 30px rgba(0,0,0,.2)}}
+
+/* ---------- Werkstatt ---------- */
+.werk .oben{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.werk .foto{border-radius:var(--r);overflow:hidden;position:relative;transition:box-shadow .25s}
+.werk .foto img{width:100%;aspect-ratio:3/2;object-fit:cover;transition:transform .6s ease}
+@media (hover:hover){.ready .werk .foto.live:hover{box-shadow:0 0 0 4px rgba(255,64,1,.16)}.ready .werk .foto.live:hover img{transform:scale(1.03)}}
+.dienste{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+.dienst{background:#fff;border:1px solid var(--beton2);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:8px;transition:box-shadow .2s, border-color .2s, transform .2s}
+.dienst svg{width:34px;height:34px;color:var(--text)}
+.dienst svg .o{color:var(--orange);stroke:var(--orange)}
+.dienst h3{font-size:22px;font-weight:700;text-transform:uppercase}
+.dienst p{font-size:15px;color:#4a4e55}
+@media (hover:hover){.ready .dienst.live:hover{border-color:rgba(255,64,1,.5);box-shadow:0 0 0 4px rgba(255,64,1,.10);transform:translateY(-3px)}}
+@media (max-width:980px){.werk .oben{grid-template-columns:minmax(0,1fr)}.dienste{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){.dienste{grid-template-columns:1fr}}
+
+/* ---------- Vor unserem Tor ---------- */
+.galerie .kopfzeile{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:32px}
+.pfeile{display:flex;gap:10px}
+.pfeil{width:52px;height:52px;border-radius:50%;border:2px solid #3c3f45;display:grid;place-items:center;transition:border-color .2s, box-shadow .2s}
+.pfeil svg{width:22px;height:22px}
+@media (hover:hover){.ready .pfeil:hover{border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,64,1,.15)}}
+.band{display:grid;grid-auto-flow:column;grid-auto-columns:min(460px,82%);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 18px;scrollbar-width:thin;scrollbar-color:#444 transparent;overscroll-behavior-x:contain}
+.band figure{scroll-snap-align:start;border-radius:var(--r);overflow:hidden;position:relative;background:#111;transition:box-shadow .25s}
+.band img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .6s ease}
+.band figcaption{position:absolute;left:12px;bottom:12px;padding:6px 12px;border-radius:8px;background:rgba(15,16,18,.8);font-family:var(--kopf);font-weight:700;letter-spacing:.06em;font-size:18px}
+@media (hover:hover){.ready .band figure.live:hover{box-shadow:0 0 0 4px rgba(255,64,1,.3)}.ready .band figure.live:hover img{transform:scale(1.04)}}
+
+/* ---------- Team ---------- */
+.team .oben{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:44px}
+.zitat{font-family:var(--kopf);font-weight:600;font-size:clamp(26px,3vw,38px);line-height:1.15}
+.zitat em{font-style:normal;color:var(--orange)}
+.leute{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.mensch{background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--beton2);transition:box-shadow .2s, transform .2s, border-color .2s}
+.mensch img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;filter:grayscale(.15)}
+.mensch div{padding:16px 18px 18px}
+.mensch h3{font-size:28px;font-weight:700;text-transform:uppercase}
+.mensch p{color:#5c6068;font-size:15px}
+@media (hover:hover){.ready .mensch.live:hover{border-color:rgba(255,64,1,.5);box-shadow:0 0 0 4px rgba(255,64,1,.10),0 14px 34px rgba(0,0,0,.08);transform:translateY(-3px)}}
+@media (max-width:860px){.team .oben{grid-template-columns:minmax(0,1fr)}.leute{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.leute{grid-template-columns:1fr}.mensch img{aspect-ratio:1/1}}
+
+/* ---------- Schlüsselbrett (Bewertungen) ---------- */
+.brett{background:var(--stahl);color:var(--text-hell);position:relative}
+.brett::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.45) 2.2px,transparent 2.6px);background-size:28px 28px;opacity:.55;pointer-events:none}
+.brett .wrap{position:relative}
+.brett .kopfzeile{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:20px;margin-bottom:46px}
+.note{display:flex;align-items:center;gap:16px;padding:12px 18px;border-radius:14px;background:#1f2124;text-decoration:none;transition:box-shadow .2s}
+.note b{font-family:var(--kopf);font-size:48px;font-weight:800;line-height:1}
+.note small{display:block;color:#AEB1B7;font-size:14px}
+@media (hover:hover){.ready .note:hover{box-shadow:inset 0 0 0 1.5px rgba(255,64,1,.6),0 0 0 4px rgba(255,64,1,.12)}}
+.haken{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 26px}
+.anh{position:relative;padding-top:34px;transform-origin:50% 0}
+.anh::before{content:"";position:absolute;top:0;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:#9aa0a7;box-shadow:inset 0 -2px 2px rgba(0,0,0,.4),0 2px 3px rgba(0,0,0,.4)}
+.anh::after{content:"";position:absolute;top:5px;left:50%;width:24px;height:54px;margin-left:-12px;border:3px solid #b9bec4;border-radius:50%;border-top-color:transparent;z-index:2;pointer-events:none}
+.tag{position:relative;border-radius:18px 18px 14px 14px;padding:44px 22px 22px;transition:box-shadow .25s, transform .25s;box-shadow:0 12px 26px rgba(0,0,0,.35)}
+.tag::before{content:"";position:absolute;top:14px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--stahl);box-shadow:inset 0 2px 3px rgba(0,0,0,.5)}
+.tag.t1{background:#F4F3F0;color:var(--text)}
+.tag.t2{background:var(--orange);color:#fff}
+.tag.t3{background:#111214;color:var(--text-hell);border:1px solid #3a3d42}
+.tag blockquote{font-size:16.5px;line-height:1.5}
+.tag .wer{margin-top:14px;display:flex;justify-content:space-between;gap:8px;font-size:14px;font-weight:700}
+.tag .wer span{opacity:.75;font-weight:600}
+.tag .auto-n{font-family:var(--kopf);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:14px;margin-bottom:8px;opacity:.8}
+.anh.schwingt{animation:schwingen 1.6s cubic-bezier(.3,.6,.4,1) both}
+@keyframes schwingen{0%{transform:rotate(7deg);opacity:0}15%{opacity:1}35%{transform:rotate(-4deg)}60%{transform:rotate(2deg)}80%{transform:rotate(-.8deg)}100%{transform:rotate(var(--rest,0deg))}}
+.anh{transform:rotate(var(--rest,0deg))}
+.js .anh:not(.schwingt){opacity:0}
+@media (hover:hover){.ready .anh.live:hover .tag{transform:translateY(-4px) rotate(calc(var(--rest,0deg) * -1));box-shadow:0 0 0 4px rgba(255,64,1,.25),0 18px 36px rgba(0,0,0,.45)}}
+@media (max-width:980px){.haken{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.haken{grid-template-columns:1fr;gap:40px}}
+
+/* ---------- Zeiten / Kontakt ---------- */
+.kontakt .raster{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(24px,4vw,56px);align-items:start}
+.tafel{background:var(--nacht);color:var(--text-hell);border-radius:20px;padding:26px}
+.tage{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin:18px 0 20px}
+.tag-k{min-height:64px;border-radius:12px;background:#1d1f22;border:1.5px solid #2e3136;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-family:var(--kopf);font-weight:700;letter-spacing:.06em;font-size:19px;transition:border-color .2s, box-shadow .2s, background-color .2s;cursor:pointer}
+.tag-k small{font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.04em;color:#8d9198}
+.tag-k.zu{color:#6d7178}
+.tag-k[aria-selected="true"]{border-color:var(--orange);background:#2a1a12;box-shadow:0 0 0 4px rgba(255,64,1,.16)}
+.tag-k.heute small{color:var(--orange)}
+@media (hover:hover){.ready .tag-k:hover{border-color:rgba(255,140,90,.8);box-shadow:0 0 0 3px rgba(255,64,1,.12)}}
+.zeit-anzeige{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;background:#1d1f22;border-radius:14px;padding:16px 18px}
+.zeit-anzeige .tn{font-family:var(--kopf);font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.04em}
+.zeit-anzeige .zz{font-family:var(--kopf);font-weight:700;font-size:28px;color:#fff;letter-spacing:.02em}
+.zeit-anzeige .zz.zu{color:#8d9198}
+.termin{margin-top:14px;font-size:14.5px;color:#AEB1B7}
+.karte{border-radius:20px;overflow:hidden;border:1px solid var(--beton2);background:#fff;transition:box-shadow .2s}
+.karte iframe{display:block;width:100%;height:300px;border:0;filter:grayscale(.55) contrast(1.05)}
+.karte .adr{padding:20px 22px;display:grid;gap:6px}
+.karte .adr h3{font-size:28px;text-transform:uppercase}
+.karte .adr .knoepfe{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+@media (hover:hover){.ready .karte.live:hover{box-shadow:0 0 0 4px rgba(255,64,1,.12)}}
+@media (max-width:900px){.kontakt .raster{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:420px){.tage{gap:4px}.tag-k{font-size:15px;min-height:56px}.tag-k small{display:none}.tag-k.heute small{display:block;font-size:9px}.tafel{padding:18px}}
+
+/* ---------- Fuss ---------- */
+.fuss{background:#000;color:#9a9ea5;font-size:14px;padding:36px 0}
+.fuss .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.fuss a{color:#d6d8db;text-decoration:none}
+.fuss small{display:block;margin-top:4px}
+
+/* ---------- Erscheinen ---------- */
+.js .rise:not(.shown){opacity:0;transform:translateY(18px)}
+.js .rise.shown:not(.live){animation:rein .6s ease both}
+@keyframes rein{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.replace('no-js','js')</script>
+
+<header class="kopf">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Bergerspeed – zum Seitenanfang"><img src="img/logo.jpg" alt="Bergerspeed Garage • Autohandel" width="1200" height="307"></a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a class="n" href="#occasionen">Occasionen</a>
+      <a class="n" href="#werkstatt">Werkstatt</a>
+      <a class="n" href="#team">Team</a>
+      <a class="n" href="#zeiten">Öffnungszeiten</a>
+      <a class="btn btn-o tel" href="tel:+41717500505" aria-label="Anrufen: 071 750 05 05"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg><span>071 750 05 05</span></a>
+    </nav>
+  </div>
+  <nav class="unternav" aria-label="Bereiche"><a href="#occasionen">Occasionen</a><a href="#werkstatt">Werkstatt</a><a href="#team">Team</a><a href="#bewertungen">Bewertungen</a><a href="#zeiten">Öffnungszeiten</a></nav>
+</header>
+
+<main id="top">
+<!-- ============ HERO ============ -->
+<section class="hero" aria-label="Bergerspeed">
+  <div class="tor-rahmen">
+    <div class="tor" id="tor">
+      <picture>
+        <source media="(max-width:860px) and (orientation:portrait)" srcset="img/hero_gt3_hoch.jpg">
+        <source media="(max-width:860px)" srcset="img/hero_gt3_quer_m.jpg">
+        <img id="hero-img" src="img/hero_gt3_quer.jpg" alt="Blauer Porsche 911 GT3 vor dem orangen Eingang der Garage Bergerspeed" width="2200" height="1237">
+      </picture>
+      <div class="lamelle" aria-hidden="true"><b></b></div>
+      <a class="schild" href="#auto-20732392"><small>Jetzt bei uns</small><span>Porsche 911 GT3 · 2023 · 5’000 km</span></a>
+    </div>
+  </div>
+  <div class="text">
+    <div class="wrap">
+      <div class="links">
+        <div class="kicker">Garage · Autohandel · Altstätten SG · seit 2002</div>
+        <h1>Autos mit <em>Herzblut.</em></h1>
+        <p class="lead">Markus Berger führt die Bergerspeed GmbH seit 2002: markenunabhängige Werkstatt und Occasionen, die alle durch unsere eigene Werkstatt geprüft sind.</p>
+      </div>
+      <div class="rechts">
+        <div class="knoepfe">
+          <a class="btn btn-o" href="tel:+41717500505"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>071 750 05 05</a>
+          <a class="btn btn-r" href="#occasionen">19 Occasionen</a>
+        </div>
+        <div class="fakten">
+          <a class="fakt" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bergerspeed+GmbH+Tiefenackerstrasse+54+9450+Altst%C3%A4tten" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Tiefenackerstrasse 54, 9450 Altstätten</a>
+          <a class="fakt" href="#zeiten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="status" id="status-hero"><i></i><span>Öffnungszeiten</span></span></a>
+          <a class="fakt" href="#bewertungen"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><span><b>4,7</b> <span class="sterne">★★★★★</span> · 81 Google-Bewertungen</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OCCASIONEN ============ -->
+<section class="occ" id="occasionen">
+  <div class="wrap">
+    <div class="kopfzeile rise">
+      <div>
+        <div class="kicker">Occasionen · Stand 21.11.2026</div>
+        <h2>Drehen Sie auf.</h2>
+      </div>
+      <p>Ziehen Sie die Nadel: Im PS-Modus leuchten alle Autos ab dieser Leistung, im CHF-Modus alle bis zu Ihrem Budget. Ein Klick aufs Auto öffnet das ganze Inserat.</p>
+    </div>
+    <div class="occ-grid">
+      <div class="instrument rise" id="instrument">
+        <div class="modus" role="group" aria-label="Messen nach">
+          <button type="button" data-modus="ps" aria-pressed="true">Leistung · PS</button>
+          <button type="button" data-modus="chf" aria-pressed="false">Budget · CHF</button>
+        </div>
+        <svg id="tacho" viewBox="0 0 400 400" role="img" aria-label="Drehzahlmesser als Filter für die Occasionen">
+          <defs>
+            <radialGradient id="glas" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#2b2e33"/><stop offset="1" stop-color="#101113"/></radialGradient>
+            <filter id="nglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <circle cx="200" cy="200" r="182" fill="url(#glas)" stroke="#3a3d42" stroke-width="2"/>
+          <path id="bogen-grund" fill="none" stroke="#2d3035" stroke-width="10" stroke-linecap="round"/>
+          <path id="bogen-rot" fill="none" stroke="rgba(255,64,1,.55)" stroke-width="10"/>
+          <path id="bogen-aktiv" class="bogen-aktiv" fill="none" stroke="#FF4001" stroke-width="10" stroke-linecap="round"/>
+          <g id="skala"></g>
+          <text class="einheit" id="einheit" x="200" y="140" text-anchor="middle">PS × 100</text>
+          <text class="wert-k" id="wert-k" x="200" y="268" text-anchor="middle">AB</text>
+          <text class="wert" id="wert" x="200" y="318" text-anchor="middle">0</text>
+          <g id="nadel" filter="url(#nglow)">
+            <path d="M196 200 L200 58 L204 200 Z" fill="#FF4001"/>
+            <circle cx="200" cy="200" r="7" fill="#FF4001"/>
+          </g>
+          <circle class="nabe" cx="200" cy="200" r="20" fill="#1a1b1e" stroke="#4a4e54" stroke-width="3"/>
+        </svg>
+        <input class="schieber" id="schieber" type="range" min="0" max="600" step="10" value="0" aria-label="Wert des Drehzahlmessers">
+        <div class="anzeige">
+          <div class="treffer" id="treffer"><b>19</b> von 19 Autos</div>
+          <button type="button" class="reset" id="reset">Alle zeigen</button>
+        </div>
+        <p class="hinweis">Nadel ziehen, tippen oder Regler schieben.</p>
+      </div>
+
+      <div>
+        <div class="mini" id="mini" aria-hidden="true">
+          <div class="mw" id="mini-w">ab 0 PS<small id="mini-t">19 von 19</small></div>
+          <input type="range" id="mini-s" min="0" max="600" step="10" value="0" tabindex="-1">
+        </div>
+        <div class="autos" id="autos"></div>
+        <div class="quelle">
+          <span>Angaben und Fotos aus unseren Inseraten auf AutoScout24, Stand 21.11.2026.</span>
+          <a href="https://www.autoscout24.ch/de/s/seller-64508" target="_blank" rel="noopener">Alle Inserate auf AutoScout24 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VERSPRECHEN ============ -->
+<section class="versprechen">
+  <div class="wrap">
+    <div class="rise">
+      <div class="kicker">Beim Kauf</div>
+      <h2>Darauf zählen Sie.</h2>
+    </div>
+    <div class="vier">
+      <div class="punkt rise"><div class="zahl-gross">2002</div><h3>Seit 2002</h3><p>Markus Berger führt Bergerspeed seit 2002. Unsere Autos werden alle durch die eigene Werkstatt geprüft.</p></div>
+      <div class="punkt rise"><div class="zahl-gross">1<small> Jahr</small></div><h3>Quality1-Garantie</h3><p>Gegen Aufpreis bis zu 1 Jahr Garantie auf Ihr gebrauchtes Wunschfahrzeug.</p></div>
+      <div class="punkt rise"><div class="zahl-gross">19</div><h3>Occasionen</h3><p>Vom VW Caddy bis zum Porsche 911 GT3. Leasing und Finanzierung mit ALPHERA Financial Services.</p></div>
+      <div class="punkt rise"><div class="zahl-gross">4,7<small>★</small></div><h3>81 Bewertungen</h3><p>Auf Google. Besichtigung und Probefahrt nach telefonischer Vereinbarung.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANKAUF ============ -->
+<section class="ankauf" aria-label="Autoankauf">
+  <div class="wrap rise">
+    <div>
+      <h2>Wir kaufen <em>Ihr Auto.</em></h2>
+      <p>Occasionen aus Privat- und Firmenbesitz, Wagen aus Leasingverträgen, Vorführwagen und Garagenautos, ob PW oder Lieferwagen. Faire Preise gegen Barzahlung, schnelle und reibungslose Abwicklung.</p>
+    </div>
+    <a class="btn btn-o" href="tel:+41717500505">Unverbindlich anfragen</a>
+  </div>
+</section>
+
+<!-- ============ WERKSTATT ============ -->
+<section class="werk" id="werkstatt">
+  <div class="wrap">
+    <div class="oben">
+      <div class="rise">
+        <div class="kicker">Werkstatt</div>
+        <h2>Ihre marken&shy;unabhängige Garage.</h2>
+        <p class="lead" style="margin-top:18px">Reparaturen, Service und die Vorbereitung auf die Motorfahrzeugkontrolle für alle Marken. Mit modernen Analysegeräten und langjähriger Erfahrung lösen wir (fast) jedes Problem. Bei Reparaturen wählen Sie zwischen Neu- und Occasionsteilen.</p>
+        <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-o" href="tel:+41717500505">Termin vereinbaren</a><a class="btn btn-d" href="mailto:info@bergerspeed.ch">info@bergerspeed.ch</a></div>
+      </div>
+      <div class="foto rise"><img src="img/halle_werkstatt.jpg" alt="Werkstatt der Garage Bergerspeed mit Hebebühnen" loading="lazy" width="1400" height="933"></div>
+    </div>
+    <div class="dienste">
+      <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 5a7 7 0 0 0-8.6 9L5 21.4a2.8 2.8 0 0 0 4 4L16.6 18a7 7 0 0 0 9-8.6l-4 4-3.5-1-1-3.5z"/></svg><h3>Service</h3><p>Füllstände, Pneus, Zündkerzen, Batterie, Wischer, Auspuff, Bremsen und Stossdämpfer.</p></div>
+      <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="6" y="4" width="22" height="26" rx="3"/><path class="o" d="M11 17l4 4 8-9"/></svg><h3>MFK-Vorbereitung</h3><p>Wir bereiten Ihr Auto zum fairen Preis auf die Motorfahrzeugkontrolle vor.</p></div>
+      <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 22l4-8h18l4 8v5H4z"/><circle cx="10" cy="27" r="3"/><circle cx="24" cy="27" r="3"/><path class="o" d="M14 9l3-4 3 4"/></svg><h3>Reparaturen</h3><p>Reparaturen aller Marken, wahlweise mit Neu- oder Occasionsteilen.</p></div>
+      <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 26c4-2 6-8 12-8s7 4 10 4"/><path class="o" d="M20 6l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></svg><h3>Lack, Dellen, Rost</h3><p>Kratzer und kleine Dellen ausbessern, Rost entfernen und die Stelle nachlackieren.</p></div>
+      <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 25L9 9h16l4 16z"/><path class="o" d="M15 14l2 3-3 2 2 3"/></svg><h3>Scheiben</h3><p>Steinschlag in der Frontscheibe? Bei grösseren Schäden ersetzen wir die Scheibe. Lieber früh einen Termin vereinbaren.</p></div>
+      <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="17" cy="17" r="12"/><circle class="o" cx="17" cy="17" r="5"/><path d="M17 5v7M17 22v7M5 17h7M22 17h7"/></svg><h3>Pneus & Einlagerung</h3><p>Sommer- und Winterräder, Beratung zu Felgen, Radwechsel und Rädereinlagerung bei uns.</p></div>
+      <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="12" width="18" height="12" rx="2"/><path d="M22 18h8"/><path class="o" d="M9 7c0 2 2 2 2 4M15 7c0 2 2 2 2 4"/></svg><h3>Dieselpartikelfilter-Test</h3><p>Wir testen den Dieselpartikelfilter bei uns vor Ort. Termin per Mail oder Telefon.</p></div>
+      <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 22l3-7h16l3 7v4H6z"/><path class="o" d="M10 5v4M17 4v5M24 5v4"/></svg><h3>Autoreinigung</h3><p>Auf Wunsch reinigen wir Ihr Auto gleich mit.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VOR UNSEREM TOR ============ -->
+<section class="galerie nacht" aria-label="Fotogalerie">
+  <div class="wrap">
+    <div class="kopfzeile rise">
+      <div>
+        <div class="kicker">Aus unserer Fotogalerie</div>
+        <h2>Vor unserem Tor.</h2>
+      </div>
+      <div class="pfeile">
+        <button class="pfeil" type="button" data-dir="-1" aria-label="Zurück"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="pfeil" type="button" data-dir="1" aria-label="Weiter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+    <div class="band" id="band">
+      <figure class="rise"><img src="img/leg_countach.jpg" alt="Roter Lamborghini Countach vor der Garage Bergerspeed" loading="lazy" width="1200" height="900"><figcaption>Lamborghini Countach</figcaption></figure>
+      <figure class="rise"><img src="img/leg_gt3rs_gelb.jpg" alt="Gelber Porsche 911 GT3 RS vor dem orangen Eingang" loading="lazy" width="1200" height="900"><figcaption>Porsche 911 GT3 RS</figcaption></figure>
+      <figure class="rise"><img src="img/leg_f308.jpg" alt="Roter Ferrari vor dem orangen Eingang" loading="lazy" width="1200" height="900"><figcaption>Ferrari</figcaption></figure>
+      <figure class="rise"><img src="img/leg_e30m3.jpg" alt="Schwarzer BMW der Baureihe E30" loading="lazy" width="1200" height="900"><figcaption>BMW E30</figcaption></figure>
+      <figure class="rise"><img src="img/leg_charger.jpg" alt="Oranger Dodge Charger im Abendlicht" loading="lazy" width="1000" height="750"><figcaption>Dodge Charger</figcaption></figure>
+      <figure class="rise"><img src="img/leg_f458.jpg" alt="Roter Ferrari vor der Garage" loading="lazy" width="1200" height="900"><figcaption>Ferrari</figcaption></figure>
+      <figure class="rise"><img src="img/halle_werkstatt2.jpg" alt="Blick in die Werkstatthalle von Bergerspeed" loading="lazy" width="1400" height="935"><figcaption>In der Halle</figcaption></figure>
+      <figure class="rise"><img src="img/gebaeude.jpg" alt="Gebäude der Bergerspeed GmbH an der Tiefenackerstrasse in Altstätten" loading="lazy" width="1800" height="1202"><figcaption>Tiefenackerstrasse 54</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="team" id="team">
+  <div class="wrap">
+    <div class="oben">
+      <div class="rise">
+        <div class="kicker">Über uns</div>
+        <h2>Wir sind für Sie da.</h2>
+      </div>
+      <p class="zitat rise">«Seit dem Jahr 2002 führt Markus Berger die Firma Bergerspeed mit <em>Herzblut und Leidenschaft.</em> Rufen Sie mich für eine unverbindliche Beratung an.»</p>
+    </div>
+    <div class="leute">
+      <div class="mensch rise"><img src="img/team_markus.jpg" alt="Markus Berger" loading="lazy" width="700" height="874"><div><h3>Markus Berger</h3><p>Inhaber</p></div></div>
+      <div class="mensch rise"><img src="img/team_marc.jpg" alt="Marc Gruber" loading="lazy" width="700" height="874"><div><h3>Marc Gruber</h3><p>Werkstatt</p></div></div>
+      <div class="mensch rise"><img src="img/team_monika.jpg" alt="Monika Berger" loading="lazy" width="700" height="874"><div><h3>Monika Berger</h3><p>Buchhaltung</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEWERTUNGEN ============ -->
+<section class="brett" id="bewertungen">
+  <div class="wrap">
+    <div class="kopfzeile rise">
+      <div>
+        <div class="kicker">Am Schlüsselbrett</div>
+        <h2>Was Kunden sagen.</h2>
+      </div>
+      <a class="note" href="https://www.google.com/maps/search/?api=1&amp;query=Garage+Bergerspeed+GmbH+Altst%C3%A4tten" target="_blank" rel="noopener"><b>4,7</b><span><span class="sterne">★★★★★</span><small>81 Bewertungen auf Google</small></span></a>
+    </div>
+    <div class="haken">
+      <div class="anh" style="--rest:-1.5deg"><div class="tag t1"><div class="auto-n">Occasion</div><blockquote>«Top-Adresse für ehrliche und gepflegte Occasionen. Markus ist sehr freundlich und kein Aufwand ist ihm zu viel. […] Hier wird man ehrlich und direkt beraten.»</blockquote><div class="wer">Angelo Michielin <span>Google ★★★★★</span></div></div></div>
+      <div class="anh" style="--rest:1.2deg"><div class="tag t2"><div class="auto-n">Mini</div><blockquote>«Absolut top Service! Markus Berger ist sehr bemüht und macht mit Humor und Freundlichkeit auch Schwieriges oder Unmögliches möglich.»</blockquote><div class="wer">Rolf Kaufmann <span>Google ★★★★★</span></div></div></div>
+      <div class="anh" style="--rest:-.8deg"><div class="tag t3"><div class="auto-n">BMW X3 M40i</div><blockquote>«Vom ersten Kontakt bis zur Fahrzeugübergabe lief alles absolut reibungslos. […] Alle Fragen wurden transparent beantwortet.»</blockquote><div class="wer">Jan Schmidli <span>Google ★★★★★</span></div></div></div>
+      <div class="anh" style="--rest:1deg"><div class="tag t3"><div class="auto-n">Traumauto</div><blockquote>«Herzlichsten Dank für die unkomplizierte Art und Weise, wie wir den Kauf per Telefon eines ungesehenen Traumautos abwickeln konnten.»</blockquote><div class="wer">Ingo Beck <span>Google ★★★★★</span></div></div></div>
+      <div class="anh" style="--rest:-1.3deg"><div class="tag t1"><div class="auto-n">BMW M135i</div><blockquote>«Sehr seriöser Händler/Garagist mit attraktiven Occasionsangeboten. Verkäufer war sehr zuvorkommend, aber keinesfalls aufdringlich.»</blockquote><div class="wer">Thomas Trinkler <span>Google ★★★★★</span></div></div></div>
+      <div class="anh" style="--rest:1.5deg"><div class="tag t2"><div class="auto-n">Occasion</div><blockquote>«Fahrzeug genau wie beschrieben! Keine Mängel festgestellt. Eine tolle Garage und ein freundlicher, hilfsbereiter Chef!»</blockquote><div class="wer">M. Land <span>Google ★★★★★</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ZEITEN / KONTAKT ============ -->
+<section class="kontakt" id="zeiten">
+  <div class="wrap">
+    <div class="rise" style="margin-bottom:36px">
+      <div class="kicker">Öffnungszeiten & Anfahrt</div>
+      <h2>Kommen Sie vorbei.</h2>
+    </div>
+    <div class="raster">
+      <div class="tafel rise">
+        <span class="status" id="status-tafel"><i></i><span>Öffnungszeiten</span></span>
+        <div class="tage" role="tablist" aria-label="Wochentag wählen" id="tage"></div>
+        <div class="zeit-anzeige" aria-live="polite"><span class="tn" id="tn">Montag</span><span class="zz" id="zz">07:30–11:30 · 13:00–17:00</span></div>
+        <p class="termin">Garage und Verkauf · Termin nach Vereinbarung, am besten telefonisch: <a href="tel:+41717500505" style="color:#fff;font-weight:700">071 750 05 05</a></p>
+      </div>
+      <div class="karte rise">
+        <iframe title="Karte: Bergerspeed GmbH, Tiefenackerstrasse 54, Altstätten" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=9.5575%2C47.3783%2C9.5667%2C47.3820&amp;layer=mapnik&amp;marker=47.38017%2C9.56211"></iframe>
+        <div class="adr">
+          <h3>Bergerspeed GmbH</h3>
+          <span>Tiefenackerstrasse 54 · 9450 Altstätten SG</span>
+          <span><a href="tel:+41717500505">071 750 05 05</a> · <a href="mailto:info@bergerspeed.ch">info@bergerspeed.ch</a></span>
+          <div class="knoepfe">
+            <a class="btn btn-o" href="tel:+41717500505">Anrufen</a>
+            <a class="btn btn-d" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bergerspeed+GmbH+Tiefenackerstrasse+54+9450+Altst%C3%A4tten" target="_blank" rel="noopener">Route planen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="fuss">
+  <div class="wrap">
+    <div>Bergerspeed GmbH · Tiefenackerstrasse 54 · 9450 Altstätten · <a href="tel:+41717500505">071 750 05 05</a><small>Inhaber: Markus Berger · UID CHE-114.376.334 · © 2026</small></div>
+    <div>Entwurf · nur zur Ansicht<small>Fotos: Bergerspeed (Website und Inserate)</small></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var D=document, root=D.documentElement, body=D.body;
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- Daten: 19 Inserate AutoScout24, Stand 21.11.2026 ---------- */
+var AUTOS=[
+ {id:20732392,s:"porsche-911-gt3-pdk",m:"Porsche",t:"911 GT3 PDK",d:"07.2023",km:5000,ps:510,f:"Benzin",g:"Automat",p:185000,b:["Porsche Approved"]},
+ {id:20589342,s:"vw-amarok-30tdi-aventura-winter-1",m:"VW",t:"Amarok 3.0 TDI Aventura",d:"03.2025",km:9000,ps:240,f:"Diesel",g:"",p:69990,b:["Umbauten eingetragen"]},
+ {id:20978179,s:"bmw-m5-touring",m:"BMW",t:"M5 Touring",d:"08.2007",km:163000,ps:507,f:"Benzin",g:"SMG",p:54500,b:["Frisch ab MFK"]},
+ {id:20891721,s:"lancia-integrale-hf-turbo",m:"Lancia",t:"Integrale HF Turbo",d:"04.1989",km:108000,ps:null,f:"Benzin",g:"Schaltgetriebe",p:39990,alt:43800,b:["Preis gesenkt"]},
+ {id:20596405,s:"bmw-z3-28-l-coupe",m:"BMW",t:"Z3 2.8 Coupé",d:"04.2000",km:114500,ps:null,f:"Benzin",g:"Schaltgetriebe",p:26900,b:[]},
+ {id:20865804,s:"bmw-x1-xdrive-20d-48v",m:"BMW",t:"X1 xDrive 20d 48V",d:"11.2023",km:92000,ps:149,f:"Mild-Hybrid Diesel",g:"Automat",p:25990,b:["Frisch ab MFK"]},
+ {id:20834766,s:"porsche-cayenne-s",m:"Porsche",t:"Cayenne S",d:"01.2008",km:169000,ps:385,f:"Benzin",g:"Schaltgetriebe",p:22900,b:["Frisch ab MFK"]},
+ {id:20933603,s:"bmw-520i",m:"BMW",t:"520i",d:"07.1983",km:135000,ps:125,f:"Benzin",g:"Schaltgetriebe",p:21990,b:["Oldtimer"]},
+ {id:20933584,s:"bmw-z4-30si-coupe",m:"BMW",t:"Z4 3.0si Coupé",d:"02.2008",km:190000,ps:265,f:"Benzin",g:"Schaltgetriebe",p:21900,b:["Frisch ab MFK"]},
+ {id:20834819,s:"vw-t3-21-hannover-edition",m:"VW",t:"T3 2.1 Hannover Edition",d:"03.1990",km:175000,ps:88,f:"Benzin",g:"Schaltgetriebe",p:21800,b:[]},
+ {id:20978165,s:"volvo-xc60-t8-eawd-r-design-geartronic",m:"Volvo",t:"XC60 T8 eAWD R-Design",d:"04.2019",km:175000,ps:391,f:"Plug-in-Hybrid",g:"",p:19900,b:["Frisch ab MFK"]},
+ {id:20971826,s:"vw-t-roc-20-tsi-sport-dsg-4motion",m:"VW",t:"T-Roc 2.0 TSI Sport DSG 4Motion",d:"06.2019",km:132000,ps:190,f:"Benzin",g:"Automat",p:17900,b:["Frisch ab MFK"]},
+ {id:20978077,s:"audi-a3-sportback-35-tdi-sport-standheizung",m:"Audi",t:"A3 Sportback 35 TDI Sport",d:"10.2019",km:126500,ps:150,f:"Diesel",g:"Automat",p:17500,b:["Standheizung"]},
+ {id:20978040,s:"skoda-fabia-10-tsi-ambition-dsg",m:"Škoda",t:"Fabia 1.0 TSI Ambition DSG",d:"08.2022",km:71500,ps:110,f:"Benzin",g:"Automat",p:16900,b:["Frisch ab MFK"]},
+ {id:20873974,s:"audi-a1-sportback-14-tfsi-sport-s-tronic",m:"Audi",t:"A1 Sportback 1.4 TFSI S-tronic",d:"01.2018",km:89500,ps:125,f:"Benzin",g:"Automat",p:15990,b:["Frisch ab MFK"]},
+ {id:20961827,s:"bmw-218d-xdrive-active-tourer-steptronic-m-sport",m:"BMW",t:"218d xDrive Active Tourer M Sport",d:"06.2021",km:116498,ps:150,f:"Diesel",g:"",p:15900,b:[]},
+ {id:20933594,s:"bmw-116d-steptronic",m:"BMW",t:"116d Steptronic",d:"01.2020",km:175000,ps:116,f:"Diesel",g:"Automat",p:12990,b:["Frisch ab MFK"]},
+ {id:20914304,s:"mini-cooper-s-steptronic",m:"Mini",t:"Cooper S Steptronic",d:"10.2014",km:148000,ps:192,f:"Benzin",g:"",p:11700,b:[]},
+ {id:20988128,s:"vw-caddy-20-tdi-4motion-trendline",m:"VW",t:"Caddy 2.0 TDI 4Motion Trendline",d:"09.2012",km:214000,ps:110,f:"Diesel",g:"Schaltgetriebe",p:9500,b:["Frisch ab MFK"]}
+];
+function chf(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,"’")}
+var box=D.getElementById('autos');
+box.innerHTML=AUTOS.map(function(a){
+  var badges=a.b.map(function(x,i){return '<span'+(x==="Porsche Approved"||x==="Preis gesenkt"?' class="o"':'')+'>'+x+'</span>'}).join('');
+  var daten=['1. Inv. '+a.d, chf(a.km)+' km', a.f, a.g].filter(Boolean).map(function(x){return '<span>'+x+'</span>'}).join('');
+  return '<article class="auto rise'+(a.id===20732392?' gross':'')+'" id="auto-'+a.id+'" data-ps="'+(a.ps||'')+'" data-p="'+a.p+'">'+
+    '<div class="foto"><img src="img/car_'+a.id+'.jpg" alt="'+a.m+' '+a.t+'" loading="lazy" width="820" height="615"></div>'+
+    (badges?'<div class="marken">'+badges+'</div>':'')+
+    '<div class="info"><div class="marke">'+a.m+'</div><h3><a class="ganz" href="https://www.autoscout24.ch/de/d/'+a.s+'-'+a.id+'" target="_blank" rel="noopener">'+a.t+'</a></h3><div class="daten">'+daten+'</div>'+
+    '<div class="preis"><b>CHF '+chf(a.p)+'.–</b>'+(a.alt?'<s>CHF '+chf(a.alt)+'.–</s>':'')+(a.ps?'<span class="ps">'+a.ps+' PS</span>':'')+'</div>'+
+    '<div class="aktion"><a class="anruf" href="tel:+41717500505">Anrufen · Probefahrt</a><span class="inserat">Inserat →</span></div></div></article>';
+}).join('');
+
+/* ---------- Erscheinen (einmal), danach "live" für Hover ---------- */
+function liveSpaeter(el,ms){setTimeout(function(){el.classList.add('live')},ms)}
+var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ var el=e.target; el.classList.add('shown'); liveSpaeter(el, reduce?0:650); io.unobserve(el);} });
+},{rootMargin:'0px 0px -6% 0px',threshold:0.01}):null;
+D.querySelectorAll('.rise').forEach(function(el){ if(io) io.observe(el); else {el.classList.add('shown','live');} });
+/* nie hängen bleiben: alles oberhalb des Sichtfelds sofort zeigen */
+function nachholen(){ D.querySelectorAll('.rise:not(.shown)').forEach(function(el){ if(el.getBoundingClientRect().bottom<0){el.classList.add('shown','live'); if(io) io.unobserve(el);} }); }
+window.addEventListener('scroll',nachholen,{passive:true});
+
+/* Schlüsselanhänger: einmal pendeln */
+var ioA=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ var el=e.target, i=[].indexOf.call(el.parentNode.children,el); setTimeout(function(){el.classList.add('schwingt'); liveSpaeter(el, reduce?0:1650);}, reduce?0:i%3*140); ioA.unobserve(el);} });
+},{threshold:0.15}):null;
+D.querySelectorAll('.anh').forEach(function(el){ if(ioA) ioA.observe(el); else el.classList.add('schwingt','live'); });
+window.addEventListener('scroll',function(){ D.querySelectorAll('.anh:not(.schwingt)').forEach(function(el){ if(el.getBoundingClientRect().bottom<0){el.classList.add('schwingt','live');} }); },{passive:true});
+
+/* ---------- Tor auf ---------- */
+var tor=D.getElementById('tor'), himg=D.getElementById('hero-img');
+function fertig(){ body.classList.add('ready'); }
+function torAuf(){
+  if(reduce){ tor.classList.add('auf'); fertig(); return; }
+  requestAnimationFrame(function(){ setTimeout(function(){ tor.classList.add('auf'); setTimeout(fertig,2150); },250); });
+}
+if(himg.complete && himg.naturalWidth) torAuf();
+else { himg.addEventListener('load',torAuf,{once:true}); himg.addEventListener('error',torAuf,{once:true}); setTimeout(function(){ if(!tor.classList.contains('auf')) torAuf(); },4000); }
+
+/* ---------- Drehzahlmesser ---------- */
+var svg=D.getElementById('tacho'), nadel=D.getElementById('nadel'), skala=D.getElementById('skala');
+var wertT=D.getElementById('wert'), wertK=D.getElementById('wert-k'), einheit=D.getElementById('einheit');
+var schieber=D.getElementById('schieber'), miniS=D.getElementById('mini-s'), miniW=D.getElementById('mini-w');
+var treffer=D.getElementById('treffer'), autosEl=D.getElementById('autos');
+var karten=[].slice.call(autosEl.querySelectorAll('.auto'));
+var MODI={ ps:{max:600,step:10,rot:500,labels:7,teiler:100,k:'AB',start:0},
+           chf:{max:200000,step:1000,rot:999999,labels:11,teiler:20000,k:'BIS',start:200000} };
+var modus='ps', wert=0, busy=false;
+var CX=200, CY=200, R=160, A0=135, SW=270;
+function pol(a,r){var t=a*Math.PI/180;return [CX+r*Math.cos(t),CY+r*Math.sin(t)]}
+function bogen(a1,a2,r){var p1=pol(a1,r),p2=pol(a2,r),gross=(a2-a1)>180?1:0;return 'M'+p1[0].toFixed(1)+' '+p1[1].toFixed(1)+' A'+r+' '+r+' 0 '+gross+' 1 '+p2[0].toFixed(1)+' '+p2[1].toFixed(1)}
+function winkel(v){return A0+SW*v/MODI[modus].max}
+function zeichneSkala(){
+  var M=MODI[modus], h='';
+  D.getElementById('bogen-grund').setAttribute('d',bogen(A0,A0+SW,R));
+  D.getElementById('bogen-rot').setAttribute('d', M.rot<=M.max? bogen(winkel(M.rot),A0+SW,R) : '');
+  var n=(M.labels-1)*2;
+  for(var i=0;i<=n;i++){
+    var v=M.max*i/n, a=winkel(v), gross=i%2===0, rot=v>=M.rot;
+    var p1=pol(a,R-(gross?26:18)), p2=pol(a,R-8);
+    h+='<line class="tick'+(rot?' rot':'')+'" x1="'+p1[0].toFixed(1)+'" y1="'+p1[1].toFixed(1)+'" x2="'+p2[0].toFixed(1)+'" y2="'+p2[1].toFixed(1)+'" stroke-width="'+(gross?3:1.6)+'"/>';
+    if(gross){ var pl=pol(a,R-48), lab=modus==='ps'? (v/100) : (v/10000);
+      h+='<text class="zahl'+(rot?' rot':'')+'" x="'+pl[0].toFixed(1)+'" y="'+(pl[1]+8).toFixed(1)+'" text-anchor="middle">'+lab+'</text>'; }
+  }
+  skala.innerHTML=h;
+  einheit.textContent=modus==='ps'?'PS × 100':'CHF × 10’000';
+  wertK.textContent=M.k;
+  [schieber,miniS].forEach(function(s){s.max=M.max;s.step=M.step;});
+}
+function passt(k,v){
+  if(modus==='ps'){ var ps=+k.dataset.ps||0; return v<=0 || (ps>0 && ps>=v); }
+  return +k.dataset.p<=v;
+}
+function setze(v,ohneFilter){
+  var M=MODI[modus]; v=Math.max(0,Math.min(M.max,Math.round(v/M.step)*M.step)); wert=v;
+  nadel.setAttribute('transform','rotate('+(winkel(v)+90)+' '+CX+' '+CY+')');
+  D.getElementById('bogen-aktiv').setAttribute('d', v>0? bogen(A0,winkel(v),R) : '');
+  var txt = modus==='ps'? String(v) : chf(v);
+  wertT.textContent=txt; wertT.style.fontSize = (modus==='chf' && v>=100000)?'40px':(modus==='chf'?'44px':'');
+  schieber.value=v; miniS.value=v;
+  wertK.textContent = v<=0 ? '' : M.k; if(v<=0) wertT.textContent='ALLE';
+  autosEl.classList.toggle('rot', !ohneFilter && modus==='ps' && v>=M.rot);
+  if(ohneFilter) return;
+  var z=0; karten.forEach(function(k){ var ok=passt(k,v); k.classList.toggle('aus',!ok); k.setAttribute('aria-hidden', ok?'false':'true'); if(ok) z++; });
+  treffer.innerHTML='<b>'+z+'</b> von '+karten.length+' Autos';
+  miniW.innerHTML=(modus==='ps'?'ab '+v+' PS':'bis CHF '+chf(v))+'<small>'+z+' von '+karten.length+'</small>';
+}
+function wechsle(m){
+  if(busy||m===modus) return; modus=m;
+  D.querySelectorAll('.modus button').forEach(function(b){b.setAttribute('aria-pressed', b.dataset.modus===m?'true':'false')});
+  zeichneSkala(); setze(MODI[m].start);
+}
+D.querySelectorAll('.modus button').forEach(function(b){ b.addEventListener('click',function(){wechsle(b.dataset.modus)}); });
+D.getElementById('reset').addEventListener('click',function(){ if(!busy) setze(MODI[modus].start); });
+schieber.addEventListener('input',function(){ if(!busy) setze(+schieber.value); });
+miniS.addEventListener('input',function(){ if(!busy) setze(+miniS.value); });
+
+function ausZeiger(e){
+  var r=svg.getBoundingClientRect(), x=(e.clientX-r.left)*400/r.width, y=(e.clientY-r.top)*400/r.height;
+  var a=Math.atan2(y-CY,x-CX)*180/Math.PI; if(a<0) a+=360;      // 0..360, 0 = rechts
+  var rel=a-A0; if(rel<0) rel+=360;                              // 0..360 ab Startpunkt
+  if(rel>SW){ rel = rel>SW+(360-SW)/2 ? 0 : SW; }                // toter Bereich unten
+  setze(MODI[modus].max*rel/SW);
+}
+var zieht=false;
+svg.addEventListener('pointerdown',function(e){ if(busy) return; zieht=true; svg.classList.add('zieht'); try{svg.setPointerCapture(e.pointerId)}catch(_){} ausZeiger(e); });
+svg.addEventListener('pointermove',function(e){ if(zieht) ausZeiger(e); });
+['pointerup','pointercancel','lostpointercapture'].forEach(function(t){ svg.addEventListener(t,function(){ zieht=false; svg.classList.remove('zieht'); }); });
+
+zeichneSkala(); setze(0);
+
+/* Zündung an: Nadel fegt einmal bis zum Anschlag und zurück, sobald das Instrument zu sehen ist */
+function sweep(){
+  if(reduce) return;
+  busy=true; svg.classList.add('busy'); autosEl.classList.add('busy');
+  var t0=null, dauer=1700, M=MODI.ps;
+  function f(t){ if(!t0) t0=t; var p=Math.min(1,(t-t0)/dauer);
+    var v = p<.45 ? M.max*easeOut(p/.45) : M.max*(1-easeInOut((p-.45)/.55));
+    setze(v,true);
+    if(p<1) requestAnimationFrame(f); else { setze(0); busy=false; svg.classList.remove('busy'); autosEl.classList.remove('busy'); }
+  }
+  requestAnimationFrame(f);
+}
+function easeOut(x){return 1-Math.pow(1-x,3)}
+function easeInOut(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}
+if('IntersectionObserver' in window){
+  var ioS=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ ioS.disconnect(); setTimeout(sweep,150);} }); },{threshold:.75});
+  ioS.observe(svg);
+}
+
+/* Mini-Leiste auf dem Telefon: zeigen, sobald das Instrument aus dem Bild ist */
+var mini=D.getElementById('mini'), instr=D.getElementById('instrument'), occ=D.getElementById('occasionen');
+function miniPruefen(){
+  var ri=instr.getBoundingClientRect(), ro=occ.getBoundingClientRect();
+  var zeigen = ri.bottom<80 && ro.bottom>220;
+  mini.classList.toggle('zeigen',zeigen); mini.setAttribute('aria-hidden',zeigen?'false':'true'); miniS.tabIndex=zeigen?0:-1;
+}
+window.addEventListener('scroll',miniPruefen,{passive:true}); window.addEventListener('resize',miniPruefen);
+
+/* ---------- Galerie-Pfeile ---------- */
+var band=D.getElementById('band');
+D.querySelectorAll('.pfeil').forEach(function(b){ b.addEventListener('click',function(){ var f=band.querySelector('figure'); band.scrollBy({left:(+b.dataset.dir)*(f.getBoundingClientRect().width+18),behavior:reduce?'auto':'smooth'}); }); });
+
+/* ---------- Öffnungszeiten (Zeitzone Zürich) ---------- */
+var TAGE=[ // Mo..So
+ {k:'Mo',n:'Montag',z:[[450,690],[780,1020]]},{k:'Di',n:'Dienstag',z:[[450,690],[780,1020]]},
+ {k:'Mi',n:'Mittwoch',z:[[450,690],[780,1020]]},{k:'Do',n:'Donnerstag',z:[[450,690],[780,1020]]},
+ {k:'Fr',n:'Freitag',z:[[450,690]]},{k:'Sa',n:'Samstag',z:[]},{k:'So',n:'Sonntag',z:[]}];
+function hm(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
+function zeitText(t){return t.z.length? t.z.map(function(s){return hm(s[0])+'–'+hm(s[1])}).join(' · ') : 'geschlossen'}
+function jetztZH(){
+  var p={}; new Intl.DateTimeFormat('de-CH',{timeZone:'Europe/Zurich',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});
+  var map={'Mo':0,'Di':1,'Mi':2,'Do':3,'Fr':4,'Sa':5,'So':6}; var wd=map[(p.weekday||'Mo').slice(0,2)]; if(wd===undefined) wd=0;
+  return {tag:wd,min:(+p.hour%24)*60+(+p.minute)};
+}
+var J=jetztZH();
+function status(){
+  var t=TAGE[J.tag], m=J.min;
+  for(var i=0;i<t.z.length;i++){ if(m>=t.z[i][0]&&m<t.z[i][1]) return {offen:true,txt:'Jetzt offen · bis '+hm(t.z[i][1])}; }
+  for(i=0;i<t.z.length;i++){ if(m<t.z[i][0]) return {offen:false,txt:'Geschlossen · öffnet heute '+hm(t.z[i][0])}; }
+  for(var d=1;d<=7;d++){ var n=TAGE[(J.tag+d)%7]; if(n.z.length) return {offen:false,txt:'Geschlossen · öffnet '+(d===1?'morgen':n.n)+' '+hm(n.z[0][0])}; }
+}
+var st=status();
+['status-hero','status-tafel'].forEach(function(id){ var el=D.getElementById(id); el.classList.toggle('offen',st.offen); el.lastElementChild.textContent=st.txt; });
+var tageEl=D.getElementById('tage'), tn=D.getElementById('tn'), zz=D.getElementById('zz');
+tageEl.innerHTML=TAGE.map(function(t,i){return '<button type="button" role="tab" class="tag-k'+(t.z.length?'':' zu')+(i===J.tag?' heute':'')+'" data-i="'+i+'" aria-selected="'+(i===J.tag)+'" aria-label="'+t.n+'">'+t.k+'<small>'+(i===J.tag?'heute':(t.z.length?(t.z.length>1?'ganzer Tag':'Vormittag'):'zu'))+'</small></button>'}).join('');
+function waehle(i){ tageEl.querySelectorAll('.tag-k').forEach(function(b){b.setAttribute('aria-selected', +b.dataset.i===i?'true':'false')}); tn.textContent=TAGE[i].n+(i===J.tag?' · heute':''); zz.textContent=zeitText(TAGE[i]); zz.classList.toggle('zu',!TAGE[i].z.length); }
+tageEl.addEventListener('click',function(e){ var b=e.target.closest('.tag-k'); if(b) waehle(+b.dataset.i); });
+waehle(J.tag);
+})();
+</script>
+</body>
+</html>
