@@ -15,9 +15,9 @@
 :root{
   --nacht:#0F1012; --anthrazit:#1C1E21; --stahl:#2A2D31; --stahl2:#3A3D42;
   --beton:#ECEBE7; --beton2:#DFDDD7; --weiss:#FFFFFF;
-  --orange:#FF4001; --orange-hell:#FF6A33;
-  --glow:0 0 0 4px rgba(255,64,1,.18), 0 10px 30px rgba(255,64,1,.28);
-  --glow-hell:0 0 0 3px rgba(255,140,90,.35), 0 10px 26px rgba(255,64,1,.22);
+  --orange:#EA5D2E; --orange-hell:#EE8558;
+  --glow:0 0 0 4px rgba(234,93,46,.18), 0 10px 30px rgba(234,93,46,.28);
+  --glow-hell:0 0 0 3px rgba(238,133,88,.35), 0 10px 26px rgba(234,93,46,.22);
   --text:#16181B; --text-hell:#F2F1EE; --grau:#A7AAB0; --grau-d:#5C6068;
   --gruen:#3FB97A;
   --kopf:'Saira Condensed', 'Arial Narrow', sans-serif;
@@ -49,8 +49,8 @@ section{padding:clamp(72px,9vw,120px) 0}
 .btn-d{border:2px solid var(--stahl);color:var(--text)}
 @media (hover:hover){
   .ready .btn-o:hover{background:var(--orange-hell);box-shadow:var(--glow)}
-  .ready .btn-r:hover{border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,64,1,.14);color:#fff}
-  .ready .btn-d:hover{border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,64,1,.12)}
+  .ready .btn-r:hover{border-color:var(--orange);box-shadow:0 0 0 4px rgba(234,93,46,.14);color:#fff}
+  .ready .btn-d:hover{border-color:var(--orange);box-shadow:0 0 0 4px rgba(234,93,46,.12)}
 }
 .btn:active{transform:scale(.97)}
 :focus-visible{outline:3px solid var(--orange);outline-offset:3px}
@@ -63,8 +63,8 @@ section{padding:clamp(72px,9vw,120px) 0}
 .nav{display:flex;gap:6px;align-items:center}
 .nav a{font-family:var(--kopf);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:16px;color:#d9d9d9;text-decoration:none;padding:8px 12px;border-radius:8px;transition:box-shadow .2s, color .2s, background-color .2s}
 @media (hover:hover){
-  .ready .nav a:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,64,1,.7);background:rgba(255,64,1,.08)}
-  .ready .logo:hover{box-shadow:0 0 0 3px rgba(255,64,1,.25)}
+  .ready .nav a:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.7);background:rgba(234,93,46,.08)}
+  .ready .logo:hover{box-shadow:0 0 0 3px rgba(234,93,46,.25)}
 }
 .kopf .tel{min-height:44px;padding:0 18px;font-size:17px}
 .unternav{display:none}
@@ -72,7 +72,7 @@ section{padding:clamp(72px,9vw,120px) 0}
   .unternav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;border-top:1px solid #1d1d1d;padding:4px 14px;height:42px;align-items:center}
   .unternav::-webkit-scrollbar{display:none}
   .unternav a{flex:none;font-family:var(--kopf);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:14px;color:#d9d9d9;text-decoration:none;padding:6px 10px;border-radius:8px}
-  .unternav a:active{background:rgba(255,64,1,.15)}
+  .unternav a:active{background:rgba(234,93,46,.15)}
   html{scroll-padding-top:112px}
 }
 html{scroll-padding-top:76px}
@@ -116,8 +116,8 @@ html{scroll-padding-top:76px}
 .fakten{display:grid;gap:4px;font-size:16px;color:#D5D7DA}
 .fakten a{text-decoration:none}
 .fakt{display:flex;gap:12px;align-items:center;padding:7px 12px;margin-left:-12px;border-radius:10px;transition:box-shadow .2s, background-color .2s;width:fit-content;max-width:100%}
-.fakt svg{width:20px;height:20px;color:var(--orange);flex:none}
-@media (hover:hover){.ready a.fakt:hover{background:rgba(255,64,1,.1);box-shadow:inset 0 0 0 1.5px rgba(255,64,1,.5);color:#fff}}
+.fakt svg{width:22px;height:22px;color:#EA5D2E;flex:none;}
+@media (hover:hover){.ready a.fakt:hover{background:rgba(234,93,46,.1);box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.5);color:#fff}}
 .status{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:#fff}
 .status i{width:10px;height:10px;border-radius:50%;background:var(--grau-d);box-shadow:0 0 0 4px rgba(255,255,255,.06)}
 .status.offen i{background:var(--gruen);box-shadow:0 0 0 4px rgba(63,185,122,.18)}
@@ -167,8 +167,8 @@ html{scroll-padding-top:76px}
 .instrument{position:sticky;top:96px;background:radial-gradient(circle at 50% 38%,#26292d,#141517 70%);border:1px solid #33363b;border-radius:24px;padding:22px 22px 24px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 24px 60px rgba(0,0,0,.35)}
 .modus{display:grid;grid-template-columns:1fr 1fr;background:#0d0e10;border-radius:999px;padding:4px;margin-bottom:10px}
 .modus button{min-height:42px;border-radius:999px;font-family:var(--kopf);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:16px;color:#9a9ea5;transition:background-color .2s, color .2s, box-shadow .2s}
-.modus button[aria-pressed="true"]{background:var(--stahl2);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,64,1,.65)}
-@media (hover:hover){.ready .modus button:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,64,1,.45)}}
+.modus button[aria-pressed="true"]{background:var(--stahl2);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.65)}
+@media (hover:hover){.ready .modus button:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.45)}}
 #tacho{width:100%;height:auto;display:block;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
 #tacho.zieht{cursor:grabbing}
 #tacho .tick{stroke:#cfd2d6}
@@ -181,14 +181,14 @@ html{scroll-padding-top:76px}
 #tacho .bogen-aktiv{transition:stroke .2s}
 #nadel{transition:none}
 #tacho .nabe{transition:filter .2s}
-@media (hover:hover){.ready #tacho:not(.busy):hover .nabe{filter:drop-shadow(0 0 8px rgba(255,64,1,.8))}}
+@media (hover:hover){.ready #tacho:not(.busy):hover .nabe{filter:drop-shadow(0 0 8px rgba(234,93,46,.8))}}
 .anzeige{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:6px}
 .anzeige .treffer{font-family:var(--kopf);font-size:22px;font-weight:700;letter-spacing:.04em}
 .anzeige .treffer b{color:var(--orange)}
 .schieber{width:100%;margin-top:14px;accent-color:var(--orange);height:28px;cursor:pointer}
 .hinweis{font-size:14px;color:#8d9198;margin-top:6px}
 .reset{font-size:14px;font-weight:600;color:#cfd2d6;padding:8px 12px;border-radius:999px;border:1.5px solid #3c3f45;transition:box-shadow .2s, border-color .2s, color .2s}
-@media (hover:hover){.ready .reset:hover{border-color:var(--orange);color:#fff;box-shadow:0 0 0 3px rgba(255,64,1,.15)}}
+@media (hover:hover){.ready .reset:hover{border-color:var(--orange);color:#fff;box-shadow:0 0 0 3px rgba(234,93,46,.15)}}
 
 .mini{display:none}
 .autos{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
@@ -216,20 +216,20 @@ html{scroll-padding-top:76px}
 .auto .anruf svg{width:15px;height:15px;color:var(--orange)}
 .auto .anruf{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;color:#fff;text-decoration:none;padding:7px 12px;border-radius:999px;border:1.5px solid #4a4d53;transition:border-color .2s, box-shadow .2s}
 .auto .inserat{color:#AEB1B7}
-@media (hover:hover){.ready .auto.live .anruf:hover{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,64,1,.18)}}
+@media (hover:hover){.ready .auto.live .anruf:hover{border-color:var(--orange);box-shadow:0 0 0 3px rgba(234,93,46,.18)}}
 @media (min-width:1200px){.auto.gross{grid-column:span 2}.auto.gross .foto{aspect-ratio:16/9}.auto.gross h3{font-size:24px}.auto.gross .preis b{font-size:36px}}
-.autos.rot .auto:not(.aus){border-color:rgba(255,64,1,.75);box-shadow:0 0 0 3px rgba(255,64,1,.18),0 0 34px rgba(255,64,1,.28)}
+.autos.rot .auto:not(.aus){border-color:rgba(234,93,46,.75);box-shadow:0 0 0 3px rgba(234,93,46,.18),0 0 34px rgba(234,93,46,.28)}
 .js .auto.aus.shown:not(.live){animation:none;opacity:.22}
 @media (hover:hover){
-  .ready .autos:not(.busy) .auto.live:hover{transform:translateY(-4px);border-color:rgba(255,64,1,.7);box-shadow:0 0 0 4px rgba(255,64,1,.14),0 18px 40px rgba(0,0,0,.4)}
+  .ready .autos:not(.busy) .auto.live:hover{transform:translateY(-4px);border-color:rgba(234,93,46,.7);box-shadow:0 0 0 4px rgba(234,93,46,.14),0 18px 40px rgba(0,0,0,.4)}
   .ready .autos:not(.busy) .auto.live:hover .foto img{transform:scale(1.04)}
-  .ready .autos:not(.busy) .auto.live:hover .preis b{color:#FFD2BF;text-shadow:0 0 18px rgba(255,64,1,.55)}
+  .ready .autos:not(.busy) .auto.live:hover .preis b{color:#FFD2BF;text-shadow:0 0 18px rgba(234,93,46,.55)}
   .ready .autos:not(.busy) .auto.aus.live:hover{opacity:.55}
 }
 .auto:active{transform:scale(.985)}
 .quelle{margin-top:26px;font-size:14px;color:#8d9198;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
 .quelle a{color:#d6d8db;font-weight:600;padding:6px 10px;margin-left:-10px;border-radius:8px;transition:box-shadow .2s,color .2s}
-@media (hover:hover){.ready .quelle a:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,64,1,.6)}}
+@media (hover:hover){.ready .quelle a:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.6)}}
 
 @media (max-width:1020px){
   .occ-grid{grid-template-columns:minmax(0,1fr)}
@@ -249,7 +249,7 @@ html{scroll-padding-top:76px}
 .zahl-gross small{font-size:.42em;font-weight:700;color:var(--text);margin-left:4px}
 .punkt h3{font-size:26px;font-weight:700;text-transform:uppercase;margin-bottom:8px}
 .punkt p{font-size:15.5px;color:#4a4e55}
-@media (hover:hover){.ready .punkt.live:hover{border-color:rgba(255,64,1,.5);box-shadow:0 0 0 4px rgba(255,64,1,.10),0 14px 34px rgba(0,0,0,.08);transform:translateY(-3px)}}
+@media (hover:hover){.ready .punkt.live:hover{border-color:rgba(234,93,46,.5);box-shadow:0 0 0 4px rgba(234,93,46,.10),0 14px 34px rgba(0,0,0,.08);transform:translateY(-3px)}}
 @media (max-width:980px){.vier{grid-template-columns:1fr 1fr}}
 @media (max-width:540px){.vier{grid-template-columns:1fr}}
 
@@ -266,14 +266,14 @@ html{scroll-padding-top:76px}
 .werk .oben{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
 .werk .foto{border-radius:var(--r);overflow:hidden;position:relative;transition:box-shadow .25s}
 .werk .foto img{width:100%;aspect-ratio:3/2;object-fit:cover;transition:transform .6s ease}
-@media (hover:hover){.ready .werk .foto.live:hover{box-shadow:0 0 0 4px rgba(255,64,1,.16)}.ready .werk .foto.live:hover img{transform:scale(1.03)}}
+@media (hover:hover){.ready .werk .foto.live:hover{box-shadow:0 0 0 4px rgba(234,93,46,.16)}.ready .werk .foto.live:hover img{transform:scale(1.03)}}
 .dienste{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
 .dienst{background:#fff;border:1px solid var(--beton2);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:8px;transition:box-shadow .2s, border-color .2s, transform .2s}
 .dienst svg{width:34px;height:34px;color:var(--text)}
 .dienst svg .o{color:var(--orange);stroke:var(--orange)}
 .dienst h3{font-size:22px;font-weight:700;text-transform:uppercase}
 .dienst p{font-size:15px;color:#4a4e55}
-@media (hover:hover){.ready .dienst.live:hover{border-color:rgba(255,64,1,.5);box-shadow:0 0 0 4px rgba(255,64,1,.10);transform:translateY(-3px)}}
+@media (hover:hover){.ready .dienst.live:hover{border-color:rgba(234,93,46,.5);box-shadow:0 0 0 4px rgba(234,93,46,.10);transform:translateY(-3px)}}
 @media (max-width:980px){.werk .oben{grid-template-columns:minmax(0,1fr)}.dienste{grid-template-columns:1fr 1fr}}
 @media (max-width:420px){.dienste{grid-template-columns:1fr}}
 
@@ -282,12 +282,12 @@ html{scroll-padding-top:76px}
 .pfeile{display:flex;gap:10px}
 .pfeil{width:52px;height:52px;border-radius:50%;border:2px solid #3c3f45;display:grid;place-items:center;transition:border-color .2s, box-shadow .2s}
 .pfeil svg{width:22px;height:22px}
-@media (hover:hover){.ready .pfeil:hover{border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,64,1,.15)}}
+@media (hover:hover){.ready .pfeil:hover{border-color:var(--orange);box-shadow:0 0 0 4px rgba(234,93,46,.15)}}
 .band{display:grid;grid-auto-flow:column;grid-auto-columns:min(460px,82%);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 18px;scrollbar-width:thin;scrollbar-color:#444 transparent;overscroll-behavior-x:contain}
 .band figure{scroll-snap-align:start;border-radius:var(--r);overflow:hidden;position:relative;background:#111;transition:box-shadow .25s}
 .band img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .6s ease}
 .band figcaption{position:absolute;left:12px;bottom:12px;padding:6px 12px;border-radius:8px;background:rgba(15,16,18,.8);font-family:var(--kopf);font-weight:700;letter-spacing:.06em;font-size:18px}
-@media (hover:hover){.ready .band figure.live:hover{box-shadow:0 0 0 4px rgba(255,64,1,.3)}.ready .band figure.live:hover img{transform:scale(1.04)}}
+@media (hover:hover){.ready .band figure.live:hover{box-shadow:0 0 0 4px rgba(234,93,46,.3)}.ready .band figure.live:hover img{transform:scale(1.04)}}
 
 /* ---------- Team ---------- */
 .team .oben{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:44px}
@@ -299,7 +299,7 @@ html{scroll-padding-top:76px}
 .mensch div{padding:16px 18px 18px}
 .mensch h3{font-size:28px;font-weight:700;text-transform:uppercase}
 .mensch p{color:#5c6068;font-size:15px}
-@media (hover:hover){.ready .mensch.live:hover{border-color:rgba(255,64,1,.5);box-shadow:0 0 0 4px rgba(255,64,1,.10),0 14px 34px rgba(0,0,0,.08);transform:translateY(-3px)}}
+@media (hover:hover){.ready .mensch.live:hover{border-color:rgba(234,93,46,.5);box-shadow:0 0 0 4px rgba(234,93,46,.10),0 14px 34px rgba(0,0,0,.08);transform:translateY(-3px)}}
 @media (max-width:860px){.team .oben{grid-template-columns:minmax(0,1fr)}.leute{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.leute{grid-template-columns:1fr}.mensch img{aspect-ratio:1/1}}
 
@@ -311,7 +311,7 @@ html{scroll-padding-top:76px}
 .note{display:flex;align-items:center;gap:16px;padding:12px 18px;border-radius:14px;background:#1f2124;text-decoration:none;transition:box-shadow .2s}
 .note b{font-family:var(--kopf);font-size:48px;font-weight:800;line-height:1}
 .note small{display:block;color:#AEB1B7;font-size:14px}
-@media (hover:hover){.ready .note:hover{box-shadow:inset 0 0 0 1.5px rgba(255,64,1,.6),0 0 0 4px rgba(255,64,1,.12)}}
+@media (hover:hover){.ready .note:hover{box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.6),0 0 0 4px rgba(234,93,46,.12)}}
 .haken{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 26px}
 .anh{position:relative;padding-top:34px;transform-origin:50% 0}
 .anh::before{content:"";position:absolute;top:0;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:#9aa0a7;box-shadow:inset 0 -2px 2px rgba(0,0,0,.4),0 2px 3px rgba(0,0,0,.4)}
@@ -329,7 +329,7 @@ html{scroll-padding-top:76px}
 @keyframes schwingen{0%{transform:rotate(7deg);opacity:0}15%{opacity:1}35%{transform:rotate(-4deg)}60%{transform:rotate(2deg)}80%{transform:rotate(-.8deg)}100%{transform:rotate(var(--rest,0deg))}}
 .anh{transform:rotate(var(--rest,0deg))}
 .js .anh:not(.schwingt){opacity:0}
-@media (hover:hover){.ready .anh.live:hover .tag{transform:translateY(-4px) rotate(calc(var(--rest,0deg) * -1));box-shadow:0 0 0 4px rgba(255,64,1,.25),0 18px 36px rgba(0,0,0,.45)}}
+@media (hover:hover){.ready .anh.live:hover .tag{transform:translateY(-4px) rotate(calc(var(--rest,0deg) * -1));box-shadow:0 0 0 4px rgba(234,93,46,.25),0 18px 36px rgba(0,0,0,.45)}}
 @media (max-width:980px){.haken{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.haken{grid-template-columns:1fr;gap:40px}}
 
@@ -340,9 +340,9 @@ html{scroll-padding-top:76px}
 .tag-k{min-height:64px;border-radius:12px;background:#1d1f22;border:1.5px solid #2e3136;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-family:var(--kopf);font-weight:700;letter-spacing:.06em;font-size:19px;transition:border-color .2s, box-shadow .2s, background-color .2s;cursor:pointer}
 .tag-k small{font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.04em;color:#8d9198}
 .tag-k.zu{color:#6d7178}
-.tag-k[aria-selected="true"]{border-color:var(--orange);background:#2a1a12;box-shadow:0 0 0 4px rgba(255,64,1,.16)}
+.tag-k[aria-selected="true"]{border-color:var(--orange);background:#2a1a12;box-shadow:0 0 0 4px rgba(234,93,46,.16)}
 .tag-k.heute small{color:var(--orange)}
-@media (hover:hover){.ready .tag-k:hover{border-color:rgba(255,140,90,.8);box-shadow:0 0 0 3px rgba(255,64,1,.12)}}
+@media (hover:hover){.ready .tag-k:hover{border-color:rgba(238,133,88,.8);box-shadow:0 0 0 3px rgba(234,93,46,.12)}}
 .zeit-anzeige{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;background:#1d1f22;border-radius:14px;padding:16px 18px}
 .zeit-anzeige .tn{font-family:var(--kopf);font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.04em}
 .zeit-anzeige .zz{font-family:var(--kopf);font-weight:700;font-size:28px;color:#fff;letter-spacing:.02em}
@@ -353,7 +353,7 @@ html{scroll-padding-top:76px}
 .karte .adr{padding:20px 22px;display:grid;gap:6px}
 .karte .adr h3{font-size:28px;text-transform:uppercase}
 .karte .adr .knoepfe{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-@media (hover:hover){.ready .karte.live:hover{box-shadow:0 0 0 4px rgba(255,64,1,.12)}}
+@media (hover:hover){.ready .karte.live:hover{box-shadow:0 0 0 4px rgba(234,93,46,.12)}}
 @media (max-width:900px){.kontakt .raster{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:420px){.tage{gap:4px}.tag-k{font-size:15px;min-height:56px}.tag-k small{display:none}.tag-k.heute small{display:block;font-size:9px}.tafel{padding:18px}}
 
@@ -415,8 +415,8 @@ html{scroll-padding-top:76px}
           <a class="btn btn-r" href="#occasionen">19 Occasionen</a>
         </div>
         <div class="fakten">
-          <a class="fakt" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bergerspeed+GmbH+Tiefenackerstrasse+54+9450+Altst%C3%A4tten" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Tiefenackerstrasse 54, 9450 Altstätten</a>
-          <a class="fakt" href="#zeiten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="status" id="status-hero"><i></i><span>Öffnungszeiten</span></span></a>
+          <a class="fakt" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bergerspeed+GmbH+Tiefenackerstrasse+54+9450+Altst%C3%A4tten" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 22s-7.5-6.6-7.5-12.3a7.5 7.5 0 0 1 15 0C19.5 15.4 12 22 12 22z"/><circle cx="12" cy="9.6" r="2.8" fill="#0F1012"/></svg>Tiefenackerstrasse 54, 9450 Altstätten</a>
+          <a class="fakt" href="#zeiten"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M12 6.5V12l3.6 2.3" fill="none" stroke="#0F1012" stroke-width="2.4" stroke-linecap="round"/></svg><span class="status" id="status-hero"><i></i><span>Öffnungszeiten</span></span></a>
           <a class="fakt" href="#bewertungen"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><span><b>4,7</b> <span class="sterne">★★★★★</span> · 81 Google-Bewertungen</span></a>
         </div>
       </div>
@@ -447,15 +447,15 @@ html{scroll-padding-top:76px}
           </defs>
           <circle cx="200" cy="200" r="182" fill="url(#glas)" stroke="#3a3d42" stroke-width="2"/>
           <path id="bogen-grund" fill="none" stroke="#2d3035" stroke-width="10" stroke-linecap="round"/>
-          <path id="bogen-rot" fill="none" stroke="rgba(255,64,1,.55)" stroke-width="10"/>
-          <path id="bogen-aktiv" class="bogen-aktiv" fill="none" stroke="#FF4001" stroke-width="10" stroke-linecap="round"/>
+          <path id="bogen-rot" fill="none" stroke="rgba(234,93,46,.55)" stroke-width="10"/>
+          <path id="bogen-aktiv" class="bogen-aktiv" fill="none" stroke="#EA5D2E" stroke-width="10" stroke-linecap="round"/>
           <g id="skala"></g>
           <text class="einheit" id="einheit" x="200" y="140" text-anchor="middle">PS × 100</text>
           <text class="wert-k" id="wert-k" x="200" y="268" text-anchor="middle">AB</text>
           <text class="wert" id="wert" x="200" y="318" text-anchor="middle">0</text>
           <g id="nadel" filter="url(#nglow)">
-            <path d="M196 200 L200 58 L204 200 Z" fill="#FF4001"/>
-            <circle cx="200" cy="200" r="7" fill="#FF4001"/>
+            <path d="M196 200 L200 58 L204 200 Z" fill="#EA5D2E"/>
+            <circle cx="200" cy="200" r="7" fill="#EA5D2E"/>
           </g>
           <circle class="nabe" cx="200" cy="200" r="20" fill="#1a1b1e" stroke="#4a4e54" stroke-width="3"/>
         </svg>
@@ -554,6 +554,8 @@ html{scroll-padding-top:76px}
       <figure class="rise"><img src="img/leg_e30m3.jpg" alt="Schwarzer BMW der Baureihe E30" loading="lazy" width="1200" height="900"><figcaption>BMW E30</figcaption></figure>
       <figure class="rise"><img src="img/leg_charger.jpg" alt="Oranger Dodge Charger im Abendlicht" loading="lazy" width="1000" height="750"><figcaption>Dodge Charger</figcaption></figure>
       <figure class="rise"><img src="img/leg_f458.jpg" alt="Roter Ferrari vor der Garage" loading="lazy" width="1200" height="900"><figcaption>Ferrari</figcaption></figure>
+      <figure class="rise"><img src="img/leg_m3_weiss.jpg" alt="Weisser BMW M3 vor dem orangen Eingang" loading="lazy" width="1200" height="900"><figcaption>BMW M3</figcaption></figure>
+      <figure class="rise"><img src="img/empfang.jpg" alt="Empfang und Verkaufsraum der Garage Bergerspeed" loading="lazy" width="1400" height="935"><figcaption>Unser Empfang</figcaption></figure>
       <figure class="rise"><img src="img/halle_werkstatt2.jpg" alt="Blick in die Werkstatthalle von Bergerspeed" loading="lazy" width="1400" height="935"><figcaption>In der Halle</figcaption></figure>
       <figure class="rise"><img src="img/gebaeude.jpg" alt="Gebäude der Bergerspeed GmbH an der Tiefenackerstrasse in Altstätten" loading="lazy" width="1800" height="1202"><figcaption>Tiefenackerstrasse 54</figcaption></figure>
     </div>
