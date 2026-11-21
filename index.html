@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero_gt3_quer.jpg" media="(min-width: 861px)">
-<link rel="preload" as="image" href="img/hero_gt3_hoch.jpg" media="(max-width: 860px) and (orientation: portrait)">
+<link rel="preload" as="image" href="img/hero_m4_quer.jpg" media="(min-width: 861px)">
+<link rel="preload" as="image" href="img/hero_m4_quer_m.jpg" media="(max-width: 860px)">
 <style>
 :root{
   --nacht:#0F1012; --anthrazit:#1C1E21; --stahl:#2A2D31; --stahl2:#3A3D42;
@@ -82,8 +82,8 @@ html{scroll-padding-top:76px}
 .hero{padding:0;position:relative;height:calc(100svh - 70px);min-height:600px;max-height:1100px;background:var(--nacht);color:var(--text-hell);overflow:hidden}
 .tor-rahmen{position:absolute;inset:0;padding:10px 10px 0;background:var(--orange)}
 .tor{position:relative;overflow:hidden;width:100%;height:100%;background:#16171a}
-.tor picture img{width:100%;height:100%;object-fit:cover;object-position:50% 62%;transform:scale(1.06);filter:brightness(.45) saturate(.8)}
-.tor::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(10,11,12,.95) 0%,rgba(10,11,12,.8) 34%,rgba(10,11,12,.35) 58%,transparent 76%)}
+.tor picture img{width:100%;height:100%;object-fit:cover;object-position:50% 100%;transform:scale(1.06);filter:brightness(.45) saturate(.8)}
+.tor::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(10,11,12,.95) 0%,rgba(10,11,12,.78) 22%,rgba(10,11,12,.25) 36%,transparent 46%)}
 .tor .lamelle{position:absolute;inset:0;z-index:2;
   background:
     linear-gradient(90deg,rgba(0,0,0,.35),transparent 6%,transparent 94%,rgba(0,0,0,.35)),
@@ -104,9 +104,10 @@ html{scroll-padding-top:76px}
 @media (hover:hover){.ready .tor .schild:hover{box-shadow:var(--glow-hell)}}
 .hero .text{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:0 0 clamp(28px,4.5vh,56px)}
 .hero .text .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px 48px;align-items:end}
-.hero h1{font-size:clamp(48px,min(8.4vw,14.5vh),132px);font-weight:800;text-transform:uppercase;line-height:.88;margin:10px 0 0;text-shadow:0 4px 30px rgba(0,0,0,.4)}
+.hero h1{font-size:clamp(48px,min(7vw,11vh),120px);font-weight:800;text-transform:uppercase;line-height:.88;margin:10px 0 0;text-shadow:0 4px 30px rgba(0,0,0,.4)}
 .hero h1 em{font-style:normal;color:var(--orange)}
-.hero .lead{color:#D5D7DA;margin-top:16px;max-width:52ch}
+.hero .lead{color:#D5D7DA;margin-top:16px;max-width:52ch;display:none}
+@media (min-height:1050px) and (min-width:861px){.hero .lead{display:block}}
 .hero .kicker{text-shadow:0 1px 12px rgba(0,0,0,.8)}
 @media (min-width:861px) and (max-height:820px){.hero .lead{display:none}.hero .fakten{font-size:15px}.fakt{padding:5px 12px}}
 .hero{min-height:520px}
@@ -142,15 +143,16 @@ html{scroll-padding-top:76px}
 @media (max-width:420px){.btn{padding:0 16px;font-size:17px;min-height:48px}.fakten{font-size:15px}}
 @media (max-width:860px) and (orientation:portrait){
   .hero{height:auto;min-height:0;max-height:none}
-  .tor-rahmen{position:relative;height:min(50svh,560px)}
-  .tor picture img{object-position:50% 78%}
+  .tor-rahmen{position:relative;height:min(50svh,86vw,620px)}
+  .tor picture img{object-position:50% 82%}
   .tor::after{background:linear-gradient(0deg,rgba(15,16,18,.85) 0%,transparent 28%)}
   .hero .text{position:relative;padding:18px 0 30px;margin-top:-34px}
 }
-@media (max-width:420px) and (max-height:720px) and (orientation:portrait){.tor-rahmen{height:42svh}.hero .kicker{display:none}.hero .btn-r{display:none}.hero h1{font-size:44px}.hero .text{margin-top:0;padding-top:16px}}
+@media (max-width:420px) and (max-height:720px) and (orientation:portrait){.tor-rahmen{height:42svh}.hero .kicker{display:none}.hero .btn-r{display:none}.tor-rahmen{height:min(42svh,86vw)}.hero h1{font-size:44px}.hero .text{margin-top:0;padding-top:16px}}
 @media (orientation:landscape) and (max-height:560px){
   .hero{height:auto;min-height:0}
   .tor-rahmen{position:relative;height:78vh}
+  .tor picture img{object-position:50% 70%}
   .hero .text{position:relative;background:var(--nacht);padding:22px 0 30px}
   .tor::after{display:none}
   .hero h1{font-size:52px}
@@ -393,12 +395,11 @@ html{scroll-padding-top:76px}
   <div class="tor-rahmen">
     <div class="tor" id="tor">
       <picture>
-        <source media="(max-width:860px) and (orientation:portrait)" srcset="img/hero_gt3_hoch.jpg">
-        <source media="(max-width:860px)" srcset="img/hero_gt3_quer_m.jpg">
-        <img id="hero-img" src="img/hero_gt3_quer.jpg" alt="Blauer Porsche 911 GT3 vor dem orangen Eingang der Garage Bergerspeed" width="2200" height="1237">
+        <source media="(max-width:860px)" srcset="img/hero_m4_quer_m.jpg">
+        <img id="hero-img" src="img/hero_m4_quer.jpg" alt="Schwarzer BMW M4 vor dem orangen Eingang und dem Schriftzug der Garage Bergerspeed" width="2200" height="1650">
       </picture>
       <div class="lamelle" aria-hidden="true"><b></b></div>
-      <a class="schild" href="#auto-20732392"><small>Jetzt bei uns</small><span>Porsche 911 GT3 · 2023 · 5’000 km</span></a>
+      <a class="schild" href="#occasionen"><small>Vor unserem Tor</small><span>BMW M4 · Tiefenackerstrasse 54</span></a>
     </div>
   </div>
   <div class="text">
