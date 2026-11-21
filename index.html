@@ -79,13 +79,14 @@ html{scroll-padding-top:76px}
 @media (max-width:560px){.logo img{height:34px}.kopf .tel span{display:none}.kopf .tel{padding:0 14px}}
 
 /* ---------- Hero: das ganze Tor ---------- */
-.hero{padding:0;position:relative;height:calc(100svh - 70px);min-height:600px;max-height:1100px;background:var(--nacht);color:var(--text-hell);overflow:hidden}
-.tor-rahmen{position:absolute;inset:0;padding:10px 10px 0;background:var(--orange)}
-.tor{position:relative;overflow:hidden;width:100%;height:100%;background:#16171a}
+.hero{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:clamp(24px,3.4vw,56px);min-height:calc(100svh - 70px);padding:24px max(20px,calc((100vw - 1320px) / 2)) 32px;background:var(--nacht);color:var(--text-hell);overflow:hidden}
+.tor-rahmen{position:relative;order:2;width:min(62vw,calc((100svh - 70px - 76px) * 4 / 3 + 20px));padding:10px;background:var(--orange);border-radius:4px}
+.tor{position:relative;overflow:hidden;width:100%;aspect-ratio:4/3;background:#16171a}
 .tor .dias{position:absolute;inset:0;transform:scale(1.06);filter:brightness(.45) saturate(.8)}
 .tor .dia{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--op,50% 100%);opacity:0;transition:opacity 1.2s ease}
 .tor .dia.an{opacity:1}
-.dia-nav{position:absolute;left:22px;top:22px;z-index:5;display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:rgba(15,16,18,.72);backdrop-filter:blur(6px);opacity:0;transition:opacity .5s}
+.tor-leiste{position:absolute;inset:10px;pointer-events:none;z-index:6}
+.dia-nav{position:absolute;left:12px;top:12px;z-index:5;pointer-events:auto;display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:rgba(15,16,18,.72);backdrop-filter:blur(6px);opacity:0;transition:opacity .5s}
 .ready .dia-nav{opacity:1}
 .dia-nav button{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#fff;transition:box-shadow .2s, background-color .2s}
 .dia-nav button svg{width:16px;height:16px}
@@ -94,9 +95,8 @@ html{scroll-padding-top:76px}
 .dia-nav .punkte button i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);transition:background-color .3s, transform .3s}
 .dia-nav .punkte button[aria-current="true"] i{background:#EA5D2E;transform:scale(1.25)}
 @media (hover:hover){.ready .dia-nav button:hover{background:rgba(234,93,46,.18);box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.7)}}
-.tor .schild small,.tor .schild span{transition:opacity .35s}
-.tor .schild.wechsel small,.tor .schild.wechsel span{opacity:0}
-.tor::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(10,11,12,.95) 0%,rgba(10,11,12,.78) 22%,rgba(10,11,12,.25) 36%,transparent 46%)}
+.tor-leiste .schild small,.tor-leiste .schild span{transition:opacity .35s}
+.tor-leiste .schild.wechsel small,.tor-leiste .schild.wechsel span{opacity:0}
 .tor .lamelle{position:absolute;inset:0;z-index:2;
   background:
     linear-gradient(90deg,rgba(0,0,0,.35),transparent 6%,transparent 94%,rgba(0,0,0,.35)),
@@ -110,20 +110,19 @@ html{scroll-padding-top:76px}
 .no-js .tor .dias{transform:none;filter:none}
 @keyframes hoch{0%{transform:translateY(0)}9%{transform:translateY(-3%)}13%{transform:translateY(-2.3%)}100%{transform:translateY(-102%)}}
 @keyframes licht{to{transform:scale(1);filter:brightness(1) saturate(1)}}
-.tor .schild{position:absolute;right:22px;top:22px;z-index:5;display:flex;flex-direction:column;gap:2px;padding:10px 14px;background:rgba(15,16,18,.82);backdrop-filter:blur(6px);border-radius:10px;color:#fff;text-decoration:none;opacity:0;transform:translateY(-8px);transition:opacity .5s, transform .5s, box-shadow .2s}
-.tor .schild small{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:700}
-.tor .schild span{font-family:var(--kopf);font-size:22px;font-weight:700;letter-spacing:.03em}
-.ready .tor .schild{opacity:1;transform:none}
-@media (hover:hover){.ready .tor .schild:hover{box-shadow:var(--glow-hell)}}
-.hero .text{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:0 0 clamp(28px,4.5vh,56px)}
-.hero .text .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px 48px;align-items:end}
-.hero h1{font-size:clamp(48px,min(7vw,11vh),120px);font-weight:800;text-transform:uppercase;line-height:.88;margin:10px 0 0;text-shadow:0 4px 30px rgba(0,0,0,.4)}
+.tor-leiste .schild{position:absolute;right:12px;top:12px;z-index:5;pointer-events:auto;display:flex;flex-direction:column;gap:2px;padding:10px 14px;background:rgba(15,16,18,.82);backdrop-filter:blur(6px);border-radius:10px;color:#fff;text-decoration:none;opacity:0;transform:translateY(-8px);transition:opacity .5s, transform .5s, box-shadow .2s}
+.tor-leiste .schild small{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:700}
+.tor-leiste .schild span{font-family:var(--kopf);font-size:22px;font-weight:700;letter-spacing:.03em}
+.ready .tor-leiste .schild{opacity:1;transform:none}
+@media (hover:hover){.ready .tor-leiste .schild:hover{box-shadow:var(--glow-hell)}}
+.hero .text{position:relative;order:1;z-index:4}
+.hero .text .wrap{width:auto;margin:0;display:flex;flex-direction:column;gap:24px}
+.hero h1{font-size:clamp(44px,min(5.4vw,10vh),104px);font-weight:800;text-transform:uppercase;line-height:.88;margin:10px 0 0;text-shadow:0 4px 30px rgba(0,0,0,.4)}
 .hero h1 em{font-style:normal;color:var(--orange)}
 .hero .lead{color:#D5D7DA;margin-top:16px;max-width:52ch;display:none}
 @media (min-height:1050px) and (min-width:861px){.hero .lead{display:block}}
 .hero .kicker{text-shadow:0 1px 12px rgba(0,0,0,.8)}
 @media (min-width:861px) and (max-height:820px){.hero .lead{display:none}.hero .fakten{font-size:15px}.fakt{padding:5px 12px}}
-.hero{min-height:520px}
 .hero .rechts{display:flex;flex-direction:column;gap:16px}
 .hero .knoepfe{display:flex;flex-wrap:wrap;gap:12px}
 .fakten{display:grid;gap:4px;font-size:16px;color:#D5D7DA}
@@ -141,36 +140,31 @@ html{scroll-padding-top:76px}
 .js .hero .text .links > *:nth-child(2){animation-delay:.06s}
 .js .hero .text .links > *:nth-child(3){animation-delay:.14s}
 @keyframes auftritt{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@media (max-width:1020px){.hero{height:calc(100svh - 112px)}}
+@media (max-width:1020px){.hero{min-height:calc(100svh - 112px)}}
 @media (max-width:860px){
-  .hero{min-height:640px}
-  .tor-rahmen{padding:6px 6px 0}
-  .tor::after{background:linear-gradient(0deg,rgba(10,11,12,.96) 0%,rgba(10,11,12,.85) 42%,rgba(10,11,12,.2) 64%,transparent 76%)}
-  .hero .text .wrap{grid-template-columns:minmax(0,1fr);gap:14px}
-  .hero h1{font-size:clamp(48px,13vw,76px)}
+  .hero{display:block;min-height:0;padding:0 0 30px}
+  .tor-rahmen{width:100%;padding:6px;border-radius:0}
+  .hero .text{padding-top:18px}
+  .hero .text .wrap{width:min(1240px,100% - 40px);margin:0 auto;gap:14px}
+  .hero h1{font-size:clamp(44px,13vw,76px)}
   .hero .lead{display:none}
-  .tor .schild{right:12px;top:12px;padding:7px 10px}
-  .dia-nav{left:12px;top:auto;bottom:12px;padding:3px}
+  .tor-rahmen{padding:5px 5px 0;background:var(--orange)}
+  .tor-leiste{position:static;display:flex;flex-direction:row-reverse;justify-content:space-between;align-items:center;gap:8px;margin:5px -5px 0;padding:8px 14px 0;background:var(--nacht)}
+  .tor-leiste .schild{position:static;flex-direction:row;align-items:baseline;gap:8px;padding:4px 0;background:none;backdrop-filter:none;min-width:0;overflow:hidden}
+  .tor-leiste .schild small{flex:none}
+  .tor-leiste .schild span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:15px}
+  .dia-nav{position:static;padding:3px;flex:none}
   .dia-nav button{width:30px;height:30px}
-  .tor .schild span{font-size:17px}
+  .tor-leiste .schild span{font-size:17px}
 }
-@media (max-width:420px){.btn{padding:0 16px;font-size:17px;min-height:48px}.fakten{font-size:15px}}
-@media (max-width:860px) and (orientation:portrait){
-  .hero{height:auto;min-height:0;max-height:none}
-  .tor-rahmen{position:relative;height:min(50svh,86vw,620px)}
-  .tor .dia{object-position:var(--opm,50% 82%)}
-  .tor::after{background:linear-gradient(0deg,rgba(15,16,18,.85) 0%,transparent 28%)}
-  .hero .text{position:relative;padding:18px 0 30px;margin-top:-34px}
-}
-@media (max-width:420px) and (max-height:720px) and (orientation:portrait){.tor-rahmen{height:42svh}.hero .kicker{display:none}.hero .btn-r{display:none}.tor-rahmen{height:min(42svh,86vw)}.hero h1{font-size:44px}.hero .text{margin-top:0;padding-top:16px}}
+@media (max-width:420px){.btn{padding:0 16px;font-size:17px;min-height:48px}.fakten{font-size:15px}.dia-nav [data-schritt]{display:none}.tor-leiste .schild small{display:none}}
+@media (max-width:420px) and (max-height:720px) and (orientation:portrait){.hero .kicker{display:none}.hero .btn-r{display:none}.hero h1{font-size:40px}.hero .text .wrap{gap:10px}.fakten .fakt:nth-child(3){display:none}}
 @media (orientation:landscape) and (max-height:560px){
-  .hero{height:auto;min-height:0}
-  .tor-rahmen{position:relative;height:78vh}
-  .tor .dia{object-position:50% 70%}
-  .hero .text{position:relative;background:var(--nacht);padding:22px 0 30px}
-  .tor::after{display:none}
-  .hero h1{font-size:52px}
-  .hero .text .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .hero{display:grid;min-height:0;padding:16px 20px 24px;gap:24px}
+  .tor-rahmen{width:min(52vw,calc((100svh - 112px - 40px) * 4 / 3 + 12px));padding:6px}
+  .hero .text .wrap{width:auto;margin:0;gap:12px}
+  .hero h1{font-size:44px}
+  .hero .kicker{display:none}
 }
 
 /* ---------- Occasionen / Drehzahlmesser ---------- */
@@ -209,7 +203,7 @@ html{scroll-padding-top:76px}
 .auto{position:relative;display:flex;flex-direction:column;background:#24262A;border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--text-hell);border:1px solid #33363b;
   transition:opacity .45s ease, filter .45s ease, transform .25s ease, box-shadow .25s ease, border-color .25s ease}
 .auto .foto{aspect-ratio:4/3;overflow:hidden;background:#16171a}
-.auto .foto img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.auto .foto img{width:100%;height:100%;object-fit:contain;transition:transform .5s ease}
 .auto .info{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
 .auto .marke{font-family:var(--kopf);font-weight:700;letter-spacing:.16em;font-size:14px;color:var(--orange);text-transform:uppercase}
 .auto h3{font-family:var(--body);font-weight:700;font-size:18px;line-height:1.25}
@@ -231,7 +225,7 @@ html{scroll-padding-top:76px}
 .auto .anruf{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;color:#fff;text-decoration:none;padding:7px 12px;border-radius:999px;border:1.5px solid #4a4d53;transition:border-color .2s, box-shadow .2s}
 .auto .inserat{color:#AEB1B7}
 @media (hover:hover){.ready .auto.live .anruf:hover{border-color:var(--orange);box-shadow:0 0 0 3px rgba(234,93,46,.18)}}
-@media (min-width:1200px){.auto.gross{grid-column:span 2}.auto.gross .foto{aspect-ratio:16/9}.auto.gross h3{font-size:24px}.auto.gross .preis b{font-size:36px}}
+@media (min-width:1200px){.auto.gross{grid-column:span 2}.auto.gross .foto{aspect-ratio:4/3}.auto.gross h3{font-size:24px}.auto.gross .preis b{font-size:36px}}
 .autos.rot .auto:not(.aus){border-color:rgba(234,93,46,.75);box-shadow:0 0 0 3px rgba(234,93,46,.18),0 0 34px rgba(234,93,46,.28)}
 .js .auto.aus.shown:not(.live){animation:none;opacity:.22}
 @media (hover:hover){
@@ -268,7 +262,13 @@ html{scroll-padding-top:76px}
 @media (max-width:540px){.vier{grid-template-columns:1fr}}
 
 /* ---------- Ankauf ---------- */
-.ankauf{background:linear-gradient(90deg,rgba(15,16,18,.94) 0%,rgba(15,16,18,.82) 50%,rgba(15,16,18,.55) 100%),url(img/gebaeude.jpg) center 60%/cover;color:#fff;padding:clamp(64px,8vw,110px) 0;border-top:6px solid var(--orange)}
+.ankauf{background:var(--nacht);color:#fff;padding:clamp(56px,7vw,96px) 0;border-top:6px solid var(--orange)}
+.ankauf .wrap{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.ankauf .foto{border-radius:var(--r);overflow:hidden;transition:box-shadow .25s}
+.ankauf .foto img{width:100%;height:auto}
+@media (hover:hover){.ready .ankauf .foto.live:hover{box-shadow:0 0 0 4px rgba(234,93,46,.25)}}
+.ankauf .btn{margin-top:22px}
+@media (max-width:860px){.ankauf .wrap{grid-template-columns:minmax(0,1fr)}}
 .ankauf h2 em{font-style:normal;color:var(--orange)}
 .ankauf .wrap{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
 .ankauf h2{font-size:clamp(34px,4.4vw,56px)}
@@ -297,9 +297,9 @@ html{scroll-padding-top:76px}
 .pfeil{width:52px;height:52px;border-radius:50%;border:2px solid #3c3f45;display:grid;place-items:center;transition:border-color .2s, box-shadow .2s}
 .pfeil svg{width:22px;height:22px}
 @media (hover:hover){.ready .pfeil:hover{border-color:var(--orange);box-shadow:0 0 0 4px rgba(234,93,46,.15)}}
-.band{display:grid;grid-auto-flow:column;grid-auto-columns:min(460px,82%);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 18px;scrollbar-width:thin;scrollbar-color:#444 transparent;overscroll-behavior-x:contain}
+.band{display:grid;grid-auto-flow:column;grid-auto-columns:max-content;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 18px;scrollbar-width:thin;scrollbar-color:#444 transparent;overscroll-behavior-x:contain}
 .band figure{scroll-snap-align:start;border-radius:var(--r);overflow:hidden;position:relative;background:#111;transition:box-shadow .25s}
-.band img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .6s ease}
+.band img{height:min(360px,62vw);width:auto;max-width:none;aspect-ratio:auto;transition:transform .6s ease}
 .band figcaption{position:absolute;left:12px;bottom:12px;padding:6px 12px;border-radius:8px;background:rgba(15,16,18,.8);font-family:var(--kopf);font-weight:700;letter-spacing:.06em;font-size:18px}
 @media (hover:hover){.ready .band figure.live:hover{box-shadow:0 0 0 4px rgba(234,93,46,.3)}.ready .band figure.live:hover img{transform:scale(1.04)}}
 
@@ -315,7 +315,7 @@ html{scroll-padding-top:76px}
 .mensch p{color:#5c6068;font-size:15px}
 @media (hover:hover){.ready .mensch.live:hover{border-color:rgba(234,93,46,.5);box-shadow:0 0 0 4px rgba(234,93,46,.10),0 14px 34px rgba(0,0,0,.08);transform:translateY(-3px)}}
 @media (max-width:860px){.team .oben{grid-template-columns:minmax(0,1fr)}.leute{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.leute{grid-template-columns:1fr}.mensch img{aspect-ratio:1/1}}
+@media (max-width:520px){.leute{grid-template-columns:1fr}}
 
 /* ---------- Schlüsselbrett (Bewertungen) ---------- */
 .brett{background:var(--stahl);color:var(--text-hell);position:relative}
@@ -412,6 +412,8 @@ html{scroll-padding-top:76px}
         <img class="dia an" id="hero-img" src="img/hero_lancia.jpg" srcset="img/hero_lancia_m.jpg 1100w, img/hero_lancia.jpg 2200w" sizes="100vw" alt="Schwarze Lancia Integrale HF Turbo vor dem orangen Eingang der Garage Bergerspeed" width="2200" height="1650" style="--op:50% 100%;--opm:50% 80%">
       </div>
       <div class="lamelle" aria-hidden="true"><b></b></div>
+    </div>
+    <div class="tor-leiste">
       <a class="schild" id="schild" href="#auto-20891721"><small>Jetzt bei uns</small><span>Lancia Integrale HF Turbo · 1989 · CHF 39’990.–</span></a>
       <div class="dia-nav" id="dia-nav" role="group" aria-label="Fotos wechseln">
         <button type="button" data-schritt="-1" aria-label="Vorheriges Auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M15 5l-7 7 7 7"/></svg></button>
@@ -518,12 +520,13 @@ html{scroll-padding-top:76px}
 
 <!-- ============ ANKAUF ============ -->
 <section class="ankauf" aria-label="Autoankauf">
-  <div class="wrap rise">
-    <div>
+  <div class="wrap">
+    <div class="rise">
       <h2>Wir kaufen <em>Ihr Auto.</em></h2>
       <p>Occasionen aus Privat- und Firmenbesitz, Wagen aus Leasingverträgen, Vorführwagen und Garagenautos, ob PW oder Lieferwagen. Faire Preise gegen Barzahlung, schnelle und reibungslose Abwicklung.</p>
+      <a class="btn btn-o" href="tel:+41717500505">Unverbindlich anfragen</a>
     </div>
-    <a class="btn btn-o" href="tel:+41717500505">Unverbindlich anfragen</a>
+    <div class="foto rise"><img src="img/gebaeude.jpg" alt="Gebäude der Bergerspeed GmbH an der Tiefenackerstrasse in Altstätten" loading="lazy" width="1800" height="1202"></div>
   </div>
 </section>
 
@@ -691,7 +694,7 @@ box.innerHTML=AUTOS.map(function(a){
   var badges=a.b.map(function(x,i){return '<span'+(x==="Porsche Approved"||x==="Preis gesenkt"?' class="o"':'')+'>'+x+'</span>'}).join('');
   var daten=['1. Inv. '+a.d, chf(a.km)+' km', a.f, a.g].filter(Boolean).map(function(x){return '<span>'+x+'</span>'}).join('');
   return '<article class="auto rise'+(a.id===20732392?' gross':'')+'" id="auto-'+a.id+'" data-ps="'+(a.ps||'')+'" data-p="'+a.p+'">'+
-    '<div class="foto"><img src="img/car_'+a.id+'.jpg" alt="'+a.m+' '+a.t+'" loading="lazy" width="820" height="615"></div>'+
+    '<div class="foto"><img src="img/car_'+a.id+'.jpg" alt="'+a.m+' '+a.t+'" loading="lazy" width="900" height="675"></div>'+
     (badges?'<div class="marken">'+badges+'</div>':'')+
     '<div class="info"><div class="marke">'+a.m+'</div><h3><a class="ganz" href="https://www.autoscout24.ch/de/d/'+a.s+'-'+a.id+'" target="_blank" rel="noopener">'+a.t+'</a></h3><div class="daten">'+daten+'</div>'+
     '<div class="preis"><b>CHF '+chf(a.p)+'.–</b>'+(a.alt?'<s>CHF '+chf(a.alt)+'.–</s>':'')+(a.ps?'<span class="ps">'+a.ps+' PS</span>':'')+'</div>'+
