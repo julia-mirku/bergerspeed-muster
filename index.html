@@ -427,12 +427,40 @@ html{scroll-padding-top:76px}
 .zeit-anzeige .zz{font-family:var(--kopf);font-weight:700;font-size:28px;color:#fff;letter-spacing:.02em}
 .zeit-anzeige .zz.zu{color:#8d9198}
 .termin{margin-top:14px;font-size:14.5px;color:#AEB1B7}
-.karte{border-radius:20px;overflow:hidden;border:1px solid var(--beton2);background:#fff;transition:box-shadow .2s}
-.karte iframe{display:block;width:100%;height:300px;border:0;filter:grayscale(.55) contrast(1.05)}
-.karte .adr{padding:20px 22px;display:grid;gap:6px}
-.karte .adr h3{font-size:28px;text-transform:uppercase}
-.karte .adr .knoepfe{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-@media (hover:hover){.ready .karte.live:hover{box-shadow:0 0 0 4px rgba(234,93,46,.12)}}
+.navi{border-radius:22px;overflow:hidden;background:#0d0f12;color:#e8eaed;border:1px solid #23272d;box-shadow:inset 0 0 0 6px #16191d,0 24px 50px rgba(0,0,0,.25)}
+.navi-kopf{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 20px 10px;font-family:var(--kopf);font-weight:600;letter-spacing:.16em;font-size:14px;color:#9aa0a7;text-transform:uppercase}
+.navi-led{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--orange);margin-right:10px;box-shadow:0 0 8px var(--orange)}
+.navi-kopf #navi-uhr{color:#fff;letter-spacing:.06em;font-size:18px}
+.navi-schirm{position:relative;margin:0 14px;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 60% 30%,#171b21 0%,#0b0d10 75%)}
+.navi-schirm svg{display:block;width:100%;height:auto;max-height:420px}
+.gitter line{stroke:#161a20;stroke-width:1}
+.strasse{fill:none;stroke:#353a42;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;transition:stroke .25s}
+.aktiv{fill:none;stroke:var(--orange);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(234,93,46,.7));opacity:0;transition:opacity .35s ease}
+.aktiv.an{opacity:1}
+.ort-k{cursor:pointer;outline:none}
+.ort-k .treffer{fill:transparent}
+.start{fill:#0d0f12;stroke:#8d939b;stroke-width:2.5;transition:stroke .2s, fill .2s}
+.ort{fill:#aeb3ba;font-family:var(--kopf);font-weight:600;font-size:19px;letter-spacing:.05em;paint-order:stroke;stroke:#0d0f12;stroke-width:5px;stroke-linejoin:round;transition:fill .2s}
+.ort-k[aria-pressed="true"] .start{fill:var(--orange);stroke:#fff}
+.ort-k[aria-pressed="true"] .ort{fill:#fff}
+.ort-k:focus-visible .start{stroke:var(--orange-hell);stroke-width:4}
+@media (hover:hover){.ready .navi.live .ort-k:hover .start{stroke:var(--orange-hell)}.ready .navi.live .ort-k:hover .ort{fill:#fff}}
+.ziel circle{fill:var(--orange)}
+.ziel .ziel-ring{fill:none;stroke:rgba(234,93,46,.45);stroke-width:2}
+.ziel text{fill:#fff;font-family:var(--kopf);font-weight:700;font-size:19px;letter-spacing:.04em;paint-order:stroke;stroke:#0d0f12;stroke-width:5px;stroke-linejoin:round}
+.navi-tipp{padding:2px 12px 10px;font-size:12.5px;color:#7d838b}
+.navi-info{display:grid;grid-template-columns:repeat(3,auto) 1fr;align-items:end;gap:6px 22px;padding:14px 20px 4px}
+.navi-info small{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8d939b}
+.navi-info b{font-family:var(--kopf);font-weight:700;font-size:28px;line-height:1;color:#fff;white-space:nowrap}
+.navi-info .n-st{grid-column:1/-1;font-size:14px;font-weight:600;color:#9aa0a7}
+.navi-info .n-st.offen{color:#5fd39a}
+.navi .adr{padding:12px 20px 20px;display:grid;gap:4px;color:#d6d8db}
+.navi .adr h3{font-size:26px;text-transform:uppercase;color:#fff}
+.navi .adr a{color:#fff}
+.navi .adr .knoepfe{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.navi .btn-d{background:#22262b;color:#fff}
+.n-quelle{margin-top:8px;font-size:12px;color:#7d838b}
+@media (max-width:420px){.navi-info{gap:6px 14px;padding:12px 14px 2px}.navi-info b{font-size:22px}.navi-schirm{margin:0 8px}.navi .adr{padding:12px 14px 18px}}
 @media (max-width:900px){.kontakt .raster{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:420px){.tage{gap:4px}.tag-k{font-size:15px;min-height:56px}.tag-k small{display:none}.tag-k.heute small{display:block;font-size:9px}.tafel{padding:18px}}
 
@@ -718,16 +746,33 @@ html{scroll-padding-top:76px}
         <div class="zeit-anzeige" aria-live="polite"><span class="tn" id="tn">Montag</span><span class="zz" id="zz">07:30–11:30 · 13:00–17:00</span></div>
         <p class="termin">Garage und Verkauf · Termin nach Vereinbarung, am besten telefonisch.</p>
       </div>
-      <div class="karte rise">
-        <iframe title="Karte: Bergerspeed GmbH, Tiefenackerstrasse 54, Altstätten" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=9.5575%2C47.3783%2C9.5667%2C47.3820&amp;layer=mapnik&amp;marker=47.38017%2C9.56211"></iframe>
+      <div class="navi rise" id="navi">
+        <div class="navi-kopf"><span><i class="navi-led"></i>Navi</span><span id="navi-uhr">--:--</span></div>
+        <div class="navi-schirm">
+          <svg viewBox="112 6 366 392" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Schematische Routen nach Altstätten. Tippen Sie auf Ihren Startort.">
+            <g class="gitter"><line x1="0" y1="0" x2="0" y2="400"/><line x1="30" y1="0" x2="30" y2="400"/><line x1="60" y1="0" x2="60" y2="400"/><line x1="90" y1="0" x2="90" y2="400"/><line x1="120" y1="0" x2="120" y2="400"/><line x1="150" y1="0" x2="150" y2="400"/><line x1="180" y1="0" x2="180" y2="400"/><line x1="210" y1="0" x2="210" y2="400"/><line x1="240" y1="0" x2="240" y2="400"/><line x1="270" y1="0" x2="270" y2="400"/><line x1="300" y1="0" x2="300" y2="400"/><line x1="330" y1="0" x2="330" y2="400"/><line x1="360" y1="0" x2="360" y2="400"/><line x1="390" y1="0" x2="390" y2="400"/><line x1="420" y1="0" x2="420" y2="400"/><line x1="450" y1="0" x2="450" y2="400"/><line x1="480" y1="0" x2="480" y2="400"/><line x1="510" y1="0" x2="510" y2="400"/><line x1="540" y1="0" x2="540" y2="400"/><line x1="570" y1="0" x2="570" y2="400"/><line x1="600" y1="0" x2="600" y2="400"/><line x1="0" y1="0" x2="600" y2="0"/><line x1="0" y1="30" x2="600" y2="30"/><line x1="0" y1="60" x2="600" y2="60"/><line x1="0" y1="90" x2="600" y2="90"/><line x1="0" y1="120" x2="600" y2="120"/><line x1="0" y1="150" x2="600" y2="150"/><line x1="0" y1="180" x2="600" y2="180"/><line x1="0" y1="210" x2="600" y2="210"/><line x1="0" y1="240" x2="600" y2="240"/><line x1="0" y1="270" x2="600" y2="270"/><line x1="0" y1="300" x2="600" y2="300"/><line x1="0" y1="330" x2="600" y2="330"/><line x1="0" y1="360" x2="600" y2="360"/><line x1="0" y1="390" x2="600" y2="390"/></g>
+            <g class="strassen"><path class="strasse" id="r-sg" d="M198.0 40.0 L193.3 42.8 L195.6 44.6 L196.3 46.9 L198.2 46.0 L193.4 52.8 L195.7 54.7 L198.2 61.5 L185.8 71.8 L185.0 74.6 L187.2 80.0 L190.2 82.8 L195.1 83.6 L198.1 85.7 L204.7 84.0 L209.8 87.0 L217.4 86.0 L220.3 88.8 L220.7 94.0 L225.3 96.1 L230.8 101.5 L245.6 102.8 L249.4 104.2 L250.5 105.8 L250.0 110.1 L251.6 113.6 L260.8 120.6 L269.9 116.0 L271.9 117.2 L277.3 115.9 L282.5 117.1 L302.7 118.1 L306.5 116.3 L306.5 113.5 L308.3 114.8 L308.8 111.5 L311.7 114.5 L312.2 110.6 L316.1 108.9 L315.6 107.0 L321.2 105.0 L326.3 101.1 L329.2 97.0 L328.4 105.3 L333.2 98.9 L333.6 101.5 L336.7 98.6 L342.0 97.6 L345.6 99.6 L349.1 98.8 L354.4 99.8 L355.3 99.6 L356.3 94.4 L359.6 94.0"/><path class="strasse" id="r-ai" d="M231.5 154.7 L230.6 154.0 L230.6 152.1 L229.3 150.1 L231.3 149.5 L234.2 151.1 L236.6 151.4 L239.2 152.8 L241.0 153.0 L242.6 154.2 L242.2 148.8 L247.3 144.6 L247.5 142.7 L248.6 140.9 L249.0 137.6 L251.1 133.1 L252.3 131.8 L256.7 129.4 L257.7 126.1 L260.0 123.1 L261.3 119.7 L264.5 118.6 L268.0 116.2 L270.7 116.1 L272.0 117.2 L277.3 115.9 L282.5 117.1 L288.7 116.9 L300.0 118.6 L302.7 118.1 L306.5 116.3 L306.5 113.5 L308.3 114.8 L308.8 111.5 L311.1 113.3 L311.7 114.5 L312.2 110.6 L313.1 109.7 L316.1 108.9 L315.6 107.0 L316.9 106.8 L319.2 105.1 L321.2 105.0 L322.4 103.6 L326.3 101.1 L329.2 97.0 L329.5 98.2 L328.2 103.4 L328.4 105.3 L333.2 98.9 L333.6 99.1 L333.1 100.9 L333.6 101.5 L336.7 98.6 L342.0 97.6 L345.6 99.6 L349.1 98.8 L352.9 99.1 L354.4 99.8 L355.3 99.6 L356.3 94.4 L359.4 94.5 L359.6 94.0"/><path class="strasse" id="r-hb" d="M414.2 56.4 L415.0 55.6 L414.4 54.8 L412.4 56.2 L411.2 57.5 L407.1 57.5 L403.1 58.1 L402.0 58.7 L400.0 60.4 L394.3 61.7 L393.6 62.3 L391.9 64.8 L390.8 65.6 L381.8 68.7 L376.0 73.1 L373.4 74.0 L367.5 77.5 L364.2 80.5 L360.5 82.5 L361.8 84.2 L364.0 85.9 L362.3 89.2 L362.5 89.6 L361.5 92.5 L359.6 94.5 L359.6 94.0"/><path class="strasse" id="r-bu" d="M289.0 358.5 L289.7 360.0 L293.4 356.8 L297.5 355.7 L298.1 357.3 L294.6 342.0 L296.1 326.2 L309.2 288.0 L330.1 244.1 L332.6 227.7 L346.6 214.9 L353.9 194.8 L378.1 172.7 L388.8 136.8 L400.0 120.1 L397.2 121.0 L383.8 111.5 L374.9 111.4 L367.4 108.1 L355.3 99.6 L356.3 94.4 L359.6 94.0"/></g>
+            <path class="aktiv" id="r-aktiv" d=""/>
+            <g class="ziel" transform="translate(359.7 94.0)"><circle r="15" class="ziel-ring"/><circle r="7"/><text x="-12" y="-14" text-anchor="end">Altstätten</text></g>
+            <g class="ort-k" role="button" tabindex="0" data-r="sg" data-km="27" data-min="32" data-von="St.+Gallen" aria-pressed="false" aria-label="Start in St. Gallen: 27 km"><circle class="treffer" cx="198.0" cy="40.0" r="26"/><circle class="start" cx="198.0" cy="40.0" r="6"/><text class="ort" x="198.0" y="26.0" text-anchor="middle">St. Gallen</text></g><g class="ort-k" role="button" tabindex="0" data-r="ai" data-km="19" data-min="22" data-von="Appenzell" aria-pressed="false" aria-label="Start in Appenzell: 19 km"><circle class="treffer" cx="231.5" cy="154.7" r="26"/><circle class="start" cx="231.5" cy="154.7" r="6"/><text class="ort" x="221.5" y="160.7" text-anchor="end">Appenzell</text></g><g class="ort-k" role="button" tabindex="0" data-r="hb" data-km="7" data-min="12" data-von="Heerbrugg" aria-pressed="false" aria-label="Start in Heerbrugg: 7 km"><circle class="treffer" cx="414.2" cy="56.4" r="26"/><circle class="start" cx="414.2" cy="56.4" r="6"/><text class="ort" x="414.2" y="42.4" text-anchor="middle">Heerbrugg</text></g><g class="ort-k" role="button" tabindex="0" data-r="bu" data-km="31" data-min="25" data-von="Buchs+SG" aria-pressed="false" aria-label="Start in Buchs SG: 31 km"><circle class="treffer" cx="289.0" cy="358.5" r="26"/><circle class="start" cx="289.0" cy="358.5" r="6"/><text class="ort" x="289.0" y="382.5" text-anchor="middle">Buchs SG</text></g>
+          </svg>
+          <p class="navi-tipp">Tippen Sie auf Ihren Startort</p>
+        </div>
+        <div class="navi-info" aria-live="polite">
+          <div><small>Strecke</small><b id="n-km">–</b></div>
+          <div><small>Fahrzeit</small><b id="n-min">–</b></div>
+          <div><small>Ankunft</small><b id="n-an">–</b></div>
+          <div class="n-st" id="n-st">–</div>
+        </div>
         <div class="adr">
           <h3>Bergerspeed GmbH</h3>
           <span>Tiefenackerstrasse 54 · 9450 Altstätten SG</span>
           <span><a href="tel:+41717500505">071 750 05 05</a> · <a href="mailto:info@bergerspeed.ch">info@bergerspeed.ch</a></span>
           <div class="knoepfe">
-            <a class="btn btn-o" href="tel:+41717500505">Anrufen</a>
-            <a class="btn btn-d" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bergerspeed+GmbH+Tiefenackerstrasse+54+9450+Altst%C3%A4tten" target="_blank" rel="noopener">Route planen</a>
+            <a class="btn btn-o" id="n-route" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bergerspeed+GmbH+Tiefenackerstrasse+54+9450+Altst%C3%A4tten" target="_blank" rel="noopener">Route starten</a>
+            <a class="btn btn-d" href="tel:+41717500505">Anrufen</a>
           </div>
+          <small class="n-quelle">Fahrzeit ca., ohne Verkehr · Strassendaten © OpenStreetMap</small>
         </div>
       </div>
     </div>
@@ -1048,6 +1093,30 @@ tageEl.innerHTML=TAGE.map(function(t,i){return '<button type="button" role="tab"
 function waehle(i){ tageEl.querySelectorAll('.tag-k').forEach(function(b){b.setAttribute('aria-selected', +b.dataset.i===i?'true':'false')}); tn.textContent=TAGE[i].n+(i===J.tag?' · heute':''); zz.textContent=zeitText(TAGE[i]); zz.classList.toggle('zu',!TAGE[i].z.length); }
 tageEl.addEventListener('click',function(e){ var b=e.target.closest('.tag-k'); if(b) waehle(+b.dataset.i); });
 waehle(J.tag);
+
+/* ---------- Navi ---------- */
+var navi=D.getElementById('navi'), aktiv=D.getElementById('r-aktiv'), gewaehlt=null;
+function uhr(m){ m=((m%1440)+1440)%1440; return hm(m); }
+function beiAnkunft(m){ var tg=Math.floor(m/1440), tag=(J.tag+tg)%7, mm=m%1440, t=TAGE[tag];
+  for(var i=0;i<t.z.length;i++){ if(mm>=t.z[i][0]&&mm<t.z[i][1]) return t.z[i][1]-mm>=15 ? {offen:true,txt:'Bei Ankunft offen · bis '+hm(t.z[i][1])} : {offen:false,txt:'Knapp – um '+hm(t.z[i][1])+' wird geschlossen'}; }
+  for(i=0;i<t.z.length;i++){ if(mm<t.z[i][0]) return {offen:false,txt:'Bei Ankunft zu · öffnet '+(tg?'morgen ':'')+hm(t.z[i][0])}; }
+  for(var d=1;d<=7;d++){ var n=TAGE[(tag+d)%7]; if(n.z.length) return {offen:false,txt:'Bei Ankunft zu · öffnet '+((tg+d)===1?'morgen':n.n)+' '+hm(n.z[0][0])}; }
+}
+function zeigen(){ if(!gewaehlt) return; J=jetztZH(); D.getElementById('navi-uhr').textContent=uhr(J.min);
+  var min=+gewaehlt.dataset.min, an=J.min+min, st=beiAnkunft(an);
+  D.getElementById('n-km').textContent=gewaehlt.dataset.km+' km'; D.getElementById('n-min').textContent='ca. '+min+' Min.';
+  D.getElementById('n-an').textContent=(an>=1440?'morgen ':'')+uhr(an);
+  var ns=D.getElementById('n-st'); ns.textContent=st.txt; ns.classList.toggle('offen',st.offen); }
+function waehleOrt(g){ gewaehlt=g;
+  navi.querySelectorAll('.ort-k').forEach(function(x){x.setAttribute('aria-pressed',x===g?'true':'false')});
+  aktiv.classList.remove('an'); var d=D.getElementById('r-'+g.dataset.r).getAttribute('d');
+  setTimeout(function(){ aktiv.setAttribute('d',d); aktiv.classList.add('an'); }, reduce?0:120);
+  D.getElementById('n-route').href='https://www.google.com/maps/dir/?api=1&origin='+g.dataset.von+'&destination=Bergerspeed+GmbH+Tiefenackerstrasse+54+9450+Altst%C3%A4tten';
+  zeigen(); }
+navi.addEventListener('click',function(e){ var g=e.target.closest('.ort-k'); if(g) waehleOrt(g); });
+navi.addEventListener('keydown',function(e){ var g=e.target.closest('.ort-k'); if(g&&(e.key==='Enter'||e.key===' ')){ e.preventDefault(); waehleOrt(g); } });
+waehleOrt(navi.querySelector('.ort-k'));
+setInterval(zeigen,30000);
 })();
 </script>
 </body>
