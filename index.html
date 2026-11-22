@@ -202,7 +202,7 @@ html{scroll-padding-top:76px}
 @media (hover:hover){.ready .modus button:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.45)}}
 #tacho{width:100%;height:auto;max-height:calc(100svh - 470px);min-height:170px;margin:0 auto;display:block;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
 @media (max-width:1020px){#tacho{max-height:none}}
-@media (min-width:1021px){.instrument{max-height:calc(100svh - 110px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#3a3d42 transparent}}
+@media (min-width:1021px){.instrument{max-height:calc(100svh - 110px);overflow-y:auto;overscroll-behavior:auto;scrollbar-width:thin;scrollbar-color:#3a3d42 transparent}}
 .instrument .hinweis{margin-top:8px}
 @media (max-height:820px) and (min-width:1021px){.instrument .hinweis{display:none}.instrument{padding:14px 16px}.frage{font-size:19px;margin-bottom:8px}.feld{margin-top:8px}.lz button,.sport-w button{min-height:34px}.anfrage{min-height:44px;margin-top:8px}.modus button{min-height:36px}.schieber{margin-top:6px}}
 #tacho.zieht{cursor:grabbing}
@@ -585,6 +585,50 @@ html{scroll-padding-top:76px}
   .hero .fakten{display:flex;flex-wrap:wrap;gap:0 14px;font-size:15px}
   .hero .fakt{padding:4px 10px;margin-left:-10px}
 }
+
+/* ---- 23.11: Hero hält, Blöcke gruppiert, Schlüsselbrett, Kontakt kompakt ---- */
+.hero{position:sticky;top:70px;z-index:0}
+main > section:not(.hero),.fuss{position:relative;z-index:1}
+.occ{margin-top:24vh;border-radius:28px 28px 0 0;box-shadow:0 -24px 50px rgba(0,0,0,.55)}
+@media (max-width:860px){.occ{margin-top:14vh;border-radius:20px 20px 0 0}}
+@media (prefers-reduced-motion:reduce){.hero{position:relative;top:auto!important}.occ{margin-top:0}}
+/* dunkle Gruppe am Ende: Galerie, Bewertungen, Kontakt */
+.kontakt{background:var(--stahl);color:var(--text-hell);position:relative}
+.kontakt::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.45) 2.2px,transparent 2.6px);background-size:28px 28px;opacity:.55;pointer-events:none}
+.kontakt .wrap{position:relative}
+.galerie.nacht + .brett{border-top:1px solid #2e3136}
+.brett + .kontakt{padding-top:0}
+/* Kontakt kompakt */
+.k-links{display:flex;flex-direction:column;gap:18px}
+.kontakt-karte .adr{background:var(--nacht);border:1px solid #2e3136;border-radius:20px;padding:22px 24px;display:grid;gap:4px;color:#d6d8db}
+.kontakt-karte .adr h3{font-size:26px;text-transform:uppercase;color:#fff}
+.kontakt-karte .adr a{color:#fff}
+.kontakt-karte .adr .knoepfe{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.kontakt-karte .btn-d{background:#22262b;color:#fff;border-color:#3a3d42}
+@media (min-width:901px){.kontakt .raster{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}}
+.navi{display:flex;flex-direction:column}
+.navi-schirm{flex:1;display:flex;flex-direction:column}
+.navi-schirm svg{max-height:340px;flex:1}
+.n-fuss{padding:4px 20px 16px;font-size:12px;color:#7d838b}
+.n-fuss .n-quelle{margin:0}
+.kontakt .tafel{border:1px solid #2e3136}
+/* Schlüsselbrett realistischer: Haken vorn, Ring hinten, vorderer Bogen vor dem Anhänger */
+.anh{transform-origin:50% 7px}
+.anh::before{z-index:4;width:16px;height:16px;margin-left:-8px;background:radial-gradient(circle at 35% 30%,#e8ebee,#8e949b 60%,#5d6268);box-shadow:0 3px 4px rgba(0,0,0,.55)}
+.anh::after{z-index:0;top:4px;border:3px solid #c3c8ce;border-top-color:#c3c8ce;filter:drop-shadow(0 3px 2px rgba(0,0,0,.45))}
+.anh .tag{z-index:1}
+.ring-v{position:absolute;top:4px;left:50%;width:24px;height:54px;margin-left:-12px;border:3px solid #d5d9de;border-radius:50%;z-index:2;pointer-events:none;clip-path:inset(30px 50% 0 0);filter:drop-shadow(1px 2px 1px rgba(0,0,0,.5))}
+.tag::before{width:16px;height:16px;margin-left:-8px;top:16px;background:radial-gradient(circle at 50% 40%,#1a1b1d,#2c2f33);box-shadow:inset 0 2px 3px rgba(0,0,0,.7),0 1px 0 rgba(255,255,255,.18)}
+.tag{box-shadow:0 14px 22px -6px rgba(0,0,0,.55),0 3px 6px rgba(0,0,0,.3)}
+@media (hover:hover){.ready .anh.live:hover .tag{transform:none;box-shadow:0 0 0 4px rgba(234,93,46,.25),0 18px 30px -6px rgba(0,0,0,.6)}}
+.e-schnell{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px}
+.e-schnell span{font-size:12.5px;font-weight:600;letter-spacing:.04em;color:#9a9ea5;text-transform:uppercase;margin-right:4px}
+.e-schnell button{min-height:34px;padding:0 12px;border-radius:999px;background:#2a2c30;color:#e3e4e6;font-size:14px;font-weight:600;transition:box-shadow .2s, background-color .2s, transform .15s}
+.e-schnell button:active{transform:scale(.97)}
+@media (hover:hover){.ready .e-schnell button:hover{background:#33363b;box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.6);color:#fff}}
+@media (max-width:600px){.e-schnell{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -20px 12px;padding:0 20px}.e-schnell::-webkit-scrollbar{display:none}.e-schnell button{flex:none}}
+main{background:var(--nacht)}
+.versprechen,.werk,.team{background:var(--beton)}
 </style>
 </head>
 <body>
@@ -706,6 +750,7 @@ html{scroll-padding-top:76px}
           <p class="e-zahl" id="treffer" aria-live="polite"><b>19</b> von 19 Autos</p>
           <label class="e-sort"><span>Sortieren</span><select id="f-sort" aria-label="Sortieren"><option value="neu">Neu eingetroffen</option><option value="preis-auf">Preis aufsteigend</option><option value="preis-ab">Preis absteigend</option><option value="km">Kilometer</option><option value="jahr">Jahrgang (neueste)</option></select></label>
         </div>
+        <div class="e-schnell" id="e-schnell" role="group" aria-label="Schnellwahl"><span>Schnellwahl</span><button type="button" data-set="preis:20000">Bis CHF 20’000</button><button type="button" data-set="getriebe:Automat">Automat</button><button type="button" data-set="karo:Kombi|SUV|Van / Bus">Familie</button><button type="button" data-set="ps:300">Sportlich ab 300 PS</button><button type="button" data-set="jahr:2018">Ab Jahrgang 2018</button></div>
         <div class="e-chips" id="e-chips"></div>
         <div class="autos" id="autos"></div>
         <div class="leer" id="leer" hidden>
@@ -722,6 +767,18 @@ html{scroll-padding-top:76px}
   </div>
 </section>
 
+<!-- ============ ANKAUF ============ -->
+<section class="ankauf" aria-label="Autoankauf">
+  <div class="wrap">
+    <div class="rise">
+      <h2>Wir kaufen <em>Ihr Auto.</em></h2>
+      <p>Occasionen aus Privat- und Firmenbesitz, Wagen aus Leasingverträgen, Vorführwagen und Garagenautos, ob PW oder Lieferwagen. Faire Preise gegen Barzahlung, schnelle und reibungslose Abwicklung.</p>
+      <a class="btn btn-o" href="tel:+41717500505">Unverbindlich anfragen</a>
+    </div>
+    <div class="foto rise"><img src="img/gebaeude.jpg" alt="Gebäude der Bergerspeed GmbH an der Tiefenackerstrasse in Altstätten" loading="lazy" width="1800" height="1202"></div>
+  </div>
+</section>
+
 <!-- ============ VERSPRECHEN ============ -->
 <section class="versprechen">
   <div class="wrap">
@@ -735,18 +792,6 @@ html{scroll-padding-top:76px}
       <div class="punkt rise"><div class="zahl-gross">%</div><h3>Leasing & Finanzierung</h3><p>Wir finanzieren Ihr Auto, mit ALPHERA Financial Services. Fragen Sie uns an.</p></div>
       <div class="punkt rise"><div class="zahl-gross"><svg viewBox="0 0 48 48" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="4"><circle cx="24" cy="24" r="19"/><circle cx="24" cy="24" r="4"/><path d="M6 21c6-2 12-3 18-3s12 1 18 3M24 28v15M20 27l-12 9M28 27l12 9"/></svg></div><h3>Probefahrt</h3><p>Besichtigung und Probefahrt nach telefonischer Vereinbarung.</p></div>
     </div>
-  </div>
-</section>
-
-<!-- ============ ANKAUF ============ -->
-<section class="ankauf" aria-label="Autoankauf">
-  <div class="wrap">
-    <div class="rise">
-      <h2>Wir kaufen <em>Ihr Auto.</em></h2>
-      <p>Occasionen aus Privat- und Firmenbesitz, Wagen aus Leasingverträgen, Vorführwagen und Garagenautos, ob PW oder Lieferwagen. Faire Preise gegen Barzahlung, schnelle und reibungslose Abwicklung.</p>
-      <a class="btn btn-o" href="tel:+41717500505">Unverbindlich anfragen</a>
-    </div>
-    <div class="foto rise"><img src="img/gebaeude.jpg" alt="Gebäude der Bergerspeed GmbH an der Tiefenackerstrasse in Altstätten" loading="lazy" width="1800" height="1202"></div>
   </div>
 </section>
 
@@ -775,6 +820,24 @@ html{scroll-padding-top:76px}
   </div>
 </section>
 
+<!-- ============ TEAM ============ -->
+<section class="team" id="team">
+  <div class="wrap">
+    <div class="oben">
+      <div class="rise">
+        <div class="kicker">Über uns</div>
+        <h2>Wir sind für Sie da.</h2>
+      </div>
+      <p class="zitat rise">«Rufen Sie mich für eine <em>unverbindliche Beratung</em> an.»<small style="display:block;font-family:var(--body);font-size:15px;font-weight:600;color:#5c6068;margin-top:10px">Markus Berger, Inhaber</small></p>
+    </div>
+    <div class="leute">
+      <div class="mensch rise"><img src="img/team_markus.jpg" alt="Markus Berger" loading="lazy" width="750" height="1000"><div><h3>Markus Berger</h3><p>Inhaber</p></div></div>
+      <div class="mensch rise"><img src="img/team_marc.jpg" alt="Marc Gruber" loading="lazy" width="750" height="1000"><div><h3>Marc Gruber</h3><p>Werkstatt</p></div></div>
+      <div class="mensch rise"><img src="img/team_monika.jpg" alt="Monika Berger" loading="lazy" width="750" height="1000"><div><h3>Monika Berger</h3><p>Buchhaltung</p></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ VOR UNSEREM TOR ============ -->
 <section class="galerie nacht" aria-label="Fotogalerie">
   <div class="wrap">
@@ -799,24 +862,6 @@ html{scroll-padding-top:76px}
       <figure class="rise"><img src="img/empfang.jpg" alt="Empfang und Verkaufsraum der Garage Bergerspeed" loading="lazy" width="1400" height="935"><figcaption>Unser Empfang</figcaption></figure>
       <figure class="rise"><img src="img/halle_werkstatt2.jpg" alt="Blick in die Werkstatthalle von Bergerspeed" loading="lazy" width="1400" height="935"><figcaption>In der Halle</figcaption></figure>
       <figure class="rise"><img src="img/gebaeude.jpg" alt="Gebäude der Bergerspeed GmbH an der Tiefenackerstrasse in Altstätten" loading="lazy" width="1800" height="1202"><figcaption>Tiefenackerstrasse 54</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- ============ TEAM ============ -->
-<section class="team" id="team">
-  <div class="wrap">
-    <div class="oben">
-      <div class="rise">
-        <div class="kicker">Über uns</div>
-        <h2>Wir sind für Sie da.</h2>
-      </div>
-      <p class="zitat rise">«Rufen Sie mich für eine <em>unverbindliche Beratung</em> an.»<small style="display:block;font-family:var(--body);font-size:15px;font-weight:600;color:#5c6068;margin-top:10px">Markus Berger, Inhaber</small></p>
-    </div>
-    <div class="leute">
-      <div class="mensch rise"><img src="img/team_markus.jpg" alt="Markus Berger" loading="lazy" width="750" height="1000"><div><h3>Markus Berger</h3><p>Inhaber</p></div></div>
-      <div class="mensch rise"><img src="img/team_marc.jpg" alt="Marc Gruber" loading="lazy" width="750" height="1000"><div><h3>Marc Gruber</h3><p>Werkstatt</p></div></div>
-      <div class="mensch rise"><img src="img/team_monika.jpg" alt="Monika Berger" loading="lazy" width="750" height="1000"><div><h3>Monika Berger</h3><p>Buchhaltung</p></div></div>
     </div>
   </div>
 </section>
@@ -850,11 +895,25 @@ html{scroll-padding-top:76px}
       <h2>Kommen Sie vorbei.</h2>
     </div>
     <div class="raster">
+      <div class="k-links">
       <div class="tafel rise">
         <span class="status" id="status-tafel"><i></i><span>Öffnungszeiten</span></span>
         <div class="tage" role="tablist" aria-label="Wochentag wählen" id="tage"></div>
         <div class="zeit-anzeige" aria-live="polite"><span class="tn" id="tn">Montag</span><span class="zz" id="zz">07:30–11:30 · 13:00–17:00</span></div>
         <p class="termin">Garage und Verkauf · Termin nach Vereinbarung, am besten telefonisch.</p>
+      </div>
+      <div class="kontakt-karte rise">
+        <div class="adr">
+          <h3>Bergerspeed GmbH</h3>
+          <span>Tiefenackerstrasse 54 · 9450 Altstätten SG</span>
+          <span><a href="tel:+41717500505">071 750 05 05</a> · <a href="mailto:info@bergerspeed.ch">info@bergerspeed.ch</a></span>
+          <div class="knoepfe">
+            <a class="btn btn-o" id="n-route" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bergerspeed+GmbH+Tiefenackerstrasse+54+9450+Altst%C3%A4tten" target="_blank" rel="noopener">Route starten</a>
+            <a class="btn btn-d" href="tel:+41717500505">Anrufen</a>
+          </div>
+          
+        </div>
+      </div>
       </div>
       <div class="navi rise" id="navi">
         <div class="navi-kopf"><span><i class="navi-led"></i>Navi</span><span id="navi-uhr">--:--</span></div>
@@ -874,16 +933,7 @@ html{scroll-padding-top:76px}
           <div><small>Ankunft</small><b id="n-an">–</b></div>
           <div class="n-st" id="n-st">–</div>
         </div>
-        <div class="adr">
-          <h3>Bergerspeed GmbH</h3>
-          <span>Tiefenackerstrasse 54 · 9450 Altstätten SG</span>
-          <span><a href="tel:+41717500505">071 750 05 05</a> · <a href="mailto:info@bergerspeed.ch">info@bergerspeed.ch</a></span>
-          <div class="knoepfe">
-            <a class="btn btn-o" id="n-route" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bergerspeed+GmbH+Tiefenackerstrasse+54+9450+Altst%C3%A4tten" target="_blank" rel="noopener">Route starten</a>
-            <a class="btn btn-d" href="tel:+41717500505">Anrufen</a>
-          </div>
-          <small class="n-quelle">Fahrzeit ca., ohne Verkehr · Strassendaten © OpenStreetMap</small>
-        </div>
+        <p class="n-fuss"><small class="n-quelle">Fahrzeit ca., ohne Verkehr · Strassendaten © OpenStreetMap</small></p>
       </div>
     </div>
   </div>
@@ -1072,6 +1122,11 @@ D.getElementById('f-getriebe').addEventListener('click',function(e){ var b=e.tar
 D.getElementById('f-sort').addEventListener('change',function(){ sortierung=this.value; anwenden(true); });
 function zuruecksetzen(){ F=JSON.parse(JSON.stringify(leerF)); animId++; anwenden(); fahre(MAX,600); }
 D.getElementById('leer-reset').addEventListener('click',zuruecksetzen);
+D.getElementById('e-schnell').addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return;
+  var kv=b.dataset.set.split(':'), k=kv[0], v=kv[1];
+  F=JSON.parse(JSON.stringify(leerF));
+  if(k==='karo') F.karo=v.split('|'); else if(k==='preis') F.preis=+v; else F[k]=v;
+  animId++; anwenden(); fahre(F.preis,600); });
 var LABEL={marke:function(v){return v},km:function(v){return 'bis '+chf(v)+' km'},jahr:function(v){return 'ab '+v},ps:function(v){return 'ab '+v+' PS'},getriebe:function(v){return v}};
 function chipListe(){
   var c=[];
@@ -1198,6 +1253,13 @@ mqD.addEventListener('change',function(){ if(mqD.matches) schublade(false,false)
 inertSetzen();
 
 
+
+/* ---------- Hero hält beim Scrollen, nächster Block schiebt sich darüber ---------- */
+var heroH=D.querySelector('.hero');
+function heroTop(){ var kopfH=D.querySelector('.kopf').offsetHeight; heroH.style.top=Math.min(kopfH, innerHeight-heroH.offsetHeight)+'px'; }
+heroTop(); window.addEventListener('resize',heroTop); window.addEventListener('load',heroTop);
+/* ---------- Schlüsselring: vorderer Bogen über dem Anhänger ---------- */
+D.querySelectorAll('.anh').forEach(function(a){ a.insertAdjacentHTML('beforeend','<i class="ring-v" aria-hidden="true"></i>'); });
 /* ---------- Galerie-Pfeile ---------- */
 var band=D.getElementById('band');
 D.querySelectorAll('.pfeil').forEach(function(b){ b.addEventListener('click',function(){ var f=band.querySelector('figure'); band.scrollBy({left:(+b.dataset.dir)*(f.getBoundingClientRect().width+18),behavior:reduce?'auto':'smooth'}); }); });
