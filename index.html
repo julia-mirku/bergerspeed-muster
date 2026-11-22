@@ -200,19 +200,19 @@ html{scroll-padding-top:76px}
 .modus button{min-height:42px;border-radius:999px;font-family:var(--kopf);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:16px;color:#9a9ea5;transition:background-color .2s, color .2s, box-shadow .2s}
 .modus button[aria-pressed="true"]{background:var(--stahl2);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.65)}
 @media (hover:hover){.ready .modus button:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.45)}}
-#tacho{width:100%;height:auto;max-height:calc(100svh - 430px);min-height:200px;margin:0 auto;display:block;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+#tacho{width:100%;height:auto;max-height:calc(100svh - 470px);min-height:170px;margin:0 auto;display:block;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
 @media (max-width:1020px){#tacho{max-height:none}}
-.instrument{max-height:calc(100svh - 110px)}
+@media (min-width:1021px){.instrument{max-height:calc(100svh - 110px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#3a3d42 transparent}}
 .instrument .hinweis{margin-top:8px}
-@media (max-height:760px) and (min-width:1021px){.instrument .hinweis{display:none}.instrument{padding:16px 18px}.gaenge{margin-top:10px}}
+@media (max-height:820px) and (min-width:1021px){.instrument .hinweis{display:none}.instrument{padding:14px 16px}.frage{font-size:19px;margin-bottom:8px}.feld{margin-top:8px}.lz button,.sport-w button{min-height:34px}.anfrage{min-height:44px;margin-top:8px}.modus button{min-height:36px}.schieber{margin-top:6px}}
 #tacho.zieht{cursor:grabbing}
 #tacho .tick{stroke:#cfd2d6}
 #tacho .tick.rot{stroke:var(--orange)}
-#tacho .zahl{font-family:var(--kopf);font-weight:700;font-size:24px;fill:#e9eaec}
+#tacho .zahl{font-family:var(--kopf);font-weight:700;font-size:21px;fill:#e9eaec}
 #tacho .zahl.rot{fill:var(--orange)}
 #tacho .einheit{font-family:var(--kopf);font-weight:600;font-size:13px;letter-spacing:.18em;fill:#8d9198;text-transform:uppercase}
-#tacho .wert{font-family:var(--kopf);font-weight:800;font-size:52px;fill:#fff}
-#tacho .wert-k{font-family:var(--kopf);font-weight:600;font-size:16px;letter-spacing:.16em;fill:var(--orange)}
+#tacho .wert{font-family:var(--kopf);font-weight:800;font-size:42px;fill:#fff}
+#tacho .wert-k{font-family:var(--kopf);font-weight:700;font-size:20px;letter-spacing:.06em;fill:#EA5D2E}
 #tacho .bogen-aktiv{transition:stroke .2s}
 #nadel{transition:none}
 #tacho .nabe{transition:filter .2s}
@@ -240,8 +240,29 @@ html{scroll-padding-top:76px}
 .auto.blitz{animation:blitz .9s ease}
 @keyframes blitz{0%,100%{box-shadow:none}35%{box-shadow:0 0 0 4px rgba(234,93,46,.55),0 0 40px rgba(234,93,46,.55)}}
 .auto.zeigt{border-color:rgba(234,93,46,.8)}
+.frage{font-family:var(--kopf);font-weight:700;font-size:22px;line-height:1.15;letter-spacing:.02em;margin:0 0 12px;color:#fff}
+#tacho .wert-u{font-family:var(--body);font-weight:600;font-size:15px;fill:#AEB1B7}
+.feld{display:block;margin-top:14px;font-size:14px;font-weight:600;color:#cfd2d6}
+.feld b{float:right;font-family:var(--kopf);font-size:17px;color:#fff;letter-spacing:.03em}
+.feld input[type=range]{display:block;width:100%;margin-top:8px;accent-color:#EA5D2E;height:32px}
+.lz,.sport-w{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px;margin-top:8px;background:#0d0e10;border-radius:12px;padding:4px}
+.lz button,.sport-w button{min-height:40px;border-radius:9px;font-family:var(--kopf);font-weight:700;font-size:16px;letter-spacing:.04em;color:#9a9ea5;transition:background-color .2s, color .2s, box-shadow .2s}
+.lz button[aria-pressed="true"],.sport-w button[aria-pressed="true"]{background:var(--stahl2);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.7)}
+@media (hover:hover){.ready .lz button:hover,.ready .sport-w button:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(234,93,46,.45)}}
+.richtwert{margin-top:10px;font-size:15px;color:#e3e4e6;line-height:1.45}
+.richtwert small{display:block;margin-top:6px;font-size:11.5px;color:#8d9198}
+.richtwert b{color:#fff}
+.treffer{font-size:20px}
+.treffer small{display:block;font-family:var(--body);font-size:13px;font-weight:600;color:#AEB1B7;letter-spacing:0;margin-top:2px}
+.anfrage{width:100%;justify-content:center;margin-top:12px;white-space:nowrap;text-align:center;min-height:52px;font-size:18px}
+.anfrage-info{font-size:12.5px;color:#AEB1B7;text-align:center;margin-top:6px}
+.instrument .hinweis{text-align:center;margin-top:8px}
+.instrument .hinweis a{color:#fff;font-weight:700}
+.auto .foto{position:relative}
+.auto.knapp{opacity:.62}
+.auto.knapp .foto::after{content:"knapp über Budget";position:absolute;right:10px;bottom:10px;padding:5px 10px;border-radius:999px;background:rgba(15,16,18,.85);color:#EE8558;font-size:12px;font-weight:700;letter-spacing:.04em;z-index:2}
 .mini{display:none}
-.autos{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.autos{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;grid-auto-flow:dense}
 .auto{position:relative;display:flex;flex-direction:column;background:#24262A;border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--text-hell);border:1px solid #33363b;
   transition:opacity .45s ease, filter .45s ease, transform .25s ease, box-shadow .25s ease, border-color .25s ease}
 .auto .foto{aspect-ratio:4/3;overflow:hidden;background:#16171a}
@@ -497,55 +518,61 @@ html{scroll-padding-top:76px}
     <div class="kopfzeile rise">
       <div>
         <div class="kicker">Occasionen</div>
-        <h2>Drehen Sie auf.</h2>
+        <h2>Welches Auto passt zu Ihrem Budget?</h2>
       </div>
-      <p>Ziehen Sie die Nadel: Im PS-Modus leuchten alle Autos ab dieser Leistung, im CHF-Modus alle bis zu Ihrem Budget. Ein Klick aufs Auto öffnet das ganze Inserat.</p>
+      <p>Stellen Sie am Instrument Ihr Budget ein, als Kaufpreis oder pro Monat. Die passenden Autos leuchten, knappe sind markiert. Ein Klick aufs Auto öffnet das ganze Inserat.</p>
     </div>
     <div class="occ-grid">
       <div class="instrument rise" id="instrument">
-        <div class="modus" role="group" aria-label="Messen nach">
-          <button type="button" data-modus="ps" aria-pressed="true">Leistung · PS</button>
-          <button type="button" data-modus="chf" aria-pressed="false">Budget · CHF</button>
+        <p class="frage">Was darf Ihr nächstes Auto kosten?</p>
+        <div class="modus" role="group" aria-label="Budget angeben als">
+          <button type="button" data-modus="kauf" aria-pressed="true">Kaufpreis</button>
+          <button type="button" data-modus="monat" aria-pressed="false">Monatlich</button>
         </div>
-        <svg id="tacho" viewBox="0 0 400 400" role="slider" tabindex="0" aria-label="Drehzahlmesser als Filter für die Occasionen" aria-valuemin="0" aria-valuemax="600" aria-valuenow="0">
+        <svg id="tacho" viewBox="0 0 400 400" role="slider" tabindex="0" aria-label="Budget einstellen" aria-valuemin="0" aria-valuemax="200000" aria-valuenow="30000">
           <defs>
             <radialGradient id="glas" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#2b2e33"/><stop offset="1" stop-color="#101113"/></radialGradient>
             <filter id="nglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
           </defs>
           <circle cx="200" cy="200" r="182" fill="url(#glas)" stroke="#3a3d42" stroke-width="2"/>
           <path id="bogen-grund" fill="none" stroke="#2d3035" stroke-width="10" stroke-linecap="round"/>
-          <path id="bogen-rot" fill="none" stroke="rgba(234,93,46,.55)" stroke-width="10"/>
           <path id="bogen-aktiv" class="bogen-aktiv" fill="none" stroke="#EA5D2E" stroke-width="10" stroke-linecap="round"/>
           <g id="skala"></g>
-          <text class="einheit" id="einheit" x="200" y="140" text-anchor="middle">PS × 100</text>
-          <text class="wert-k" id="wert-k" x="200" y="268" text-anchor="middle">AB</text>
-          <text class="wert" id="wert" x="200" y="318" text-anchor="middle">0</text>
+          <text class="einheit" id="einheit" x="200" y="140" text-anchor="middle"></text>
+          <text class="wert-k" id="wert-k" x="200" y="250" text-anchor="middle">BIS CHF 30’000</text>
+          <text class="wert" id="wert" x="200" y="300" text-anchor="middle">15</text>
+          <text class="wert-u" id="wert-u" x="200" y="322" text-anchor="middle"></text>
           <g id="nadel" filter="url(#nglow)">
             <path d="M196 200 L200 58 L204 200 Z" fill="#EA5D2E"/>
             <circle cx="200" cy="200" r="7" fill="#EA5D2E"/>
           </g>
           <circle class="nabe" cx="200" cy="200" r="20" fill="#1a1b1e" stroke="#4a4e54" stroke-width="3"/>
         </svg>
-        <input class="schieber" id="schieber" type="range" min="0" max="600" step="10" value="0" aria-label="Wert des Drehzahlmessers">
-        <div class="gaenge" role="group" aria-label="Schnellwahl wie eine Gangschaltung">
-          <button type="button" data-gang="alltag"><b>1</b>Alltag</button>
-          <button type="button" data-gang="familie"><b>2</b>Familie</button>
-          <button type="button" data-gang="sport"><b>3</b>Sport</button>
-          <button type="button" data-gang="nutz"><b>4</b>Nutzfahrzeug</button>
-          <button type="button" data-gang="klassik"><b>R</b>Klassiker</button>
+        <input class="schieber" id="schieber" type="range" min="0" max="200000" step="1000" value="30000" aria-label="Budget">
+        <div class="monat-felder" id="monat-felder" hidden>
+          <label class="feld">Anzahlung <b id="anz-w">CHF 5’000</b><input type="range" id="anz" min="0" max="30000" step="1000" value="5000"></label>
+          <div class="feld">Laufzeit
+            <div class="lz" role="group" aria-label="Laufzeit in Monaten">
+              <button type="button" data-lz="24" aria-pressed="false">24</button><button type="button" data-lz="36" aria-pressed="false">36</button><button type="button" data-lz="48" aria-pressed="true">48</button><button type="button" data-lz="60" aria-pressed="false">60</button>
+            </div>
+          </div>
+          <p class="richtwert">= Kaufpreis bis ca. <b id="kauf-aus-monat">CHF 24’200</b><br>Richtwert ohne Zins, kein Leasing-Angebot. Finanzierung und Leasing auf Anfrage.<small>Die Kreditvergabe ist verboten, falls sie zur Überschuldung der Konsumentin oder des Konsumenten führt (Art. 3 UWG).</small></p>
         </div>
-        <button type="button" class="gas" id="gas">Gas geben</button>
-        <div class="anzeige">
-          <div class="treffer" id="treffer"><b>19</b> von 19 Autos</div>
-          <button type="button" class="reset" id="reset">Alle zeigen</button>
+        <div class="feld sport">Wie sportlich?
+          <div class="sport-w" role="group" aria-label="Mindestleistung">
+            <button type="button" data-ps="0" aria-pressed="true">Egal</button><button type="button" data-ps="190" aria-pressed="false">ab 190 PS</button><button type="button" data-ps="300" aria-pressed="false">ab 300 PS</button>
+          </div>
         </div>
-        <p class="hinweis">Nadel ziehen, tippen, Regler oder Pfeiltasten. Zeigen Sie auf ein Auto: Die Nadel zeigt seinen Wert.</p>
+        <div class="anzeige"><div class="treffer" id="treffer"></div></div>
+        <a class="btn btn-o anfrage" id="anfrage" href="mailto:info@bergerspeed.ch">Probefahrt anfragen</a>
+        <p class="anfrage-info" id="anfrage-info">E-Mail mit Ihrem Budget und Ihren Top 3 aus der Auswahl</p>
+        <p class="hinweis">oder anrufen: <a href="tel:+41717500505">071 750 05 05</a></p>
       </div>
 
       <div>
         <div class="mini" id="mini" aria-hidden="true">
-          <div class="mw" id="mini-w">ab 0 PS<small id="mini-t">19 von 19</small></div>
-          <input type="range" id="mini-s" min="0" max="600" step="10" value="0" tabindex="-1">
+          <div class="mw" id="mini-w">bis CHF 30’000<small id="mini-t"></small></div>
+          <input type="range" id="mini-s" min="0" max="200000" step="1000" value="30000" tabindex="-1" aria-label="Budget">
         </div>
         <div class="autos" id="autos"></div>
         <div class="quelle">
@@ -833,167 +860,152 @@ if(window.matchMedia('(hover:hover)').matches){
 }
 D.addEventListener('visibilitychange',function(){ if(D.hidden) clearTimeout(diaT); else diaPlan(); });
 
-/* ---------- Drehzahlmesser ---------- */
+/* ---------- Budget-Rechner (Drehzahlmesser) ---------- */
 var svg=D.getElementById('tacho'), nadel=D.getElementById('nadel'), skala=D.getElementById('skala');
-var wertT=D.getElementById('wert'), wertK=D.getElementById('wert-k'), einheit=D.getElementById('einheit');
+var wertT=D.getElementById('wert'), wertK=D.getElementById('wert-k'), wertU=D.getElementById('wert-u'), einheit=D.getElementById('einheit');
 var schieber=D.getElementById('schieber'), miniS=D.getElementById('mini-s'), miniW=D.getElementById('mini-w');
-var treffer=D.getElementById('treffer'), autosEl=D.getElementById('autos');
+var treffer=D.getElementById('treffer'), autosEl=D.getElementById('autos'), anfrage=D.getElementById('anfrage');
+var anzEl=D.getElementById('anz'), anzW=D.getElementById('anz-w'), kaufAusMonat=D.getElementById('kauf-aus-monat'), monatFelder=D.getElementById('monat-felder');
 var karten=[].slice.call(autosEl.querySelectorAll('.auto'));
-var MODI={ ps:{max:600,step:10,rot:500,labels:7,k:'AB',start:0},
-           chf:{max:200000,step:1000,rot:150000,labels:11,k:'BIS',start:200000} };
-/* Gänge: Gruppen aus dem echten Lager (IDs der Inserate) */
-var GAENGE={
- alltag:{n:'Alltag',ids:[20978040,20873974,20978077,20933594,20914304,20971826,20865804,20961827]},
- familie:{n:'Familie',ids:[20961827,20865804,20978165,20971826,20988128,20834766]},
- sport:{n:'Sport',ids:[20732392,20978179,20933584,20596405,20914304]},
- nutz:{n:'Nutzfahrzeug',ids:[20589342,20988128,20834819]},
- klassik:{n:'Klassiker',ids:[20891721,20933603,20834819,20596405]}
-};
-var gangWert=0, modus='ps', filterWert=0, gang=null, anzeigeWert=0, busy=false, animId=0, zaehlerAlt=19;
+var MODI={ kauf:{max:200000,step:1000,labels:6,start:30000,lab:function(v){return v?(v/1000)+'k':'0'}},
+           monat:{max:3000,step:50,labels:7,start:400,lab:function(v){return String(v)}} };
+var modus='kauf', wert={kauf:30000,monat:400}, anz=5000, lz=48, minPS=0, anzeigeWert=30000, busy=false, animId=0, zaehlerAlt=null;
 var CX=200, CY=200, R=160, A0=135, SW=270;
 function pol(a,r){var t=a*Math.PI/180;return [CX+r*Math.cos(t),CY+r*Math.sin(t)]}
 function bogen(a1,a2,r){var p1=pol(a1,r),p2=pol(a2,r),gross=(a2-a1)>180?1:0;return 'M'+p1[0].toFixed(1)+' '+p1[1].toFixed(1)+' A'+r+' '+r+' 0 '+gross+' 1 '+p2[0].toFixed(1)+' '+p2[1].toFixed(1)}
 function winkel(v){return A0+SW*Math.max(0,Math.min(1,v/MODI[modus].max))}
-function wertVon(k){ return modus==='ps' ? (+k.dataset.ps||0) : +k.dataset.p; }
+function budget(){ return modus==='kauf' ? wert.kauf : anz + wert.monat*lz; }
 function zeichneSkala(){
-  var M=MODI[modus], h='';
+  var M=MODI[modus], h='', n=(M.labels-1)*2;
   D.getElementById('bogen-grund').setAttribute('d',bogen(A0,A0+SW,R));
-  D.getElementById('bogen-rot').setAttribute('d', bogen(winkel(M.rot),A0+SW,R));
-  var n=(M.labels-1)*2;
   for(var i=0;i<=n;i++){
-    var v=M.max*i/n, a=winkel(v), gross=i%2===0, rot=v>=M.rot;
-    var p1=pol(a,R-(gross?26:18)), p2=pol(a,R-8);
-    h+='<line class="tick'+(rot?' rot':'')+'" x1="'+p1[0].toFixed(1)+'" y1="'+p1[1].toFixed(1)+'" x2="'+p2[0].toFixed(1)+'" y2="'+p2[1].toFixed(1)+'" stroke-width="'+(gross?3:1.6)+'"/>';
-    if(gross){ var pl=pol(a,R-48), lab=modus==='ps'? (v/100) : (v/10000);
-      h+='<text class="zahl'+(rot?' rot':'')+'" x="'+pl[0].toFixed(1)+'" y="'+(pl[1]+8).toFixed(1)+'" text-anchor="middle">'+lab+'</text>'; }
+    var v=M.max*i/n, a=winkel(v), gross=i%2===0, p1=pol(a,R-(gross?26:18)), p2=pol(a,R-8);
+    h+='<line class="tick" x1="'+p1[0].toFixed(1)+'" y1="'+p1[1].toFixed(1)+'" x2="'+p2[0].toFixed(1)+'" y2="'+p2[1].toFixed(1)+'" stroke-width="'+(gross?3:1.6)+'"/>';
+    if(gross){ var pl=pol(a,R-50); h+='<text class="zahl" x="'+pl[0].toFixed(1)+'" y="'+(pl[1]+8).toFixed(1)+'" text-anchor="middle">'+M.lab(Math.round(v))+'</text>'; }
   }
-  skala.innerHTML=h;
-  einheit.textContent=modus==='ps'?'PS × 100':'CHF × 10’000';
+  skala.innerHTML=h; einheit.textContent='';
   [schieber,miniS].forEach(function(s){s.max=M.max;s.step=M.step;});
   svg.setAttribute('aria-valuemax',M.max);
 }
-/* nur die Anzeige (Nadel, Bogen, Zahl) */
-function zeige(v,label){
+/* Anzeige: Nadel, Bogen, Zahl */
+var trefferZahl=0;
+function zeige(v,info){
   var M=MODI[modus]; anzeigeWert=v;
   nadel.setAttribute('transform','rotate('+(winkel(v)+90)+' '+CX+' '+CY+')');
   D.getElementById('bogen-aktiv').setAttribute('d', v>0? bogen(A0,winkel(v),R) : '');
   var r=Math.round(v/M.step)*M.step;
-  if(label){ wertK.textContent=label; wertK.classList.add('modell'); }
-  else if(gang && !busy){ wertK.textContent=GAENGE[gang].n.toUpperCase(); wertK.classList.add('modell'); }
-  else { wertK.textContent = r<=0 ? '' : M.k; wertK.classList.remove('modell'); }
-  if(!label && !gang && r<=0) { wertT.textContent='ALLE'; wertT.style.fontSize=''; }
-  else { wertT.textContent = modus==='ps'? String(r) : chf(r); wertT.style.fontSize = modus==='chf' ? (r>=100000?'40px':'44px') : ''; }
+  if(info){ wertK.textContent=info.k; wertT.textContent=info.w; wertU.textContent=info.u; wertT.style.fontSize=info.w.length>7?'34px':''; return; }
+  wertK.textContent = modus==='kauf' ? 'BIS CHF '+chf(r) : 'CHF '+chf(r)+' / MONAT';
+  wertT.textContent = String(trefferZahl); wertT.style.fontSize='';
+  wertU.textContent = (trefferZahl===1?'Auto passt':'Autos passen') + (modus==='monat' ? ' · bis ca. CHF '+chf(anz+r*lz) : '');
 }
-function passt(k,v){
-  if(gang) return GAENGE[gang].ids.indexOf(+k.id.replace('auto-',''))>=0;
-  if(modus==='ps'){ var ps=+k.dataset.ps||0; return v<=0 || (ps>0 && ps>=v); }
-  return +k.dataset.p<=v;
+function stand(k,B){
+  var p=+k.dataset.p, ps=+k.dataset.ps||0;
+  if(minPS && ps<minPS) return 'aus';
+  if(p<=B) return 'passt'; if(p<=B*1.1) return 'knapp'; return 'aus';
 }
-function zaehle(z){
-  var von=zaehlerAlt, t0=null; zaehlerAlt=z;
-  function f(t){ if(!t0)t0=t; var p=Math.min(1,(t-t0)/350), n=Math.round(von+(z-von)*p);
-    treffer.innerHTML='<b>'+n+'</b> von '+karten.length+' Autos'; if(p<1) requestAnimationFrame(f); }
-  if(reduce) treffer.innerHTML='<b>'+z+'</b> von '+karten.length+' Autos'; else requestAnimationFrame(f);
+function zaehle(z,kn){
+  var html='<b>'+z+'</b> '+(z===1?'Auto passt':'Autos passen')+' zu Ihrem Budget'+(kn?'<small>'+kn+' knapp darüber</small>':'<small>&nbsp;</small>');
+  treffer.innerHTML=html;
 }
-/* Filter anwenden */
-function filtere(v){
-  var M=MODI[modus], z=0;
-  karten.forEach(function(k){ var ok=passt(k,v); k.classList.toggle('aus',!ok); k.setAttribute('aria-hidden', ok?'false':'true'); if(ok) z++; });
-  autosEl.classList.toggle('rot', !gang && v>=M.rot && (modus==='ps' || v<M.max));
-  return z;
+function anfrageLink(B,passend){
+  var top=passend.sort(function(a,b){return +b.dataset.p - +a.dataset.p}).slice(0,3).map(function(k){
+    return '- '+k.querySelector('.marke').textContent+' '+k.querySelector('h3').textContent+' (CHF '+chf(+k.dataset.p)+'.–)';});
+  var b= modus==='monat' ? 'bis ca. CHF '+chf(B)+' (CHF '+chf(wert.monat)+' pro Monat, '+lz+' Monate, Anzahlung CHF '+chf(anz)+')' : 'bis CHF '+chf(B);
+  var body='Grüezi Herr Berger\n\nMein Budget: '+b+(minPS?', ab '+minPS+' PS':'')+'.\n'+(top.length?'Mich interessieren:\n'+top.join('\n')+'\n':'')+'\nBitte melden Sie sich für einen Probefahrt-Termin.\n\nName:\nTelefon:';
+  anfrage.href='mailto:info@bergerspeed.ch?subject='+encodeURIComponent('Probefahrt-Anfrage über die Website')+'&body='+encodeURIComponent(body);
+  D.getElementById('anfrage-info').textContent = top.length ? 'E-Mail mit Ihrem Budget und Ihren Top '+top.length+' aus der Auswahl' : 'E-Mail mit Ihrem Budget';
 }
-function setze(v,ohneZaehler){
-  var M=MODI[modus]; v=Math.max(0,Math.min(M.max,Math.round(v/M.step)*M.step)); filterWert=v;
-  zeige(v); schieber.value=v; miniS.value=v; svg.setAttribute('aria-valuenow',v);
-  var z=filtere(v);
-  if(!ohneZaehler) zaehle(z);
-  miniW.innerHTML=(gang?GAENGE[gang].n:(modus==='ps'?'ab '+v+' PS':'bis CHF '+chf(v)))+'<small>'+z+' von '+karten.length+'</small>';
-  return z;
+function filtere(){
+  var B=budget(), z=0, kn=0, passend=[];
+  karten.forEach(function(k){ var st=stand(k,B);
+    k.classList.toggle('aus',st==='aus'); k.classList.toggle('knapp',st==='knapp');
+    k.setAttribute('aria-hidden', st==='aus'?'true':'false');
+    if(st==='passt'){ z++; passend.push(k); } if(st==='knapp') kn++; });
+  trefferZahl=z; zaehle(z,kn); anfrageLink(B,passend); planeSortierung();
+  miniW.innerHTML=(modus==='monat'?'CHF '+chf(wert.monat)+' / Mt.':'bis CHF '+chf(B))+'<small>'+z+' passen</small>';
+  kaufAusMonat.textContent='CHF '+chf(anz+wert.monat*lz);
 }
-/* weiche Nadelbewegung (nur Anzeige, optional mit Filter unterwegs) */
+/* passende Autos sanft nach oben sortieren (FLIP), erst wenn die Eingabe ruht */
+var sortT=null, ord={passt:0,knapp:1,aus:2};
+function planeSortierung(){ clearTimeout(sortT); sortT=setTimeout(sortiere, zieht?600:350); }
+function sortiere(){
+  if(zieht){ planeSortierung(); return; }
+  var B=budget(), neu=karten.slice().sort(function(a,b){ var d=ord[stand(a,B)]-ord[stand(b,B)]; return d || (+b.dataset.p - +a.dataset.p); });
+  var alt=[].slice.call(autosEl.children); if(neu.every(function(k,i){return alt[i]===k})) return;
+  var vor=new Map(); karten.forEach(function(k){ vor.set(k,k.getBoundingClientRect()); });
+  neu.forEach(function(k){ autosEl.appendChild(k); });
+  karten.forEach(function(k){ k.classList.toggle('gross', k===neu[0] && k.id==='auto-20732392'); });
+  if(reduce) return;
+  karten.forEach(function(k){ var a=vor.get(k), b=k.getBoundingClientRect(), dx=a.left-b.left, dy=a.top-b.top;
+    if(!dx && !dy) return; k.style.transition='none'; k.style.transform='translate('+dx+'px,'+dy+'px)'; });
+  autosEl.offsetWidth;
+  karten.forEach(function(k){ if(k.style.transform){ k.style.transition='transform .55s cubic-bezier(.2,.7,.2,1), opacity .45s ease, filter .45s ease'; k.style.transform=''; setTimeout(function(){ k.style.transition=''; },600); } });
+}
+function setze(v){
+  var M=MODI[modus]; v=Math.max(0,Math.min(M.max,Math.round(v/M.step)*M.step)); wert[modus]=v;
+  schieber.value=v; miniS.value=v; svg.setAttribute('aria-valuenow',v);
+  filtere(); zeige(v);
+}
 function fahre(ziel,dauer,mitFilter,fertig){
   var id=++animId, von=anzeigeWert, t0=null;
   if(reduce||dauer<=0){ if(mitFilter) setze(ziel); else zeige(ziel); if(fertig) fertig(); return; }
-  function f(t){ if(id!==animId) return; if(!t0)t0=t; var p=Math.min(1,(t-t0)/dauer), e=easeInOut(p), v=von+(ziel-von)*e;
-    if(mitFilter){ zeige(v); filtere(v); } else zeige(v);
-    if(p<1) requestAnimationFrame(f); else { if(mitFilter) setze(ziel); if(fertig) fertig(); } }
+  function f(t){ if(id!==animId) return; if(!t0)t0=t; var p=Math.min(1,(t-t0)/dauer), v=von+(ziel-von)*easeInOut(p);
+    if(mitFilter){ wert[modus]=v; filtere(); zeige(v); } else zeige(v);
+    if(p<1) requestAnimationFrame(f); else { if(mitFilter) setze(ziel); else zeige(ziel); if(fertig) fertig(); } }
   requestAnimationFrame(f);
 }
 function sperre(an){ busy=an; svg.classList.toggle('busy',an); autosEl.classList.toggle('busy',an); }
-/* Zündung: einmal bis Anschlag und zurück, Karten folgen der Nadel */
-function sweep(ziel){
-  if(reduce){ setze(ziel); return; }
-  var M=MODI[modus]; sperre(true);
-  fahre(M.max,750,true,function(){
-    if(ziel>=M.max){ fahre(0,800,true,function(){ fahre(ziel,700,true,function(){ setze(ziel); sperre(false); }); }); }
-    else fahre(ziel,950,true,function(){ setze(ziel); sperre(false); });
-  });
+function sweep(){
+  if(reduce){ setze(wert[modus]); return; }
+  var M=MODI[modus], ziel=wert[modus]; sperre(true);
+  fahre(M.max,700,true,function(){ fahre(ziel,900,true,function(){ setze(ziel); sperre(false); }); });
 }
-function gangAus(){ gang=null; D.querySelectorAll('.gaenge button').forEach(function(b){b.setAttribute('aria-pressed','false')}); }
 function wechsle(m){
-  if(m===modus) return; animId++; sperre(false); modus=m; gangAus();
+  if(m===modus) return; animId++; sperre(false); modus=m;
   D.querySelectorAll('.modus button').forEach(function(b){b.setAttribute('aria-pressed', b.dataset.modus===m?'true':'false')});
-  var M=MODI[m], vonAnteil=anzeigeWert/MODI[m==='ps'?'chf':'ps'].max;
-  zeichneSkala(); anzeigeWert=vonAnteil*M.max; zeige(anzeigeWert);
-  sweep(M.start);
+  monatFelder.hidden = m!=='monat';
+  var anteil=anzeigeWert/MODI[m==='kauf'?'monat':'kauf'].max; zeichneSkala(); anzeigeWert=anteil*MODI[m].max; zeige(anzeigeWert);
+  fahre(wert[m],700,true);
 }
 D.querySelectorAll('.modus button').forEach(function(b){ b.addEventListener('click',function(){wechsle(b.dataset.modus)}); });
-D.getElementById('reset').addEventListener('click',function(){ animId++; sperre(false); gangAus(); fahre(MODI[modus].start,500,false,function(){ setze(MODI[modus].start); }); });
-schieber.addEventListener('input',function(){ if(!busy){ gangAus(); animId++; setze(+schieber.value);} });
-miniS.addEventListener('input',function(){ if(!busy){ gangAus(); animId++; setze(+miniS.value);} });
+schieber.addEventListener('input',function(){ animId++; sperre(false); setze(+schieber.value); });
+miniS.addEventListener('input',function(){ animId++; sperre(false); setze(+miniS.value); });
+anzEl.addEventListener('input',function(){ anz=+anzEl.value; anzW.textContent='CHF '+chf(anz); filtere(); zeige(anzeigeWert); });
+D.querySelectorAll('.lz button').forEach(function(b){ b.addEventListener('click',function(){ lz=+b.dataset.lz;
+  D.querySelectorAll('.lz button').forEach(function(x){x.setAttribute('aria-pressed', x===b?'true':'false')}); filtere(); zeige(anzeigeWert); }); });
+D.querySelectorAll('.sport-w button').forEach(function(b){ b.addEventListener('click',function(){ minPS=+b.dataset.ps;
+  D.querySelectorAll('.sport-w button').forEach(function(x){x.setAttribute('aria-pressed', x===b?'true':'false')}); filtere(); }); });
 svg.addEventListener('keydown',function(e){
-  if(busy) return; var M=MODI[modus], d={ArrowRight:1,ArrowUp:1,ArrowLeft:-1,ArrowDown:-1,PageUp:10,PageDown:-10}[e.key];
-  if(e.key==='Home'||e.key==='End'){ e.preventDefault(); gangAus(); animId++; setze(e.key==='Home'?0:M.max); return; }
-  if(d){ e.preventDefault(); gangAus(); animId++; setze(filterWert+d*M.step*(modus==='chf'?5:1)); }
+  var M=MODI[modus], d={ArrowRight:1,ArrowUp:1,ArrowLeft:-1,ArrowDown:-1,PageUp:10,PageDown:-10}[e.key];
+  if(e.key==='Home'||e.key==='End'){ e.preventDefault(); animId++; setze(e.key==='Home'?0:M.max); return; }
+  if(d){ e.preventDefault(); animId++; sperre(false); setze(wert[modus]+d*M.step); }
 });
-/* Gänge */
-D.querySelectorAll('.gaenge button').forEach(function(b){ b.addEventListener('click',function(){
-  animId++; sperre(false); var g=b.dataset.gang;
-  if(gang===g){ gangAus(); fahre(MODI[modus].start,500,false,function(){ setze(MODI[modus].start); }); return; }
-  gang=g; D.querySelectorAll('.gaenge button').forEach(function(x){x.setAttribute('aria-pressed', x===b?'true':'false')});
-  var werte=karten.filter(function(k){return GAENGE[g].ids.indexOf(+k.id.replace('auto-',''))>=0}).map(wertVon).filter(Boolean).sort(function(a,b){return a-b});
-  var mitte=werte.length? werte[Math.floor(werte.length/2)] : 0;
-  zaehle(filtere(0)); miniW.innerHTML=GAENGE[g].n+'<small>'+karten.filter(function(k){return !k.classList.contains('aus')}).length+' von '+karten.length+'</small>';
-  gangWert=mitte; fahre(mitte,700,false,function(){ zeige(mitte); });
-}); });
-/* Gas geben: einmal in den roten Bereich und zurück, Autos im roten Bereich blitzen */
-function gas(){
-  if(busy) return; var M=MODI[modus], zurueck=gang? gangWert : filterWert; sperre(true);
-  fahre(M.max*0.97,520,false,function(){
-    karten.forEach(function(k){ if(wertVon(k)>=M.rot && !k.classList.contains('aus')){ k.classList.remove('blitz'); void k.offsetWidth; k.classList.add('blitz'); } });
-    setTimeout(function(){ fahre(zurueck,800,false,function(){ zeige(zurueck); sperre(false); }); },160);
-  });
-}
-D.getElementById('gas').addEventListener('click',gas);
-/* Ziehen / Tippen */
 function ausZeiger(e){
   var r=svg.getBoundingClientRect(), x=(e.clientX-r.left)*400/r.width, y=(e.clientY-r.top)*400/r.height;
-  if(Math.hypot(x-CX,y-CY)<26) return 'nabe';
   var a=Math.atan2(y-CY,x-CX)*180/Math.PI; if(a<0) a+=360;
   var rel=a-A0; if(rel<0) rel+=360;
   if(rel>SW){ rel = rel>SW+(360-SW)/2 ? 0 : SW; }
-  gangAus(); animId++; setze(MODI[modus].max*rel/SW);
+  animId++; setze(MODI[modus].max*rel/SW);
 }
 var zieht=false;
-svg.addEventListener('pointerdown',function(e){ if(busy) return; if(ausZeiger(e)==='nabe'){ gas(); return; } zieht=true; svg.classList.add('zieht'); try{svg.setPointerCapture(e.pointerId)}catch(_){} });
+svg.addEventListener('pointerdown',function(e){ sperre(false); zieht=true; svg.classList.add('zieht'); try{svg.setPointerCapture(e.pointerId)}catch(_){} ausZeiger(e); });
 svg.addEventListener('pointermove',function(e){ if(zieht) ausZeiger(e); });
 ['pointerup','pointercancel','lostpointercapture'].forEach(function(t){ svg.addEventListener(t,function(){ zieht=false; svg.classList.remove('zieht'); }); });
-/* Auto zeigen: Nadel zeigt den Wert des Autos unter der Maus */
+/* Auto zeigen: Nadel zeigt Preis (oder Monatsrate) des Autos */
 if(window.matchMedia('(hover:hover)').matches){
   karten.forEach(function(k){
-    k.addEventListener('mouseenter',function(){ if(busy||zieht) return; var v=wertVon(k); if(!v) return;
-      k.classList.add('zeigt'); var name=(k.querySelector('h3').textContent||'').slice(0,22);
-      fahre(v,420,false,function(){ zeige(v,name.toUpperCase()); }); });
-    k.addEventListener('mouseleave',function(){ k.classList.remove('zeigt'); if(busy||zieht) return;
-      var z=gang? gangWert : filterWert; fahre(z,420,false,function(){ zeige(z); }); });
+    k.addEventListener('mouseenter',function(){ if(busy||zieht) return; var p=+k.dataset.p, name=(k.querySelector('h3').textContent||'').slice(0,24);
+      var v = modus==='kauf' ? p : Math.max(0,Math.ceil((p-anz)/lz/50)*50);
+      k.classList.add('zeigt');
+      fahre(v,420,false,function(){ zeige(v,{k:name.toUpperCase(), w: chf(v), u: modus==='kauf' ? 'CHF Kaufpreis' : 'CHF ≈ pro Monat, '+lz+' Mt.'}); }); });
+    k.addEventListener('mouseleave',function(){ k.classList.remove('zeigt'); if(busy||zieht) return; fahre(wert[modus],420,false); });
   });
 }
-function easeOut(x){return 1-Math.pow(1-x,3)}
 function easeInOut(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}
-zeichneSkala(); setze(0,true);
-/* Zündung beim ersten Sichtkontakt (PS) */
+zeichneSkala(); setze(wert.kauf);
 if('IntersectionObserver' in window){
-  var ioS=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ ioS.disconnect(); setTimeout(function(){ sweep(0); },150);} }); },{threshold:.75});
+  var ioS=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ ioS.disconnect(); setTimeout(sweep,150);} }); },{threshold:.75});
   ioS.observe(svg);
 }
 
